@@ -18,5 +18,3 @@ Real **technical** questions from interviews I sat. Each question is its own fil
 | 🗄️ | [Database Design](./topics/08-database-design/) | 1 |
 | ⚡ | [Performance & Optimization](./topics/09-performance-optimization/) | 1 |
 | 🔒 | [Security](./topics/10-security/) | 2 |
-
-[Abdelrahman Galhoom](https://github.com/Galhoom22)
