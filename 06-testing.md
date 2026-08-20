@@ -45,3 +45,11 @@ This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for
 
 > [!TIP]
 > **One-liner:** Environments + collection variables, login once, then assert status, JSON shape, and 401/422/404 — save the collection so it is repeatable, not a screenshot of one 200.
+
+**Source:** [Postman: Write scripts to test API response data](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts) — `pm.test`, `pm.response`, Chai assertions (the process this answer describes).
+
+**Learn more:**
+- [Postman: Variables](https://learning.postman.com/docs/sending-requests/variables/variables/) — `baseUrl`, `token`, chaining ids
+- [Collection Runner](https://learning.postman.com/docs/tests-and-scripts/running-collections/intro-to-collection-runs) — run the whole folder, not one request
+- [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-overview/) — same collection in CI (Newman is legacy; Postman now points here)
+- [Laravel: HTTP Tests](https://laravel.com/docs/http-tests) — repo tests that must still exist beside Postman

@@ -54,6 +54,13 @@ PHP 8 tightened some of those rules, but relying on them is still a trap. `===` 
 > [!TIP]
 > **One-liner:** `==` compares values with type juggling; `===` compares values and types with no juggling. Prefer `===` unless you have a specific reason not to.
 
+**Source:** [PHP: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php) — official definition of `==` (equal, type juggling) vs `===` (identical), including the PHP 8 string-to-number change.
+
+**Learn more:**
+- [PHP type comparison tables](https://www.php.net/manual/en/types.comparisons.php) — full `==` / `===` matrix for every type pair
+- [The `match` expression](https://www.php.net/manual/en/control-structures.match.php) — `match` uses identity (`===`); `switch` uses equality (`==`)
+- [`in_array()`](https://www.php.net/manual/en/function.in-array.php) — third argument `$strict` for the same trap in arrays
+
 ---
 
 ## Q2. What is the difference between `require` and `include` in PHP?
@@ -84,6 +91,13 @@ include __DIR__ . '/banner.php';   // nice to have; failure is not fatal
 
 > [!TIP]
 > **One-liner:** `require` kills the script if the file is missing; `include` only warns and continues. Use `require` for files the app cannot run without.
+
+**Source:** [`require`](https://www.php.net/manual/en/function.require.php) and [`include`](https://www.php.net/manual/en/function.include.php) — official PHP manual; this answer follows those two pages.
+
+**Learn more:**
+- [`require_once`](https://www.php.net/manual/en/function.require-once.php) / [`include_once`](https://www.php.net/manual/en/function.include-once.php) — skip a file that was already loaded
+- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) — how Composer loads classes so you rarely `require` them by hand
+- [PHP: Autoloading Classes](https://www.php.net/manual/en/language.oop5.autoload.php) — `spl_autoload_register` and how `new` triggers a file load
 
 ---
 
@@ -124,6 +138,13 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 
 > [!TIP]
 > **One-liner:** PHP has one array type used in three ways — indexed, associative, and multidimensional (arrays of arrays).
+
+**Source:** [PHP: Arrays](https://www.php.net/manual/en/language.types.array.php) — official type page: PHP arrays are ordered maps (this is the “one type, three usages” answer).
+
+**Learn more:**
+- [`array_is_list()`](https://www.php.net/manual/en/function.array-is-list.php) — detect a packed `0..n-1` list vs a map
+- [Array functions](https://www.php.net/manual/en/ref.array.php) — `array_map`, `array_filter`, `array_column`, and the rest of the toolbox
+- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — how the engine represents values (useful next step after arrays)
 
 ---
 
@@ -179,3 +200,10 @@ echo new Money(1999, 'USD'); // "19.99 USD"
 
 > [!TIP]
 > **One-liner:** Magic methods are hooks PHP runs for you (`__construct`, `__toString`, `__get`, …). Use them for construction, string form, and serialization — not as a hidden public API.
+
+**Source:** [PHP: Magic Methods](https://www.php.net/manual/en/language.oop5.magic.php) — official list and contracts for every `__*` method this answer names.
+
+**Learn more:**
+- [Constructors and Destructors](https://www.php.net/manual/en/language.oop5.decon.php) — `__construct` / `__destruct` in full
+- [Overloading](https://www.php.net/manual/en/language.oop5.overloading.php) — `__get`, `__set`, `__call`, `__callStatic` (and why they hide bugs)
+- [Object Serialization](https://www.php.net/manual/en/language.oop5.serialization.php) — `__serialize` / `__unserialize` vs `__sleep` / `__wakeup`

@@ -58,3 +58,10 @@ First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I 
 
 > [!TIP]
 > **One-liner:** Characterize with tests, find the separate jobs inside the method, extract them one green step at a time, and keep the original method as a short orchestrator.
+
+**Source:** [Extract Function](https://refactoring.com/catalog/extractFunction.html) — Fowler’s catalog (alias: Extract Method); this is the first move on a 400-line method.
+
+**Learn more:**
+- [Refactoring catalog](https://refactoring.com/catalog/) — Extract Class, Replace Temp with Query, and the rest of the catalog
+- [Characterization test](https://en.wikipedia.org/wiki/Characterization_test) — lock current behavior before you change structure (Michael Feathers)
+- [Laravel: Controllers](https://laravel.com/docs/controllers) — keep HTTP thin; push work into actions/services

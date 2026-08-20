@@ -35,6 +35,13 @@ Laravel records ran migrations in a `migrations` table, so each change runs once
 > [!TIP]
 > **One-liner:** A migration is a versioned schema change (`up` / `down`) so every environment applies the same database structure from Git.
 
+**Source:** [Laravel: Migrations](https://laravel.com/docs/migrations) — official `up` / `down`, `migrate`, rollback, and the `migrations` table.
+
+**Learn more:**
+- [Laravel: Database](https://laravel.com/docs/database) — connections, transactions, query logging
+- [Laravel: Eloquent](https://laravel.com/docs/eloquent) — models that sit on top of the tables you migrate
+- [Database normalization](https://en.wikipedia.org/wiki/Database_normalization) — how to think before you write the migration
+
 ---
 
 ## Q2. What is Routing?
@@ -60,6 +67,13 @@ Named routes (`->name('users.show')`) keep `route()` URLs from going stale when 
 
 > [!TIP]
 > **One-liner:** Routing is the map from “HTTP method + URL” to the controller (or closure) that handles that request.
+
+**Source:** [Laravel: Routing](https://laravel.com/docs/routing) — methods, parameters, named routes, groups, and model binding.
+
+**Learn more:**
+- [Laravel: Controllers](https://laravel.com/docs/controllers) — where the route usually points
+- [Laravel: Middleware](https://laravel.com/docs/middleware) — what runs around the route
+- [MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) — the verbs `Route::get/post/put/patch/delete` wrap
 
 ---
 
@@ -90,6 +104,13 @@ These routes are for Blade / Inertia / Livewire pages, not for a stateless mobil
 > [!TIP]
 > **One-liner:** `web.php` holds session-based browser routes — cookies, CSRF, and auth via the `web` middleware group.
 
+**Source:** [Laravel: Routing](https://laravel.com/docs/routing) — web routes and the `web` middleware group; CSRF detail in [Laravel: CSRF Protection](https://laravel.com/docs/csrf).
+
+**Learn more:**
+- [Laravel: Directory Structure](https://laravel.com/docs/structure) — where `routes/web.php` lives
+- [Laravel: Session](https://laravel.com/docs/session) — the session store those routes use
+- [Laravel: Authentication](https://laravel.com/docs/authentication) — `auth` middleware on web routes
+
 ---
 
 ## Q4. What is the `api.php` file?
@@ -117,6 +138,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 > [!TIP]
 > **One-liner:** `api.php` is for stateless JSON APIs — `/api` prefix, rate limiting, token auth, no session CSRF.
+
+**Source:** [Laravel: Routing](https://laravel.com/docs/routing) — API routes / `api` middleware group; token auth in [Laravel Sanctum](https://laravel.com/docs/sanctum).
+
+**Learn more:**
+- [Laravel: Directory Structure](https://laravel.com/docs/structure) — `routes/api.php` and `install:api`
+- [Laravel: Rate Limiting](https://laravel.com/docs/routing#rate-limiting) — `throttle:api`
+- [OWASP API Security](https://owasp.org/www-project-api-security/) — what “secure the API surface” means beyond Laravel defaults
 
 ---
 
@@ -176,6 +204,13 @@ class Comment extends Model
 > [!TIP]
 > **One-liner:** Eloquent relationships map table links: `hasOne` / `hasMany` / `belongsTo`, `belongsToMany` (pivot), `hasManyThrough`, and `morph*` for polymorphic relations.
 
+**Source:** [Laravel: Eloquent Relationships](https://laravel.com/docs/eloquent-relationships) — official catalog of every relation type in this answer.
+
+**Learn more:**
+- [Eager Loading](https://laravel.com/docs/eloquent-relationships#eager-loading) — `with()` / N+1 (the follow-up they always ask)
+- [Laravel: Migrations](https://laravel.com/docs/migrations) — `foreignId()`, `morphs()`, pivot tables
+- [Polymorphic relationships](https://laravel.com/docs/eloquent-relationships#polymorphic-relationships) — `morphTo` / `morphMany` in isolation
+
 ---
 
 ## Q6. What is Middleware, and what are its primary use cases?
@@ -225,6 +260,13 @@ Laravel 11+ wires this in `bootstrap/app.php` instead of `Http/Kernel.php`.
 > [!TIP]
 > **One-liner:** Middleware is request/response middleware — auth, CSRF, throttle, CORS — that runs before (and after) the controller.
 
+**Source:** [Laravel: Middleware](https://laravel.com/docs/middleware) — `handle`, global vs group vs route middleware.
+
+**Learn more:**
+- [Laravel: CSRF Protection](https://laravel.com/docs/csrf) — the most important `web` middleware
+- [Laravel: Authentication](https://laravel.com/docs/authentication#protecting-routes) — `auth` / `auth:sanctum`
+- [MDN: CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) — why API middleware often adds CORS headers
+
 ---
 
 ## Q7. What is the difference between Eloquent ORM and the Query Builder?
@@ -257,6 +299,13 @@ I use Eloquent for domain work. I drop to Query Builder (or `selectRaw`) for hea
 
 > [!TIP]
 > **One-liner:** Query Builder is SQL in PHP. Eloquent is that builder plus models — relationships, casts, and events. Eloquent sits on top of the Query Builder.
+
+**Source:** [Laravel: Query Builder](https://laravel.com/docs/queries) and [Eloquent](https://laravel.com/docs/eloquent) — official split this comparison is based on.
+
+**Learn more:**
+- [Eloquent: Relationships](https://laravel.com/docs/eloquent-relationships) — the main reason to stay on Eloquent
+- [Eloquent: Mutators & Casting](https://laravel.com/docs/eloquent-mutators) — what Query Builder will not do for you
+- [Database: Getting Started](https://laravel.com/docs/database) — connections, `DB::transaction`, logging
 
 ---
 
@@ -294,6 +343,13 @@ User::factory()->make(); // in memory, no INSERT
 > [!TIP]
 > **One-liner:** A factory is a blueprint for fake model attributes — used in tests and seeders via `Model::factory()->create()`.
 
+**Source:** [Laravel: Eloquent Factories](https://laravel.com/docs/eloquent-factories) — `definition()`, states, `create()` vs `make()`, relationships.
+
+**Learn more:**
+- [Laravel: Seeding](https://laravel.com/docs/seeding) — where factories get called in bulk
+- [Laravel: HTTP Tests](https://laravel.com/docs/http-tests) — factories inside feature tests
+- [PHP `fake()` / Faker](https://laravel.com/docs/eloquent-factories#factory-states) — states and sequences on the same page
+
 ---
 
 ## Q9. What is a Seeder?
@@ -327,6 +383,13 @@ Seeders are for **what to insert and how much**. They often **call factories** f
 > [!TIP]
 > **One-liner:** A seeder is a script that fills the database — roles, admin users, demo data — usually run with `db:seed`.
 
+**Source:** [Laravel: Seeding](https://laravel.com/docs/seeding) — `DatabaseSeeder`, `call()`, `db:seed`, `migrate:fresh --seed`.
+
+**Learn more:**
+- [Laravel: Eloquent Factories](https://laravel.com/docs/eloquent-factories) — dummy rows inside a seeder
+- [Laravel: Migrations](https://laravel.com/docs/migrations) — schema first, data second
+- [Laravel: Database Testing](https://laravel.com/docs/database-testing) — `RefreshDatabase` vs running seeders in tests
+
 ---
 
 ## Q10. What is the difference between a Seeder and a Factory?
@@ -359,3 +422,10 @@ Tests usually call **factories directly** (fast, isolated). Seeders are for **en
 
 > [!TIP]
 > **One-liner:** A factory describes one fake model. A seeder decides which records to insert. Seeders often call factories.
+
+**Source:** [Laravel: Eloquent Factories](https://laravel.com/docs/eloquent-factories) (the recipe) and [Seeding](https://laravel.com/docs/seeding) (the meal plan) — official split this table follows.
+
+**Learn more:**
+- [Laravel: HTTP Tests](https://laravel.com/docs/http-tests) — tests usually call factories directly, not full seeders
+- [Laravel: Database Testing](https://laravel.com/docs/database-testing) — `RefreshDatabase`, seeders in test setup
+- [Laravel: Migrations](https://laravel.com/docs/migrations) — neither factories nor seeders replace schema versioning

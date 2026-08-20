@@ -30,6 +30,13 @@ DELETE /api/orders/15
 > [!TIP]
 > **One-liner:** The verbs you use every day are GET (read), POST (create/action), PUT (full replace), PATCH (partial update), DELETE (remove), plus HEAD and OPTIONS.
 
+**Source:** [MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) — official method list plus the safe / idempotent table this answer uses.
+
+**Learn more:**
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html) — the actual HTTP spec (methods, idempotency)
+- [MDN: Safe methods](https://developer.mozilla.org/en-US/docs/Glossary/Safe/HTTP) — why GET must not change state
+- [MDN: Idempotent](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent) — why PUT/DELETE can be retried
+
 ---
 
 ## Q2. What are HTTP status codes, and what are their main categories?
@@ -65,6 +72,13 @@ Codes I actually return:
 > [!TIP]
 > **One-liner:** Status codes are grouped 1xx–5xx. I pick a specific 2xx/4xx/5xx so the client can branch without parsing a message string.
 
+**Source:** [MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) — 1xx–5xx groups and the codes listed in this answer.
+
+**Learn more:**
+- [RFC 9110 — Status Codes](https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes) — normative definitions
+- [Laravel: Validation](https://laravel.com/docs/validation) — why Laravel APIs often return `422`
+- [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — which codes not to leak internals with
+
 ---
 
 ## Q3. What are the general types of APIs?
@@ -87,6 +101,13 @@ I default to REST for CRUD backends. GraphQL when many clients need different sh
 
 > [!TIP]
 > **One-liner:** Common API styles are REST, RPC/gRPC, GraphQL, SOAP, and realtime (WebSocket). REST over HTTP + JSON is the default for Laravel backends.
+
+**Source:** [MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) — what “REST” actually means vs “any HTTP JSON API”.
+
+**Learn more:**
+- [Fielding: REST architectural style](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) — the original dissertation chapter
+- [GraphQL: Learn](https://graphql.org/learn/) — when a single `/graphql` endpoint is a better fit
+- [gRPC: Core concepts](https://grpc.io/docs/what-is-grpc/core-concepts/) — RPC over HTTP/2 for service-to-service
 
 ---
 
@@ -134,6 +155,13 @@ Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), San
 > [!TIP]
 > **One-liner:** REST uses HTTP as the protocol: URLs name resources, methods name actions, headers carry metadata/auth, status codes carry the result, JSON is the usual representation.
 
+**Source:** [MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) plus [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) and [status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) — REST is an HTTP style, not a new protocol.
+
+**Learn more:**
+- [Fielding: REST architectural style](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) — constraints (stateless, uniform interface, …)
+- [Laravel: Eloquent API Resources](https://laravel.com/docs/eloquent-resources) — shaping the JSON representation
+- [roadmap.sh REST API questions](https://roadmap.sh/questions/rest-api) — extra interview-style REST drills
+
 ---
 
 ## Q5. How do you approach API design, and what tools do you use?
@@ -167,6 +195,14 @@ I do not start from random controller methods. I start from resources, status co
 > [!TIP]
 > **One-liner:** I design resources and error codes first, document them (OpenAPI/Postman), then implement with Laravel Form Requests, API Resources, and token auth.
 
+**Source:** [OpenAPI Specification](https://swagger.io/specification/) — the contract-first format this approach documents against.
+
+**Learn more:**
+- [Postman: write test scripts](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts) — collections as a living contract
+- [Laravel: Validation](https://laravel.com/docs/validation) — Form Requests as the server-side contract
+- [Laravel: Eloquent API Resources](https://laravel.com/docs/eloquent-resources) — consistent JSON responses
+- [Laravel Sanctum](https://laravel.com/docs/sanctum) — token / SPA auth for that API
+
 ---
 
 ## Q6. What is the difference between PUT and POST?
@@ -191,6 +227,13 @@ PUT  /api/articles/42       → 200  replaced article 42 entirely
 > [!TIP]
 > **One-liner:** POST creates (not idempotent, server assigns the URI). PUT replaces an existing resource at a known URI and is idempotent.
 
+**Source:** [MDN: POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) and [MDN: PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PUT) — official semantics this table follows.
+
+**Learn more:**
+- [MDN: PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PATCH) — partial update (the third verb interviewers mix in)
+- [MDN: Idempotent](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent) — why repeating PUT is safe
+- [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html) — POST vs PUT in the spec
+
 ---
 
 ## Q7. When might you use POST for an update operation?
@@ -211,6 +254,13 @@ I do **not** use POST for updates just because “it works”. If the client is 
 
 > [!TIP]
 > **One-liner:** POST for updates when the client is a form, when uploading files (PHP multipart), or when the operation is an action (`/cancel`) rather than a field replace.
+
+**Source:** [Laravel: Form Method Spoofing](https://laravel.com/docs/routing#form-method-spoofing) — HTML forms only GET/POST, so updates often travel as POST + `_method`. File uploads: [PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php).
+
+**Learn more:**
+- [PHP: PUT method support](https://www.php.net/manual/en/features.file-upload.put-method.php) — PUT files come on `php://input`, not `$_FILES`
+- [MDN: POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) — POST is allowed to mean “process this”, not only “create”
+- [MDN: PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PATCH) — prefer this for JSON partial updates when the client can send it
 
 ---
 
@@ -298,6 +348,14 @@ I store files on disk/S3, save paths on the model, and return JSON with public U
 > [!TIP]
 > **One-liner:** POST + `multipart/form-data` for text + files (PHP’s file upload model), `Accept: application/json`, and 200/422/401/403/404 as the main status codes.
 
+**Source:** [PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php) — `enctype="multipart/form-data"` and `$_FILES`; plus [MDN: MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types) for `multipart/form-data`.
+
+**Learn more:**
+- [PHP: PUT method support](https://www.php.net/manual/en/features.file-upload.put-method.php) — why PUT does not fill `$_FILES` (read `php://input` instead)
+- [Laravel: File Storage](https://laravel.com/docs/filesystem) — `$request->file()`, `store()`, S3
+- [Laravel: Validation](https://laravel.com/docs/validation#validating-files) — `image`, `mimes:pdf`, `max:`
+- [MDN: 413 Content Too Large](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/413) — file bigger than server limits
+
 ---
 
 ## Q9. How do you integrate with an external API?
@@ -335,6 +393,13 @@ Async work (slow third parties) goes on a **queue**. Webhooks inbound get their 
 
 > [!TIP]
 > **One-liner:** Wrap the vendor in a client class, put credentials in `.env`, use Laravel `Http` with timeout/retry, map JSON to our types, and fake it in tests.
+
+**Source:** [Laravel: HTTP Client](https://laravel.com/docs/http-client) — `Http::`, timeout, retry, `throw()`, `Http::fake()`.
+
+**Learn more:**
+- [OWASP API Security — Unsafe Consumption of APIs](https://owasp.org/www-project-api-security/) — do not blindly trust third-party JSON (API10)
+- [Laravel: Queues](https://laravel.com/docs/queues) — move slow vendor calls off the request
+- [Laravel: Configuration](https://laravel.com/docs/configuration) — `config/services.php` + `.env`, never commit secrets
 
 ---
 

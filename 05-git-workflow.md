@@ -39,3 +39,10 @@ Hotfixes follow the same path, just faster: branch from `main`, PR, merge, deplo
 
 > [!TIP]
 > **One-liner:** Branch from `main`, push a small PR, wait for CI + review, squash-merge, delete the branch. `main` stays green and shippable.
+
+**Source:** [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow) — official branch → commit → pull request → review → merge → delete branch.
+
+**Learn more:**
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) — what a PR is for
+- [Git: Branching Workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) — topic branches (the Git book, not GitHub-specific)
+- [Resolving a merge conflict using the command line](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-using-the-command-line) — what to do when `main` moved

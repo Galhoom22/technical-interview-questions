@@ -73,6 +73,12 @@ Short opening that states the difference or definition.
 > [!TIP]
 > **One-liner:** the sentence you would say if time is short.
 
+**Source:** [PHP: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php) — the page this answer is based on.
+
+**Learn more:**
+- [PHP type comparison tables](https://www.php.net/manual/en/types.comparisons.php) — extra detail after the core answer
+- [The `match` expression](https://www.php.net/manual/en/control-structures.match.php) — common follow-up
+
 ---
 ````
 
@@ -83,7 +89,8 @@ Rules:
 - Separate questions with `---`
 - Use **tables** for comparisons
 - Use fenced code blocks with a language (`php`, `http`, `bash`)
-- Use GitHub alerts for the interview one-liner: `TIP`, `NOTE`, `WARNING`
+- Use GitHub alerts for the interview one-liner: `TIP`
+- After every answer, add **Source** (the official page the model answer is based on) and **Learn more** (2–4 extra links). Prefer php.net, laravel.com/docs, MDN, RFC, GitHub Docs
 - Keep placeholders as `> _To be written._` until the answer is ready
 
 When the answer is ready, replace the placeholder — do not leave `_To be written._` above the real answer.
@@ -92,7 +99,7 @@ When the answer is ready, replace the placeholder — do not leave `_To be writt
 
 1. Pick a topic from the Progress table
 2. Read the question and try answering it out loud first
-3. Write your model answer in the file
-4. Update the Progress table in this README
+3. Compare with the model answer, then open **Source** and **Learn more**
+4. Update the Progress table in this README if you add questions
 
 Good luck with your interviews!
