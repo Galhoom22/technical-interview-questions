@@ -1,6 +1,6 @@
 # 🌐 HTTP & REST API
 
-### Q1. What are the different HTTP methods?
+## Q1. What are the different HTTP methods?
 
 **Answer:**
 
@@ -8,7 +8,7 @@
 
 ---
 
-### Q2. What are HTTP status codes, and what are their main categories?
+## Q2. What are HTTP status codes, and what are their main categories?
 
 **Answer:**
 
@@ -16,7 +16,7 @@
 
 ---
 
-### Q3. What are the general types of APIs?
+## Q3. What are the general types of APIs?
 
 **Answer:**
 
@@ -24,7 +24,7 @@
 
 ---
 
-### Q4. What is a RESTful API, and how does it work? Which protocol does it rely on, and how does it utilize HTTP features (e.g., headers and status codes)?
+## Q4. What is a RESTful API, and how does it work? Which protocol does it rely on, and how does it utilize HTTP features (e.g., headers and status codes)?
 
 **Answer:**
 
@@ -32,7 +32,7 @@
 
 ---
 
-### Q5. How do you approach API design, and what tools do you use?
+## Q5. How do you approach API design, and what tools do you use?
 
 **Answer:**
 
@@ -40,7 +40,7 @@
 
 ---
 
-### Q6. What is the difference between PUT and POST?
+## Q6. What is the difference between PUT and POST?
 
 **Answer:**
 
@@ -48,7 +48,7 @@
 
 ---
 
-### Q7. When might you use POST for an update operation?
+## Q7. When might you use POST for an update operation?
 
 **Answer:**
 
@@ -56,7 +56,7 @@
 
 ---
 
-### Q8. Suppose you have a form containing text data, images, and a PDF file, and you need to create an API endpoint for an update operation. Address the following:
+## Q8. Suppose you have a form containing text data, images, and a PDF file, and you need to create an API endpoint for an update operation. Address the following:
 - What are the appropriate status codes to return?
 - Which HTTP request method should be used?
 - What types of headers and body structure are required?
@@ -68,7 +68,7 @@
 
 ---
 
-### Q9. How do you integrate with an external API?
+## Q9. How do you integrate with an external API?
 
 **Answer:**
 

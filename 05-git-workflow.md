@@ -1,6 +1,6 @@
 # 🔀 Git & Workflow
 
-### Q1. Describe a standard Git and GitHub workflow for collaborating within a team.
+## Q1. Describe a standard Git and GitHub workflow for collaborating within a team.
 
 **Answer:**
 

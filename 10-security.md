@@ -1,6 +1,6 @@
 # 🔒 Security
 
-### Q1. How do you secure endpoints defined in `web.php` and `api.php`?
+## Q1. How do you secure endpoints defined in `web.php` and `api.php`?
 
 **Answer:**
 
@@ -8,7 +8,7 @@
 
 ---
 
-### Q2. If a guest user adds products to their cart, how do you ensure those items are retained in their cart after they log in?
+## Q2. If a guest user adds products to their cart, how do you ensure those items are retained in their cart after they log in?
 
 **Answer:**
 

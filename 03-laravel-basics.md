@@ -1,6 +1,6 @@
 # 🚀 Laravel - Basics
 
-### Q1. What is a Migration?
+## Q1. What is a Migration?
 
 **Answer:**
 
@@ -8,7 +8,7 @@
 
 ---
 
-### Q2. What is Routing?
+## Q2. What is Routing?
 
 **Answer:**
 
@@ -16,7 +16,7 @@
 
 ---
 
-### Q3. What is the `web.php` file?
+## Q3. What is the `web.php` file?
 
 **Answer:**
 
@@ -24,7 +24,7 @@
 
 ---
 
-### Q4. What is the `api.php` file?
+## Q4. What is the `api.php` file?
 
 **Answer:**
 
@@ -32,7 +32,7 @@
 
 ---
 
-### Q5. Explain the different types of Eloquent relationships in Laravel.
+## Q5. Explain the different types of Eloquent relationships in Laravel.
 
 **Answer:**
 
@@ -40,7 +40,7 @@
 
 ---
 
-### Q6. What is Middleware, and what are its primary use cases?
+## Q6. What is Middleware, and what are its primary use cases?
 
 **Answer:**
 
@@ -48,7 +48,7 @@
 
 ---
 
-### Q7. What is the difference between Eloquent ORM and the Query Builder?
+## Q7. What is the difference between Eloquent ORM and the Query Builder?
 
 **Answer:**
 
@@ -56,7 +56,7 @@
 
 ---
 
-### Q8. What are Factories?
+## Q8. What are Factories?
 
 **Answer:**
 
@@ -64,7 +64,7 @@
 
 ---
 
-### Q9. What is a Seeder?
+## Q9. What is a Seeder?
 
 **Answer:**
 
@@ -72,7 +72,7 @@
 
 ---
 
-### Q10. What is the difference between a Seeder and a Factory?
+## Q10. What is the difference between a Seeder and a Factory?
 
 **Answer:**
 

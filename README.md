@@ -2,24 +2,20 @@
 
 > Real **technical** questions from real interviews — with model answers.
 
----
-
-## 📌 About
+## About
 
 These questions are all based on **my personal interview experiences**.
 
-✅ Every question here is one I was actually asked  
-❌ Nothing was added from generic lists or guesswork  
-🎯 This repo focuses on **technical interview questions only**  
-✍️ Each question will include a **model answer** written by me
+- Every question here is one I was actually asked
+- Nothing was added from generic lists or guesswork
+- This repo focuses on **technical interview questions only**
+- Each question includes a **model answer** written for how I would answer it in an interview
 
 **Goal:** Capture exactly what interviewers ask in real technical interviews, organize each question under the right topic, and document a solid model answer for every question.
 
----
+## Progress
 
-## 📊 Progress
-
-**Overall:** `0 / 46` answers written (`0%`)
+**Overall:** `1 / 46` answers written (`2%`)
 
 | Status | Meaning |
 |--------|---------|
@@ -27,9 +23,11 @@ These questions are all based on **my personal interview experiences**.
 | 🟡 In progress | Some answers written, but not all |
 | ✅ Done | All answers written |
 
+### Topics
+
 | # | Topic | Done | Total | Status | File |
 |---|-------|------|-------|--------|------|
-| 01 | 🐘 PHP - Basics | 0 | 4 | ⬜ Not started | [01-php-basics.md](./01-php-basics.md) |
+| 01 | 🐘 PHP - Basics | 1 | 4 | 🟡 In progress | [01-php-basics.md](./01-php-basics.md) |
 | 02 | 🧩 OOP (Object-Oriented Programming) | 0 | 16 | ⬜ Not started | [02-oop.md](./02-oop.md) |
 | 03 | 🚀 Laravel - Basics | 0 | 10 | ⬜ Not started | [03-laravel-basics.md](./03-laravel-basics.md) |
 | 04 | 🌐 HTTP & REST API | 0 | 9 | ⬜ Not started | [04-http-rest-api.md](./04-http-rest-api.md) |
@@ -44,44 +42,57 @@ These questions are all based on **my personal interview experiences**.
 
 Whenever you write an answer or add a new question:
 
-1. Replace `> _To be written._` with your real answer  
-2. Update **Done** / **Total** for that topic in the table above  
-3. Update the topic **Status** (`⬜` / `🟡` / `✅`)  
-4. Recalculate **Overall** (`Done sum / Total sum`)  
-5. If you add a **new topic**, add a new row and renumber if needed  
+1. Replace `> _To be written._` with the real answer
+2. Update **Done** / **Total** for that topic in the table above
+3. Update the topic **Status** (`⬜` / `🟡` / `✅`)
+4. Recalculate **Overall** (`Done sum / Total sum`)
+5. If you add a **new topic**, add a new row and renumber if needed
 6. If you add a **new question** to an existing topic, increase **Total** by 1
 
----
+## Format
 
-## 📝 Format
+Every question uses this structure so it renders cleanly on GitHub:
 
-Every question follows this structure:
-
-```md
-### Q1. Question text here?
+````md
+## Q1. Question text here?
 
 **Answer:**
 
-> _To be written._
+Short opening that states the difference or definition.
+
+| Aspect | Option A | Option B |
+|--------|----------|----------|
+| Point | … | … |
+
+```php
+// examples
 ```
 
-When the answer is ready, replace the placeholder:
+- Practical interview points
 
-```md
-### Q1. Question text here?
-
-**Answer:**
-
-Your model answer goes here.
-```
+> [!TIP]
+> **One-liner:** the sentence you would say if time is short.
 
 ---
+````
 
-## 💡 How to Use
+Rules:
 
-1. Pick a topic from the Progress table  
-2. Read the question and try answering it out loud first  
-3. Write your model answer in the file  
-4. Update the Progress table in this README  
+- One topic per file, titled with `#`
+- Each question is `##` so GitHub’s outline (right sidebar) lists every question
+- Separate questions with `---`
+- Use **tables** for comparisons
+- Use fenced code blocks with a language (`php`, `http`, `bash`)
+- Use GitHub alerts for the interview one-liner: `TIP`, `NOTE`, `WARNING`
+- Keep placeholders as `> _To be written._` until the answer is ready
 
-Good luck with your interviews! 🍀
+When the answer is ready, replace the placeholder — do not leave `_To be written._` above the real answer.
+
+## How to Use
+
+1. Pick a topic from the Progress table
+2. Read the question and try answering it out loud first
+3. Write your model answer in the file
+4. Update the Progress table in this README
+
+Good luck with your interviews!

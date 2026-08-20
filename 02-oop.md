@@ -1,6 +1,6 @@
 # 🧩 OOP (Object-Oriented Programming)
 
-### Q1. What is OOP?
+## Q1. What is OOP?
 
 **Answer:**
 
@@ -8,7 +8,7 @@
 
 ---
 
-### Q2. What are the four core principles of OOP?
+## Q2. What are the four core principles of OOP?
 
 **Answer:**
 
@@ -16,7 +16,7 @@
 
 ---
 
-### Q3. What is a Class?
+## Q3. What is a Class?
 
 **Answer:**
 
@@ -24,7 +24,7 @@
 
 ---
 
-### Q4. What is an Interface, and why is it used?
+## Q4. What is an Interface, and why is it used?
 
 **Answer:**
 
@@ -32,7 +32,7 @@
 
 ---
 
-### Q5. What is a Trait?
+## Q5. What is a Trait?
 
 **Answer:**
 
@@ -40,7 +40,7 @@
 
 ---
 
-### Q6. How do you implement multiple inheritance in PHP?
+## Q6. How do you implement multiple inheritance in PHP?
 
 **Answer:**
 
@@ -48,7 +48,7 @@
 
 ---
 
-### Q7. What is a Destructor in PHP, and what is its purpose?
+## Q7. What is a Destructor in PHP, and what is its purpose?
 
 **Answer:**
 
@@ -56,7 +56,7 @@
 
 ---
 
-### Q8. Can a constructor be private?
+## Q8. Can a constructor be private?
 
 **Answer:**
 
@@ -64,7 +64,7 @@
 
 ---
 
-### Q9. How do you instantiate an object from a class? Explain the step-by-step process of how the object is built and what handles its creation.
+## Q9. How do you instantiate an object from a class? Explain the step-by-step process of how the object is built and what handles its creation.
 
 **Answer:**
 
@@ -72,7 +72,7 @@
 
 ---
 
-### Q10. If a constructor is private, how can you instantiate an object of that class?
+## Q10. If a constructor is private, how can you instantiate an object of that class?
 
 **Answer:**
 
@@ -80,7 +80,7 @@
 
 ---
 
-### Q11. What is the difference between static and non-static methods?
+## Q11. What is the difference between static and non-static methods?
 
 **Answer:**
 
@@ -88,7 +88,7 @@
 
 ---
 
-### Q12. A static method does not require an object instance to run. How is this managed internally?
+## Q12. A static method does not require an object instance to run. How is this managed internally?
 
 **Answer:**
 
@@ -96,7 +96,7 @@
 
 ---
 
-### Q13. What is the difference in memory (RAM) allocation between instantiating an object and calling a static method?
+## Q13. What is the difference in memory (RAM) allocation between instantiating an object and calling a static method?
 
 **Answer:**
 
@@ -104,7 +104,7 @@
 
 ---
 
-### Q14. What is the concept of Abstraction?
+## Q14. What is the concept of Abstraction?
 
 **Answer:**
 
@@ -112,7 +112,7 @@
 
 ---
 
-### Q15. What is the difference between an Abstract Class and an Interface?
+## Q15. What is the difference between an Abstract Class and an Interface?
 
 **Answer:**
 
@@ -120,7 +120,7 @@
 
 ---
 
-### Q16. Can you instantiate an object directly from an Abstract Class?
+## Q16. Can you instantiate an object directly from an Abstract Class?
 
 **Answer:**
 
