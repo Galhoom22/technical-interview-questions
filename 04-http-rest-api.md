@@ -1,5 +1,9 @@
 # 🌐 HTTP & REST API
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
 ## Q1. What are the different HTTP methods?
 
 **Answer:**
@@ -76,7 +80,7 @@ Codes I actually return:
 
 **Learn more:**
 - [RFC 9110 — Status Codes](https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes) — normative definitions
-- [Laravel: Validation](https://laravel.com/docs/validation) — why Laravel APIs often return `422`
+- [Laravel: Validation](https://laravel.com/docs/13.x/validation) — why Laravel APIs often return `422`
 - [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — which codes not to leak internals with
 
 ---
@@ -159,7 +163,7 @@ Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), San
 
 **Learn more:**
 - [Fielding: REST architectural style](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) — constraints (stateless, uniform interface, …)
-- [Laravel: Eloquent API Resources](https://laravel.com/docs/eloquent-resources) — shaping the JSON representation
+- [Laravel: Eloquent API Resources](https://laravel.com/docs/13.x/eloquent-resources) — shaping the JSON representation
 - [roadmap.sh REST API questions](https://roadmap.sh/questions/rest-api) — extra interview-style REST drills
 
 ---
@@ -199,9 +203,9 @@ I do not start from random controller methods. I start from resources, status co
 
 **Learn more:**
 - [Postman: write test scripts](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts) — collections as a living contract
-- [Laravel: Validation](https://laravel.com/docs/validation) — Form Requests as the server-side contract
-- [Laravel: Eloquent API Resources](https://laravel.com/docs/eloquent-resources) — consistent JSON responses
-- [Laravel Sanctum](https://laravel.com/docs/sanctum) — token / SPA auth for that API
+- [Laravel: Validation](https://laravel.com/docs/13.x/validation) — Form Requests as the server-side contract
+- [Laravel: Eloquent API Resources](https://laravel.com/docs/13.x/eloquent-resources) — consistent JSON responses
+- [Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — token / SPA auth for that API
 
 ---
 
@@ -255,7 +259,7 @@ I do **not** use POST for updates just because “it works”. If the client is 
 > [!TIP]
 > **One-liner:** POST for updates when the client is a form, when uploading files (PHP multipart), or when the operation is an action (`/cancel`) rather than a field replace.
 
-**Source:** [Laravel: Form Method Spoofing](https://laravel.com/docs/routing#form-method-spoofing) — HTML forms only GET/POST, so updates often travel as POST + `_method`. File uploads: [PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php).
+**Source:** [Laravel: Form Method Spoofing](https://laravel.com/docs/13.x/routing#form-method-spoofing) — HTML forms only GET/POST, so updates often travel as POST + `_method`. File uploads: [PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php).
 
 **Learn more:**
 - [PHP: PUT method support](https://www.php.net/manual/en/features.file-upload.put-method.php) — PUT files come on `php://input`, not `$_FILES`
@@ -352,8 +356,8 @@ I store files on disk/S3, save paths on the model, and return JSON with public U
 
 **Learn more:**
 - [PHP: PUT method support](https://www.php.net/manual/en/features.file-upload.put-method.php) — why PUT does not fill `$_FILES` (read `php://input` instead)
-- [Laravel: File Storage](https://laravel.com/docs/filesystem) — `$request->file()`, `store()`, S3
-- [Laravel: Validation](https://laravel.com/docs/validation#validating-files) — `image`, `mimes:pdf`, `max:`
+- [Laravel: File Storage](https://laravel.com/docs/13.x/filesystem) — `$request->file()`, `store()`, S3
+- [Laravel: Validation](https://laravel.com/docs/13.x/validation#validating-files) — `image`, `mimes:pdf`, `max:`
 - [MDN: 413 Content Too Large](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/413) — file bigger than server limits
 
 ---
@@ -394,12 +398,12 @@ Async work (slow third parties) goes on a **queue**. Webhooks inbound get their 
 > [!TIP]
 > **One-liner:** Wrap the vendor in a client class, put credentials in `.env`, use Laravel `Http` with timeout/retry, map JSON to our types, and fake it in tests.
 
-**Source:** [Laravel: HTTP Client](https://laravel.com/docs/http-client) — `Http::`, timeout, retry, `throw()`, `Http::fake()`.
+**Source:** [Laravel: HTTP Client](https://laravel.com/docs/13.x/http-client) — `Http::`, timeout, retry, `throw()`, `Http::fake()`.
 
 **Learn more:**
 - [OWASP API Security — Unsafe Consumption of APIs](https://owasp.org/www-project-api-security/) — do not blindly trust third-party JSON (API10)
-- [Laravel: Queues](https://laravel.com/docs/queues) — move slow vendor calls off the request
-- [Laravel: Configuration](https://laravel.com/docs/configuration) — `config/services.php` + `.env`, never commit secrets
+- [Laravel: Queues](https://laravel.com/docs/13.x/queues) — move slow vendor calls off the request
+- [Laravel: Configuration](https://laravel.com/docs/13.x/configuration) — `config/services.php` + `.env`, never commit secrets
 
 ---
 

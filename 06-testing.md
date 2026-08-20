@@ -1,5 +1,7 @@
 # 🧪 Testing
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
 ## Q1. Explain your process for testing APIs using an API client like Postman.
 
 **Answer:**
@@ -52,4 +54,4 @@ This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for
 - [Postman: Variables](https://learning.postman.com/docs/sending-requests/variables/variables/) — `baseUrl`, `token`, chaining ids
 - [Collection Runner](https://learning.postman.com/docs/tests-and-scripts/running-collections/intro-to-collection-runs) — run the whole folder, not one request
 - [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-overview/) — same collection in CI (Newman is legacy; Postman now points here)
-- [Laravel: HTTP Tests](https://laravel.com/docs/http-tests) — repo tests that must still exist beside Postman
+- [Laravel: HTTP Tests](https://laravel.com/docs/13.x/http-tests) — repo tests that must still exist beside Postman

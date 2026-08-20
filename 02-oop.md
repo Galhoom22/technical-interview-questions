@@ -1,5 +1,7 @@
 # 🧩 OOP (Object-Oriented Programming)
 
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
 ## Q1. What is OOP?
 
 **Answer:**
@@ -174,9 +176,9 @@ In Laravel this is the Service Container pattern: bind `Mailer::class` to `SmtpM
 **Source:** [PHP: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php) — official contract, `implements`, and multiple interfaces.
 
 **Learn more:**
-- [Laravel: Service Container](https://laravel.com/docs/container) — binding an interface to a class (the pattern used in real Laravel apps)
+- [Laravel: Service Container](https://laravel.com/docs/13.x/container) — binding an interface to a class (the pattern used in real Laravel apps)
 - [Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php) — when a partial implementation is a better fit than a pure interface
-- [PHP 8.4 Release](https://www.php.net/releases/8.4/en.php) — interface property hooks (newer language change interviewers may mention)
+- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — current syntax (`|>`, `clone()`, `#[\Override]` on properties). Property hooks on interfaces shipped in 8.4 and remain in 8.5.
 
 ---
 
@@ -191,7 +193,9 @@ trait HasSlug
 {
     public function slug(string $value): string
     {
-        return strtolower(str_replace(' ', '-', $value));
+        return $value
+            |> (fn (string $s): string => str_replace(' ', '-', $s))
+            |> strtolower(...);
     }
 }
 
@@ -226,7 +230,7 @@ class Example
 
 **Learn more:**
 - [Object Inheritance](https://www.php.net/manual/en/language.oop5.inheritance.php) — what traits are *not* (a second parent class)
-- [Laravel Eloquent: factories](https://laravel.com/docs/eloquent-factories) — `HasFactory` is the trait you already use in Laravel
+- [Laravel Eloquent: factories](https://laravel.com/docs/13.x/eloquent-factories) — `HasFactory` is the trait you already use in Laravel
 - [Visibility](https://www.php.net/manual/en/language.oop5.visibility.php) — how trait members become part of the class
 
 ---
@@ -276,7 +280,7 @@ If an interviewer says “so traits are multiple inheritance?”, I correct it: 
 **Learn more:**
 - [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php) — multiple *contracts* via `implements A, B`
 - [The Basics](https://www.php.net/manual/en/language.oop5.basic.php) — composition: hold another object as a property instead of extending it
-- [Laravel: Service Container](https://laravel.com/docs/container) — injecting collaborators instead of inheriting them
+- [Laravel: Service Container](https://laravel.com/docs/13.x/container) — injecting collaborators instead of inheriting them
 
 ---
 
@@ -622,7 +626,7 @@ Checkout calls `charge()`. It does not know about API keys, retry policy, or JSO
 **Learn more:**
 - [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php) — abstraction with a contract and no shared code
 - [Visibility](https://www.php.net/manual/en/language.oop5.visibility.php) — hide `private` details behind a small public API
-- [Laravel: Service Container](https://laravel.com/docs/container) — depending on an abstract type in a real app
+- [Laravel: Service Container](https://laravel.com/docs/13.x/container) — depending on an abstract type in a real app
 
 ---
 
@@ -636,7 +640,7 @@ Both define a contract. An **abstract class** can also ship shared code and stat
 |--------|----------------|-----------|
 | Instantiated? | No | No |
 | Methods | Abstract + concrete | Signatures (no body, historically) |
-| Properties / constructor | Yes | No (PHP 8.4 adds property hooks on interfaces) |
+| Properties / constructor | Yes | No properties historically; PHP 8.4+ (including **8.5**) adds property hooks on interfaces |
 | Visibility | public / protected / private | Public methods |
 | Inheritance | A class `extends` **one** | A class `implements` **many** |
 | Constants | Yes | Yes |
@@ -676,7 +680,7 @@ class PdfReport extends Report implements Exportable
 
 **Learn more:**
 - [Object Inheritance](https://www.php.net/manual/en/language.oop5.inheritance.php) — why you get only one parent class
-- [PHP 8.4 Release](https://www.php.net/releases/8.4/en.php) — property hooks on interfaces (the “no properties” rule is changing)
+- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — current language; interface property hooks (8.4+) still apply
 - [Traits](https://www.php.net/manual/en/language.oop5.traits.php) — a third option when you want reuse without an abstract parent
 
 ---

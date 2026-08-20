@@ -1,5 +1,7 @@
 # 🗄️ Database Design
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
 ## Q1. How would you approach designing a database for an e-commerce platform? Describe your initial steps for mapping out the entities and relationships.
 
 **Answer:**
@@ -67,6 +69,6 @@ I would sketch this as an ERD (even on paper) and only then write Laravel migrat
 **Source:** [Database normalization](https://en.wikipedia.org/wiki/Database_normalization) — 1NF/2NF/3NF and why orders snapshot prices instead of joining live catalog rows.
 
 **Learn more:**
-- [Laravel: Eloquent Relationships](https://laravel.com/docs/eloquent-relationships) — how those entities become `hasMany` / `belongsToMany`
-- [Laravel: Migrations](https://laravel.com/docs/migrations) — FKs, unique indexes, `morphs()`
+- [Laravel: Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships) — how those entities become `hasMany` / `belongsToMany`
+- [Laravel: Migrations](https://laravel.com/docs/13.x/migrations) — FKs, unique indexes, `morphs()`
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — prove indexes after the schema exists

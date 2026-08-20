@@ -1,5 +1,9 @@
 # ♻️ Refactoring & Best Practices
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
 ## Q1. If you encounter a massive method (e.g., 400 lines of code), how would you approach refactoring it?
 
 **Answer:**
@@ -64,4 +68,4 @@ First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I 
 **Learn more:**
 - [Refactoring catalog](https://refactoring.com/catalog/) — Extract Class, Replace Temp with Query, and the rest of the catalog
 - [Characterization test](https://en.wikipedia.org/wiki/Characterization_test) — lock current behavior before you change structure (Michael Feathers)
-- [Laravel: Controllers](https://laravel.com/docs/controllers) — keep HTTP thin; push work into actions/services
+- [Laravel: Controllers](https://laravel.com/docs/13.x/controllers) — keep HTTP thin; push work into actions/services

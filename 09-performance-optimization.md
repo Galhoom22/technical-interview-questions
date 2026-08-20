@@ -1,5 +1,7 @@
 # ⚡ Performance & Optimization
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
 ## Q1. If a project is suffering from slow performance, what steps would you take to identify and resolve the bottlenecks?
 
 **Answer:**
@@ -50,10 +52,10 @@ Same endpoint, before/after: query count, time, EXPLAIN. If it is not faster, th
 > [!TIP]
 > **One-liner:** Measure (Telescope/slow log/EXPLAIN), fix N+1 and indexes first, then cache and queues — never optimize from a guess.
 
-**Source:** [Laravel: Eager Loading](https://laravel.com/docs/eloquent-relationships#eager-loading) — N+1 is the usual Laravel bottleneck; plus [Telescope](https://laravel.com/docs/telescope) to *see* query count.
+**Source:** [Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading) — N+1 is the usual Laravel bottleneck; plus [Telescope](https://laravel.com/docs/13.x/telescope) to *see* query count.
 
 **Learn more:**
 - [MySQL: EXPLAIN](https://dev.mysql.com/doc/refman/8.4/en/explain.html) — read the plan before adding indexes
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — same idea on Postgres
-- [Laravel: Deployment / optimization](https://laravel.com/docs/deployment#optimization) — config/route/view cache, `APP_DEBUG=false`
-- [Laravel: Cache](https://laravel.com/docs/cache) and [Queues](https://laravel.com/docs/queues) — after the query is already cheap
+- [Laravel: Deployment / optimization](https://laravel.com/docs/13.x/deployment#optimization) — config/route/view cache, `APP_DEBUG=false`
+- [Laravel: Cache](https://laravel.com/docs/13.x/cache) and [Queues](https://laravel.com/docs/13.x/queues) — after the query is already cheap

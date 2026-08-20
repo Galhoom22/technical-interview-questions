@@ -1,5 +1,7 @@
 # 🐘 PHP - Basics
 
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
 ## Q1. What is the difference between `==` and `===`?
 
 **Answer:**
@@ -32,6 +34,12 @@ null === false;  // false
 
 "" == 0;   // true
 "" === 0;  // false
+
+// PHP 8.5: match is strict (===). switch is loose (==).
+echo match (1) {
+    '1' => 'skipped — match uses ===',
+    1 => 'this arm runs',
+};
 ```
 
 Loose comparison is dangerous because the conversion rules are easy to get wrong, especially with `0`, `""`, `null`, `false`, and numeric strings:
@@ -125,6 +133,14 @@ $multidimensional = [
     ['id' => 1, 'name' => 'Omar'],
     ['id' => 2, 'name' => 'Sara'],
 ];
+
+array_is_list($indexed);        // true
+array_first($indexed);          // 'php'
+array_last($associative);       // 'backend'
+
+$slug = ' PHP 8.5 '
+    |> trim(...)
+    |> strtolower(...);
 ```
 
 You can mix numeric and string keys in the same array. Internally PHP still stores it as one hash table (plus a packed list optimization for pure 0-based integer keys).
@@ -134,7 +150,9 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 - Prefer short syntax `[]` over `array()`.
 - For a list of models/DTOs I use a **list** (indexed). For a record of named fields I use **associative**.
 - Nested arrays get messy fast. After one or two levels I switch to objects / DTOs / collections.
-- PHP 8.1+ `array_is_list()` tells you whether keys are `0..n-1` with no gaps.
+- PHP 8.5 `array_is_list()` tells you whether keys are `0..n-1` with no gaps.
+- PHP 8.5 `array_first()` / `array_last()` return the first or last value (or `null` if empty).
+- PHP 8.5 pipe operator `|>` is useful for transforming list values without nested calls.
 
 > [!TIP]
 > **One-liner:** PHP has one array type used in three ways — indexed, associative, and multidimensional (arrays of arrays).
@@ -143,8 +161,8 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 
 **Learn more:**
 - [`array_is_list()`](https://www.php.net/manual/en/function.array-is-list.php) — detect a packed `0..n-1` list vs a map
-- [Array functions](https://www.php.net/manual/en/ref.array.php) — `array_map`, `array_filter`, `array_column`, and the rest of the toolbox
-- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — how the engine represents values (useful next step after arrays)
+- [`array_first()`](https://www.php.net/manual/en/function.array-first.php) / [`array_last()`](https://www.php.net/manual/en/function.array-last.php) — PHP 8.5 helpers
+- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — pipe operator `|>` and more
 
 ---
 
@@ -165,21 +183,26 @@ You do not call most of them yourself. The engine does.
 | `__call()` / `__callStatic()` | Calling an inaccessible instance / static method |
 | `__toString()` | The object is used as a string |
 | `__invoke()` | The object is called like a function `$obj()` |
-| `__clone()` | The object is cloned |
-| `__serialize()` / `__unserialize()` | `serialize()` / `unserialize()` (preferred over `__sleep` / `__wakeup`) |
+| `__clone()` | The object is cloned (`clone $obj`, or PHP 8.5 `clone($obj, [...])`) |
+| `__serialize()` / `__unserialize()` | `serialize()` / `unserialize()` (`__sleep` / `__wakeup` are soft-deprecated in PHP 8.5) |
 | `__debugInfo()` | The object is dumped with `var_dump()` |
 
 ```php
-class Money
+readonly class Money
 {
     public function __construct(
-        public readonly int $cents,
-        public readonly string $currency,
+        public int $cents,
+        public string $currency,
     ) {}
 
     public function __toString(): string
     {
         return ($this->cents / 100) . ' ' . $this->currency;
+    }
+
+    public function withCents(int $cents): self
+    {
+        return clone($this, ['cents' => $cents]);
     }
 }
 
@@ -191,7 +214,7 @@ echo new Money(1999, 'USD'); // "19.99 USD"
 - `__construct` — always, for a valid object.
 - `__toString` / `__invoke` — when the object has a natural string or callable form.
 - `__serialize` — when you persist or queue the object.
-- `__clone` — when a shallow copy is not enough (nested objects).
+- `__clone` / PHP 8.5 `clone($object, $withProperties)` — wither pattern for `readonly` classes.
 
 **When not to use them:**
 
@@ -206,4 +229,4 @@ echo new Money(1999, 'USD'); // "19.99 USD"
 **Learn more:**
 - [Constructors and Destructors](https://www.php.net/manual/en/language.oop5.decon.php) — `__construct` / `__destruct` in full
 - [Overloading](https://www.php.net/manual/en/language.oop5.overloading.php) — `__get`, `__set`, `__call`, `__callStatic` (and why they hide bugs)
-- [Object Serialization](https://www.php.net/manual/en/language.oop5.serialization.php) — `__serialize` / `__unserialize` vs `__sleep` / `__wakeup`
+- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — `clone($object, [...])` wither pattern; `__sleep` / `__wakeup` soft-deprecated

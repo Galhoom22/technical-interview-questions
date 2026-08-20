@@ -2,6 +2,15 @@
 
 > Real **technical** questions from real interviews — with model answers.
 
+Examples in this repo use **PHP 8.5** syntax and **Laravel 13**.
+
+| Stack | Version | Official docs |
+|-------|---------|---------------|
+| PHP | **8.5** | [PHP Manual](https://www.php.net/manual/en/) |
+| Laravel | **13** | [Laravel Documentation](https://laravel.com/framework/docs) |
+
+Also useful: [PHP 8.5 release notes](https://www.php.net/releases/8.5/en.php) · [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) · [Laravel 13.x docs index](https://laravel.com/docs/13.x)
+
 ## About
 
 These questions are all based on **my personal interview experiences**.
@@ -90,7 +99,9 @@ Rules:
 - Use **tables** for comparisons
 - Use fenced code blocks with a language (`php`, `http`, `bash`)
 - Use GitHub alerts for the interview one-liner: `TIP`
-- After every answer, add **Source** (the official page the model answer is based on) and **Learn more** (2–4 extra links). Prefer php.net, laravel.com/docs, MDN, RFC, GitHub Docs
+- After every answer, add **Source** (the official page the model answer is based on) and **Learn more** (2–4 extra links). Prefer [php.net/manual](https://www.php.net/manual/en/), [Laravel 13 docs](https://laravel.com/framework/docs), MDN, RFC, GitHub Docs
+- PHP snippets use **PHP 8.5** syntax (`readonly`, constructor promotion, `match`, `|>`, `clone($obj, [...])`, `array_first()` / `array_last()`)
+- Laravel snippets target **Laravel 13** (`bootstrap/app.php`, `install:api`, typed relations, Form Requests)
 - Keep placeholders as `> _To be written._` until the answer is ready
 
 When the answer is ready, replace the placeholder — do not leave `_To be written._` above the real answer.

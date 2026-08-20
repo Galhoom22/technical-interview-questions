@@ -1,5 +1,9 @@
 # 🔒 Security
 
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
 ## Q1. How do you secure endpoints defined in `web.php` and `api.php`?
 
 **Answer:**
@@ -49,11 +53,11 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 > [!TIP]
 > **One-liner:** `web.php` = session + CSRF + `auth`. `api.php` = Sanctum/token + throttle + CORS. Both still need policies and validation.
 
-**Source:** [Laravel: CSRF Protection](https://laravel.com/docs/csrf) (web) and [Laravel Sanctum](https://laravel.com/docs/sanctum) (API) — official split this answer follows.
+**Source:** [Laravel: CSRF Protection](https://laravel.com/docs/13.x/csrf) (web) and [Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) (API) — official split this answer follows.
 
 **Learn more:**
-- [Laravel: Authentication](https://laravel.com/docs/authentication) — `auth` middleware
-- [Laravel: Authorization](https://laravel.com/docs/authorization) — policies / gates (token is not permission)
+- [Laravel: Authentication](https://laravel.com/docs/13.x/authentication) — `auth` middleware
+- [Laravel: Authorization](https://laravel.com/docs/13.x/authorization) — policies / gates (token is not permission)
 - [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — HTTPS, tokens, error leakage
 - [Mass Assignment Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html) — never `$request->all()` into `create()`
 - [MDN: CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) — browser SPAs calling `api.php`
@@ -101,9 +105,9 @@ I do not keep the cart only in `$_SESSION` arrays if it must survive login acros
 > [!TIP]
 > **One-liner:** Persist the guest cart by session id, then on `Login` merge quantities into the user’s cart and delete the guest rows — watch session regeneration so you don’t lose the id.
 
-**Source:** [Laravel: Events](https://laravel.com/docs/events) (`Login` event) plus [Session](https://laravel.com/docs/session) — login regenerates the session id; merge must use a cart key stored *in* the session payload, not only the old id.
+**Source:** [Laravel: Events](https://laravel.com/docs/13.x/events) (`Login` event) plus [Session](https://laravel.com/docs/13.x/session) — login regenerates the session id; merge must use a cart key stored *in* the session payload, not only the old id.
 
 **Learn more:**
-- [Laravel: Authentication](https://laravel.com/docs/authentication) — when `Login` fires relative to session migrate
-- [Eloquent Relationships](https://laravel.com/docs/eloquent-relationships) — `cart` / `cartItems` as `hasMany`
+- [Laravel: Authentication](https://laravel.com/docs/13.x/authentication) — when `Login` fires relative to session migrate
+- [Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships) — `cart` / `cartItems` as `hasMany`
 - [OWASP API Security](https://owasp.org/www-project-api-security/) — broken object-level authorization if you merge the *wrong* user’s cart
