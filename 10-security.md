@@ -12,8 +12,8 @@ Same goal — **authenticate, authorize, validate, throttle** — different tool
 
 | | `web.php` | `api.php` |
 |---|-----------|-----------|
-| Identity | Session cookie (`auth`) | Token (`auth:sanctum` / Passport) |
-| CSRF | Required on POST/PUT/PATCH/DELETE | Not used for stateless Bearer tokens |
+| Identity | Session cookie (`auth`) | Token (`auth:sanctum`). Passport is optional OAuth2, not the Laravel 13 default. |
+| CSRF | Required on POST/PUT/PATCH/DELETE | Not used for **stateless Bearer** tokens. First-party Sanctum **SPA** still uses CSRF cookies. |
 | XSS / cookies | `HttpOnly`, `Secure`, `SameSite` | N/A for pure Bearer |
 | CORS | Same origin by default | Must be explicit for browser SPAs |
 | Typical extra | `verified`, `password.confirm` | `throttle:api`, abilities/scopes |
@@ -39,7 +39,8 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 
 - Public endpoints stay **outside** `auth:sanctum` (login, health) and are throttled harder.
 - Authorization is **policies / gates**, not “the token exists so they can do anything”.
-- Mass assignment: `$fillable` / `$guarded`, never `$request->all()` into `create()`.
+- Mass assignment: Laravel 13 `#[Fillable([...])]` (or `$fillable` / `$guarded`). Persist **`$request->validated()`**, never `$request->all()` into `create()`.
+- Locally: `Model::preventSilentlyDiscardingAttributes(! app()->isProduction())` so unfillable fields throw instead of disappearing.
 - HTTPS only; tokens in `Authorization: Bearer`, not in query strings.
 - Hide internals: don’t leak stack traces; `APP_DEBUG=false`.
 
@@ -58,9 +59,12 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 **Learn more:**
 - [Laravel: Authentication](https://laravel.com/docs/13.x/authentication) — `auth` middleware
 - [Laravel: Authorization](https://laravel.com/docs/13.x/authorization) — policies / gates (token is not permission)
+- [Laravel: Mass Assignment](https://laravel.com/docs/13.x/eloquent#mass-assignment) — `#[Fillable]`, `$guarded`, `preventSilentlyDiscardingAttributes`
+- [Laravel: Form Request Validation](https://laravel.com/docs/13.x/validation#form-request-validation) — `$request->validated()`
 - [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — HTTPS, tokens, error leakage
-- [Mass Assignment Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html) — never `$request->all()` into `create()`
+- [OWASP Mass Assignment Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html) — never `$request->all()` into `create()`
 - [MDN: CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) — browser SPAs calling `api.php`
+- [Laravel Passport](https://laravel.com/docs/13.x/passport) — only when you need a full OAuth2 server
 
 ---
 
@@ -109,5 +113,6 @@ I do not keep the cart only in `$_SESSION` arrays if it must survive login acros
 
 **Learn more:**
 - [Laravel: Authentication](https://laravel.com/docs/13.x/authentication) — when `Login` fires relative to session migrate
+- [Laravel: Session](https://laravel.com/docs/13.x/session) — `session()->regenerate()` / login session rotation
 - [Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships) — `cart` / `cartItems` as `hasMany`
 - [OWASP API Security](https://owasp.org/www-project-api-security/) — broken object-level authorization if you merge the *wrong* user’s cart

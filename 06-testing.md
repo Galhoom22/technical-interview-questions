@@ -43,7 +43,7 @@ pm.test('creates order', function () {
 4. Edge cases: pagination, filters, empty lists, file upload (`form-data`) if the endpoint takes files.
 5. Export the collection. Optional: Newman in CI against staging.
 
-This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for sharing with non-PHP teammates. Automated tests in the repo still own regressions.
+This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for sharing with non-PHP teammates. Automated tests in the repo still own regressions (`php artisan test`).
 
 > [!TIP]
 > **One-liner:** Environments + collection variables, login once, then assert status, JSON shape, and 401/422/404 — save the collection so it is repeatable, not a screenshot of one 200.
@@ -53,5 +53,6 @@ This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for
 **Learn more:**
 - [Postman: Variables](https://learning.postman.com/docs/sending-requests/variables/variables/) — `baseUrl`, `token`, chaining ids
 - [Collection Runner](https://learning.postman.com/docs/tests-and-scripts/running-collections/intro-to-collection-runs) — run the whole folder, not one request
-- [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-overview/) — same collection in CI (Newman is legacy; Postman now points here)
+- [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-overview/) — same collection in CI (Newman is the older CLI; Postman now documents this)
+- [Laravel: Testing](https://laravel.com/docs/13.x/testing) — Pest and PHPUnit ship with Laravel 13; `php artisan test`
 - [Laravel: HTTP Tests](https://laravel.com/docs/13.x/http-tests) — repo tests that must still exist beside Postman

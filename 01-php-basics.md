@@ -35,7 +35,7 @@ null === false;  // false
 "" == 0;   // true
 "" === 0;  // false
 
-// PHP 8.5: match is strict (===). switch is loose (==).
+// PHP 8.0+: match is strict (===). switch is loose (==).
 echo match (1) {
     '1' => 'skipped — match uses ===',
     1 => 'this arm runs',
@@ -65,9 +65,12 @@ PHP 8 tightened some of those rules, but relying on them is still a trap. `===` 
 **Source:** [PHP: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php) — official definition of `==` (equal, type juggling) vs `===` (identical), including the PHP 8 string-to-number change.
 
 **Learn more:**
+- [PHP type juggling](https://www.php.net/manual/en/language.types.type-juggling.php) — how `==` converts types
 - [PHP type comparison tables](https://www.php.net/manual/en/types.comparisons.php) — full `==` / `===` matrix for every type pair
 - [The `match` expression](https://www.php.net/manual/en/control-structures.match.php) — `match` uses identity (`===`); `switch` uses equality (`==`)
 - [`in_array()`](https://www.php.net/manual/en/function.in-array.php) — third argument `$strict` for the same trap in arrays
+- [`array_search()`](https://www.php.net/manual/en/function.array-search.php) — same `$strict` flag; default is loose `==`
+- [`empty()`](https://www.php.net/manual/en/function.empty.php) / [`isset()`](https://www.php.net/manual/en/function.isset.php) — do not fake these with `== null`
 
 ---
 
@@ -104,8 +107,11 @@ include __DIR__ . '/banner.php';   // nice to have; failure is not fatal
 
 **Learn more:**
 - [`require_once`](https://www.php.net/manual/en/function.require-once.php) / [`include_once`](https://www.php.net/manual/en/function.include-once.php) — skip a file that was already loaded
-- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) — how Composer loads classes so you rarely `require` them by hand
+- [Composer: Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) — the current standard way to load classes
+- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) — the spec Composer implements
 - [PHP: Autoloading Classes](https://www.php.net/manual/en/language.oop5.autoload.php) — `spl_autoload_register` and how `new` triggers a file load
+- [PSR-12: Extended Coding Style](https://www.php-fig.org/psr/psr-12/) — PHP-FIG coding-style PSR
+- [PER Coding Style](https://www.php-fig.org/per/coding-style/) — living PHP-FIG style (Pint’s `per` preset)
 
 ---
 
@@ -150,9 +156,9 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 - Prefer short syntax `[]` over `array()`.
 - For a list of models/DTOs I use a **list** (indexed). For a record of named fields I use **associative**.
 - Nested arrays get messy fast. After one or two levels I switch to objects / DTOs / collections.
-- PHP 8.5 `array_is_list()` tells you whether keys are `0..n-1` with no gaps.
+- PHP 8.1+ `array_is_list()` tells you whether keys are `0..n-1` with no gaps.
 - PHP 8.5 `array_first()` / `array_last()` return the first or last value (or `null` if empty).
-- PHP 8.5 pipe operator `|>` is useful for transforming list values without nested calls.
+- PHP 8.5 pipe operator `|>` is useful for transforming values without nested calls.
 
 > [!TIP]
 > **One-liner:** PHP has one array type used in three ways — indexed, associative, and multidimensional (arrays of arrays).
@@ -162,6 +168,7 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 **Learn more:**
 - [`array_is_list()`](https://www.php.net/manual/en/function.array-is-list.php) — detect a packed `0..n-1` list vs a map
 - [`array_first()`](https://www.php.net/manual/en/function.array-first.php) / [`array_last()`](https://www.php.net/manual/en/function.array-last.php) — PHP 8.5 helpers
+- [`array_key_first()`](https://www.php.net/manual/en/function.array-key-first.php) / [`array_key_last()`](https://www.php.net/manual/en/function.array-key-last.php) — PHP 7.3+ key helpers; 8.5 adds value helpers `array_first()` / `array_last()`
 - [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — pipe operator `|>` and more
 
 ---
@@ -211,7 +218,7 @@ echo new Money(1999, 'USD'); // "19.99 USD"
 
 **When to use them:**
 
-- `__construct` — always, for a valid object.
+- `__construct` — to put the object in a valid state when you use `new` (named factories are also valid).
 - `__toString` / `__invoke` — when the object has a natural string or callable form.
 - `__serialize` — when you persist or queue the object.
 - `__clone` / PHP 8.5 `clone($object, $withProperties)` — wither pattern for `readonly` classes.
@@ -229,4 +236,5 @@ echo new Money(1999, 'USD'); // "19.99 USD"
 **Learn more:**
 - [Constructors and Destructors](https://www.php.net/manual/en/language.oop5.decon.php) — `__construct` / `__destruct` in full
 - [Overloading](https://www.php.net/manual/en/language.oop5.overloading.php) — `__get`, `__set`, `__call`, `__callStatic` (and why they hide bugs)
-- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — `clone($object, [...])` wither pattern; `__sleep` / `__wakeup` soft-deprecated
+- [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) — `clone($object, [...])` wither pattern
+- [PHP 8.5 deprecated features](https://www.php.net/manual/en/migration85.deprecated.php) — `__sleep()` / `__wakeup()` are soft-deprecated; use `__serialize()` / `__unserialize()`

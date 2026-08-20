@@ -6,6 +6,8 @@ This is not a scraped question bank. Every item here is one I was actually asked
 
 **46 questions** across 10 topics. Examples use **PHP 8.5** and **Laravel 13**. Last reviewed: August 2026.
 
+Sources in this repo are official or primary references: [PHP Manual](https://www.php.net/manual/en/), [Laravel 13 docs](https://laravel.com/framework/docs), [MDN](https://developer.mozilla.org/), [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html), [PHP-FIG](https://www.php-fig.org/), [OWASP](https://owasp.org/), [GitHub Docs](https://docs.github.com/), [Git Book](https://git-scm.com/book/en/v2).
+
 | Stack | Version | Official docs |
 |-------|---------|---------------|
 | PHP | 8.5 | [PHP Manual](https://www.php.net/manual/en/) |
@@ -35,7 +37,7 @@ This is not a scraped question bank. Every item here is one I was actually asked
 3. Compare with the model answer and the **one-liner** at the bottom.
 4. Open **Source**, then **Learn more**, if you want the follow-up material interviewers often ask next.
 
-Each answer is written to be said in an interview: short definition first, then a table or example, then practical points.
+Each answer is written to be said in an interview: short definition first, then a table or example, then practical points. **Source** and **Learn more** are there so one question also teaches the next layer (the spec, the Laravel 13 default, the follow-up they ask).
 
 ## What you will find in an answer
 
@@ -43,8 +45,10 @@ Each answer is written to be said in an interview: short definition first, then 
 - A comparison table or example when it helps
 - PHP 8.5 / Laravel 13 code where it matters
 - An interview **one-liner**
-- **Source** — the official page the answer is based on
-- **Learn more** — extra docs for that topic
+- **Source** — the official or primary page the answer is based on
+- **Learn more** — extra official docs (community pages are labeled as such)
+
+Version claims are pinned: `match` is PHP 8.0+, `array_is_list()` is PHP 8.1+, `array_first()` / `array_last()` / `|>` / `clone($obj, [...])` are PHP 8.5. Laravel 13 API routes use `php artisan install:api` (Sanctum), not Passport, as the default.
 
 ## Maintainer
 

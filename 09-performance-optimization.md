@@ -18,19 +18,19 @@ I **measure first**. I do not add Redis, queues, and eager loading at random. Th
 
 | Layer | How I look |
 |-------|------------|
-| SQL | Slow query log, `EXPLAIN`, Laravel Debugbar / Telescope, `DB::listen` |
-| App (N+1, CPU) | Telescope, Clockwork, Xdebug profiler / Blackfire / Tideways |
+| SQL | Slow query log, `EXPLAIN`, [Telescope](https://laravel.com/docs/13.x/telescope) (first-party), `DB::listen` |
+| App (N+1, CPU) | Telescope; optional profilers: Xdebug / Blackfire / Tideways (third-party) |
 | HTTP to others | Timeouts in logs, Telescope outgoing requests |
 | Frontend | Not my first guess for a Laravel API, but I check payload size |
-| Infra | CPU, RAM, disk I/O, opcache, PHP-FPM workers |
+| Infra | CPU, RAM, disk I/O, OPcache, PHP-FPM workers |
 
 **3. Fix the usual Laravel bottlenecks (in this order)**
 
-1. **N+1** — `User::with('orders.items')->get()`. Debugbar’s query count is the smoking gun.
+1. **N+1** — `User::with('orders.items')->get()`. Telescope’s query count is the smoking gun. Locally I also enable `Model::preventLazyLoading(! app()->isProduction())` so missed `with()` fails the request instead of hiding.
 2. **Missing indexes** — `EXPLAIN` should not `ALL` on a 2M-row table for `where user_id = ?`.
 3. **Select * / huge Eloquent graphs** — `select()`, pagination, `chunkById` for jobs.
 4. **Cache** what is expensive and stable — config, routes, views (`artisan optimize`), query/result cache, Redis for sessions/hot keys.
-5. **Move off the request** — emails, images, reports → queues (Horizon).
+5. **Move off the request** — emails, images, reports → queues ([Horizon](https://laravel.com/docs/13.x/horizon) if you use Redis queues).
 6. **PHP/runtime** — OPcache on, too many service providers doing work on every request, debug mode off in production.
 
 ```php
@@ -52,10 +52,11 @@ Same endpoint, before/after: query count, time, EXPLAIN. If it is not faster, th
 > [!TIP]
 > **One-liner:** Measure (Telescope/slow log/EXPLAIN), fix N+1 and indexes first, then cache and queues — never optimize from a guess.
 
-**Source:** [Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading) — N+1 is the usual Laravel bottleneck; plus [Telescope](https://laravel.com/docs/13.x/telescope) to *see* query count.
+**Source:** [Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading) — N+1 is the usual Laravel bottleneck; [Preventing Lazy Loading](https://laravel.com/docs/13.x/eloquent-relationships#preventing-lazy-loading) is the Laravel 13 way to catch it; [Telescope](https://laravel.com/docs/13.x/telescope) to *see* query count.
 
 **Learn more:**
 - [MySQL: EXPLAIN](https://dev.mysql.com/doc/refman/8.4/en/explain.html) — read the plan before adding indexes
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — same idea on Postgres
 - [Laravel: Deployment / optimization](https://laravel.com/docs/13.x/deployment#optimization) — config/route/view cache, `APP_DEBUG=false`
 - [Laravel: Cache](https://laravel.com/docs/13.x/cache) and [Queues](https://laravel.com/docs/13.x/queues) — after the query is already cheap
+- [Laravel Horizon](https://laravel.com/docs/13.x/horizon) — Redis queue dashboard (official)

@@ -36,7 +36,9 @@ $order->total(); // 3500
 
 **Learn more:**
 - [The Basics](https://www.php.net/manual/en/language.oop5.basic.php) — `class`, `new`, `$this`, properties, methods
-- [PHP: The Right Way — Getting Started](https://phptherightway.com/) — modern PHP practices around OOP, autoloading, and packages
+- [PHP: The Right Way](https://phptherightway.com/) — community best-practice guide (not a language spec)
+- [PSR-12: Extended Coding Style](https://www.php-fig.org/psr/psr-12/) — the PHP-FIG coding-style PSR
+- [PER Coding Style](https://www.php-fig.org/per/coding-style/) — living PHP-FIG style (what Pint’s `per` preset follows)
 - [Visibility](https://www.php.net/manual/en/language.oop5.visibility.php) — `public` / `protected` / `private` (encapsulation in the language)
 
 ---
@@ -324,7 +326,7 @@ class FileBuffer
 
 **Learn more:**
 - [Garbage Collection](https://www.php.net/manual/en/features.gc.php) — refcounting vs cycle collector (why destructors are not a workflow engine)
-- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — `dtor_obj` vs `free_obj` (engine view of destruction)
+- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — `dtor_obj` vs `free_obj` (engine view of destruction; PHP 7+ model, still the basis of 8.x)
 - [Magic Methods](https://www.php.net/manual/en/language.oop5.magic.php) — where `__destruct` sits among the other hooks
 
 ---
@@ -400,8 +402,8 @@ In Laravel, `app(UserService::class)` is not `new` in your controller — the **
 **Learn more:**
 - [Autoloading Classes](https://www.php.net/manual/en/language.oop5.autoload.php) — step 1: load the class file
 - [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) — how Composer maps `App\User` to a path
-- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — objects, handles, and heap layout
-- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — `get_constructor` and object creation hooks
+- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — objects, handles, and heap layout (PHP 7+ engine model; still the basis of 8.x)
+- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — `get_constructor` and object creation hooks (community internals book, not the PHP Manual)
 
 ---
 
@@ -535,11 +537,11 @@ That is why static works without `new`: there is nothing to construct. The engin
 > [!TIP]
 > **One-liner:** Static methods are functions on the class metadata (the function table). The engine calls them with a stack frame only — no object is allocated, so there is no `$this`.
 
-**Source:** [PHP: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php) — userland rules; internals: [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) (`get_method` on the class, not an instance).
+**Source:** [PHP: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php) — userland rules. Engine view (optional): [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) (`get_method` on the class, not an instance; PHP 7+ model, still the basis of 8.x).
 
 **Learn more:**
 - [Late Static Bindings](https://www.php.net/manual/en/language.oop5.late-static-bindings.php) — `static::class` is the *called* class, with no object
-- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — zvals vs objects in the engine
+- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — zvals vs objects in the engine (PHP 7+ model; still the basis of 8.x)
 - [Autoloading Classes](https://www.php.net/manual/en/language.oop5.autoload.php) — the class entry is loaded once, then reused for every static call
 
 ---
@@ -578,8 +580,8 @@ I do not choose static methods to “save RAM” in a Laravel app. I choose them
 **Source:** [PHP: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php) (no instance) plus [Garbage Collection](https://www.php.net/manual/en/features.gc.php) (objects live on the heap until unreferenced).
 
 **Learn more:**
-- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — object handles and heap storage
-- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — what an allocated object actually is
+- [Nikita Popov: Internal value representation in PHP 7 (part 2)](https://www.npopov.com/2015/06/19/Internal-value-representation-in-PHP-7-part-2.html) — object handles and heap storage (PHP 7+ model; still the basis of 8.x)
+- [PHP Internals Book: object handlers](https://www.phpinternalsbook.com/php7/classes_objects/object_handlers.html) — what an allocated object actually is (community internals book, not the PHP Manual)
 - [The Basics](https://www.php.net/manual/en/language.oop5.basic.php) — each `new` is a separate instance with its own property values
 
 ---

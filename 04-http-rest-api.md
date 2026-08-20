@@ -69,7 +69,7 @@ Codes I actually return:
 | `403 Forbidden` | Authenticated but not allowed |
 | `404 Not Found` | Resource missing |
 | `409 Conflict` | Duplicate / version conflict |
-| `422 Unprocessable Entity` | Validation failed (Laravel default) |
+| `422 Unprocessable Content` | Validation failed (Laravel APIs). RFC 9110 / MDN name is **Unprocessable Content**; Laravel’s validation docs still say **Unprocessable Entity**. Same status code `422`. |
 | `429 Too Many Requests` | Rate limited |
 | `500 Internal Server Error` | Unhandled exception |
 
@@ -80,7 +80,8 @@ Codes I actually return:
 
 **Learn more:**
 - [RFC 9110 — Status Codes](https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes) — normative definitions
-- [Laravel: Validation](https://laravel.com/docs/13.x/validation) — why Laravel APIs often return `422`
+- [MDN: 422 Unprocessable Content](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/422) — RFC 9110 name for this code
+- [Laravel: Validation](https://laravel.com/docs/13.x/validation) — JSON validation failures return `422`
 - [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — which codes not to leak internals with
 
 ---
@@ -164,7 +165,8 @@ Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), San
 **Learn more:**
 - [Fielding: REST architectural style](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) — constraints (stateless, uniform interface, …)
 - [Laravel: Eloquent API Resources](https://laravel.com/docs/13.x/eloquent-resources) — shaping the JSON representation
-- [roadmap.sh REST API questions](https://roadmap.sh/questions/rest-api) — extra interview-style REST drills
+- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html) — how you document that HTTP contract
+- [JSON:API](https://jsonapi.org/format/) — one optional resource+relationship convention (not required for “REST”)
 
 ---
 
@@ -199,11 +201,11 @@ I do not start from random controller methods. I start from resources, status co
 > [!TIP]
 > **One-liner:** I design resources and error codes first, document them (OpenAPI/Postman), then implement with Laravel Form Requests, API Resources, and token auth.
 
-**Source:** [OpenAPI Specification](https://swagger.io/specification/) — the contract-first format this approach documents against.
+**Source:** [OpenAPI Specification](https://spec.openapis.org/oas/latest.html) — the current OAS (the contract-first format this approach documents against).
 
 **Learn more:**
 - [Postman: write test scripts](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts) — collections as a living contract
-- [Laravel: Validation](https://laravel.com/docs/13.x/validation) — Form Requests as the server-side contract
+- [Laravel: Form Request Validation](https://laravel.com/docs/13.x/validation#form-request-validation) — `$request->validated()` as the server-side contract
 - [Laravel: Eloquent API Resources](https://laravel.com/docs/13.x/eloquent-resources) — consistent JSON responses
 - [Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — token / SPA auth for that API
 
@@ -344,7 +346,7 @@ Do not send `application/json` at the same time as the files.
 | `401` / `403` | Missing/invalid auth or not the owner |
 | `404` | Profile id does not exist |
 | `413` | File too large (server/php.ini) |
-| `422` | Validation (bad mime, missing `bio`) |
+| `422` | Validation (bad mime, missing `bio`). RFC 9110 name: Unprocessable Content. |
 | `500` | Storage/unexpected failure |
 
 I store files on disk/S3, save paths on the model, and return JSON with public URLs — I do not echo the PDF back in the same response unless asked.
@@ -408,4 +410,4 @@ Async work (slow third parties) goes on a **queue**. Webhooks inbound get their 
 ---
 
 > [!NOTE]
-> Additional reference for API questions: [roadmap.sh/questions/rest-api](https://roadmap.sh/questions/rest-api)
+> REST is an architectural style (Fielding), not a product. OpenAPI documents HTTP APIs. JSON:API is one optional JSON convention — using JSON over HTTP does not by itself mean “RESTful”.

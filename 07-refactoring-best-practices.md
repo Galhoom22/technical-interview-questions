@@ -67,5 +67,7 @@ First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I 
 
 **Learn more:**
 - [Refactoring catalog](https://refactoring.com/catalog/) — Extract Class, Replace Temp with Query, and the rest of the catalog
-- [Characterization test](https://en.wikipedia.org/wiki/Characterization_test) — lock current behavior before you change structure (Michael Feathers)
+- [Laravel: Testing](https://laravel.com/docs/13.x/testing) — characterization tests are still tests; lock behavior with Pest/PHPUnit before you extract
+- [Characterization test](https://en.wikipedia.org/wiki/Characterization_test) — the term (Michael Feathers); Wikipedia summary, not a spec
 - [Laravel: Controllers](https://laravel.com/docs/13.x/controllers) — keep HTTP thin; push work into actions/services
+- [Laravel: Form Request Validation](https://laravel.com/docs/13.x/validation#form-request-validation) — first extraction from a fat controller is often the Form Request

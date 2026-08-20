@@ -66,9 +66,10 @@ I would sketch this as an ERD (even on paper) and only then write Laravel migrat
 > [!TIP]
 > **One-liner:** List use cases, name entities, draw cardinality, snapshot prices on `order_items`, then normalize and add FKs/indexes — migrations last, not first.
 
-**Source:** [Database normalization](https://en.wikipedia.org/wiki/Database_normalization) — 1NF/2NF/3NF and why orders snapshot prices instead of joining live catalog rows.
+**Source:** [PostgreSQL: Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html) — UNIQUE, foreign keys, CHECK (how the ERD becomes a schema). 1NF/2NF/3NF terminology: [Database normalization](https://en.wikipedia.org/wiki/Database_normalization) (standard teaching reference, not an ISO spec).
 
 **Learn more:**
 - [Laravel: Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships) — how those entities become `hasMany` / `belongsToMany`
 - [Laravel: Migrations](https://laravel.com/docs/13.x/migrations) — FKs, unique indexes, `morphs()`
+- [PostgreSQL: Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html) — referential integrity in practice
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — prove indexes after the schema exists

@@ -44,7 +44,7 @@ Laravel records ran migrations in a `migrations` table, so each change runs once
 **Learn more:**
 - [Laravel: Database](https://laravel.com/docs/13.x/database) — connections, transactions, query logging
 - [Laravel: Eloquent](https://laravel.com/docs/13.x/eloquent) — models that sit on top of the tables you migrate
-- [Database normalization](https://en.wikipedia.org/wiki/Database_normalization) — how to think before you write the migration
+- [PostgreSQL: Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html) — UNIQUE, FK, CHECK (what the migration is encoding)
 
 ---
 
@@ -162,21 +162,22 @@ That creates `api.php`, installs Sanctum, and registers the file in `bootstrap/a
 | | `web.php` | `api.php` |
 |---|-----------|-----------|
 | Client | Browser | App / SPA / third party |
-| Auth | Session cookie | Token (Sanctum / Passport) |
-| CSRF | Yes | No (stateless) |
+| Auth | Session cookie | Token (**Sanctum** is Laravel 13’s default via `install:api`; Passport is optional OAuth2) |
+| CSRF | Yes (session / SPA cookie) | No for **stateless Bearer** tokens. First-party Sanctum **SPA** still uses CSRF cookies. |
 | URL | `/dashboard` | `/api/user` |
 | Typical response | HTML | JSON |
 
 **Laravel 13:** `api.php` is not on a fresh install. You add it with `php artisan install:api`, which also installs Sanctum and wires the `api` middleware group.
 
 > [!TIP]
-> **One-liner:** `api.php` is for stateless JSON APIs — `/api` prefix, rate limiting, token auth, no session CSRF.
+> **One-liner:** `api.php` is for JSON APIs — `/api` prefix, rate limiting, Sanctum token (or SPA cookies). Stateless Bearer skips CSRF; Sanctum SPA still uses CSRF cookies.
 
 **Source:** [Laravel: Routing](https://laravel.com/docs/13.x/routing) — API routes / `api` middleware group; token auth in [Laravel Sanctum](https://laravel.com/docs/13.x/sanctum).
 
 **Learn more:**
 - [Laravel: Directory Structure](https://laravel.com/docs/13.x/structure) — `routes/api.php` and `install:api`
 - [Laravel: Rate Limiting](https://laravel.com/docs/13.x/rate-limiting) — `throttle:api` / `RateLimiter` in Laravel 13
+- [Laravel Passport](https://laravel.com/docs/13.x/passport) — optional OAuth2 when you need authorization-server flows (not the Laravel 13 default)
 - [OWASP API Security](https://owasp.org/www-project-api-security/) — what “secure the API surface” means beyond Laravel defaults
 
 ---
@@ -230,7 +231,7 @@ class Comment extends Model
 **Practical points for the interview:**
 
 - Always define **both sides** (`hasMany` + `belongsTo`) when both are queried.
-- Avoid N+1: `User::with('posts.tags')->get()`.
+- Avoid N+1: `User::with('posts.tags')->get()`. In local/staging, `Model::preventLazyLoading(! app()->isProduction())` makes missed eager loads throw instead of silently multiplying queries.
 - Pivot extras: `->withPivot('approved')->withTimestamps()`.
 - Foreign key names default to `{model}_id`. Override when the column is not conventional.
 
@@ -241,6 +242,7 @@ class Comment extends Model
 
 **Learn more:**
 - [Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading) — `with()` / N+1 (the follow-up they always ask)
+- [Preventing Lazy Loading](https://laravel.com/docs/13.x/eloquent-relationships#preventing-lazy-loading) — `Model::preventLazyLoading()` (Laravel 13 current practice)
 - [Laravel: Migrations](https://laravel.com/docs/13.x/migrations) — `foreignId()`, `morphs()`, pivot tables
 - [Polymorphic relationships](https://laravel.com/docs/13.x/eloquent-relationships#polymorphic-relationships) — `morphTo` / `morphMany` in isolation
 
@@ -298,6 +300,7 @@ Laravel **13** registers middleware in `bootstrap/app.php` (`withMiddleware()`),
 **Learn more:**
 - [Laravel: CSRF Protection](https://laravel.com/docs/13.x/csrf) — the most important `web` middleware
 - [Laravel: Authentication](https://laravel.com/docs/13.x/authentication#protecting-routes) — `auth` / `auth:sanctum`
+- [Laravel: Form Request Validation](https://laravel.com/docs/13.x/validation#form-request-validation) — validation as its own layer, not inside the controller
 - [MDN: CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) — why API middleware often adds CORS headers
 
 ---
@@ -356,7 +359,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => 'hashed-password',
+            'password' => 'password', // hashed by the model's `hashed` cast
         ];
     }
 
@@ -381,7 +384,8 @@ User::factory()->make(); // in memory, no INSERT
 **Learn more:**
 - [Laravel: Seeding](https://laravel.com/docs/13.x/seeding) — where factories get called in bulk
 - [Laravel: HTTP Tests](https://laravel.com/docs/13.x/http-tests) — factories inside feature tests
-- [PHP `fake()` / Faker](https://laravel.com/docs/13.x/eloquent-factories#factory-states) — states and sequences on the same page
+- [Laravel: Helpers — `fake()`](https://laravel.com/docs/13.x/helpers#method-fake) — Faker through Laravel’s `fake()` helper
+- [Laravel: Hashing](https://laravel.com/docs/13.x/hashing) — the `hashed` cast hashes `password` when it is set
 
 ---
 

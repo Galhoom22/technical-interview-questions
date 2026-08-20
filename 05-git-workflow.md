@@ -14,8 +14,8 @@ main ───●────────────●────────
 
 **Day-to-day:**
 
-1. **Update `main`** — `git checkout main && git pull`.
-2. **Branch** — `git checkout -b feature/cart-merge` (or `fix/`, `chore/`). Named after the ticket.
+1. **Update `main`** — `git switch main && git pull`.
+2. **Branch** — `git switch -c feature/cart-merge` (or `fix/`, `chore/`). Named after the ticket. (`git checkout -b` still works; `switch` is the Git 2.23+ command meant for this.)
 3. **Small commits** — present tense, one idea each: `Add cart merge on login`.
 4. **Push** — `git push -u origin HEAD`.
 5. **Open a PR** — description, screenshots, test plan, link the issue.
@@ -44,5 +44,7 @@ Hotfixes follow the same path, just faster: branch from `main`, PR, merge, deplo
 
 **Learn more:**
 - [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) — what a PR is for
+- [`git switch`](https://git-scm.com/docs/git-switch) — current Git command to switch/create branches (`git switch -c`)
 - [Git: Branching Workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) — topic branches (the Git book, not GitHub-specific)
+- [Laravel Pint](https://laravel.com/docs/13.x/pint) — first-party style fixer most Laravel CI jobs run
 - [Resolving a merge conflict using the command line](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-using-the-command-line) — what to do when `main` moved
