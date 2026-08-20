@@ -1,116 +1,51 @@
-# 🎯 Laravel / PHP Backend Developer Interview Questions
+# Laravel / PHP Backend Developer Interview Questions
 
-> Real **technical** questions from real interviews — with model answers.
+Real **technical** questions from real interviews I sat, with the answers I would give, plus official sources to go deeper.
 
-Examples in this repo use **PHP 8.5** syntax and **Laravel 13**.
+This is not a scraped question bank. Every item here is one I was actually asked. There is no HR / behavioral content.
+
+**46 questions** across 10 topics. Examples use **PHP 8.5** and **Laravel 13**. Last reviewed: August 2026.
 
 | Stack | Version | Official docs |
 |-------|---------|---------------|
-| PHP | **8.5** | [PHP Manual](https://www.php.net/manual/en/) |
-| Laravel | **13** | [Laravel Documentation](https://laravel.com/framework/docs) |
+| PHP | 8.5 | [PHP Manual](https://www.php.net/manual/en/) |
+| Laravel | 13 | [Laravel Documentation](https://laravel.com/framework/docs) |
 
-Also useful: [PHP 8.5 release notes](https://www.php.net/releases/8.5/en.php) · [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) · [Laravel 13.x docs index](https://laravel.com/docs/13.x)
+[PHP 8.5 release notes](https://www.php.net/releases/8.5/en.php) · [PHP 8.5 new features](https://www.php.net/manual/en/migration85.new-features.php) · [Laravel 13.x docs](https://laravel.com/docs/13.x)
 
-## About
+## Topics
 
-These questions are all based on **my personal interview experiences**.
+| # | Topic | Questions |
+|---|-------|-----------|
+| 01 | [PHP - Basics](./01-php-basics.md) | 4 |
+| 02 | [OOP](./02-oop.md) | 16 |
+| 03 | [Laravel - Basics](./03-laravel-basics.md) | 10 |
+| 04 | [HTTP & REST API](./04-http-rest-api.md) | 9 |
+| 05 | [Git & Workflow](./05-git-workflow.md) | 1 |
+| 06 | [Testing](./06-testing.md) | 1 |
+| 07 | [Refactoring & Best Practices](./07-refactoring-best-practices.md) | 1 |
+| 08 | [Database Design](./08-database-design.md) | 1 |
+| 09 | [Performance & Optimization](./09-performance-optimization.md) | 1 |
+| 10 | [Security](./10-security.md) | 2 |
 
-- Every question here is one I was actually asked
-- Nothing was added from generic lists or guesswork
-- This repo focuses on **technical interview questions only**
-- Each question includes a **model answer** written for how I would answer it in an interview
+## How to use this
 
-**Goal:** Capture exactly what interviewers ask in real technical interviews, organize each question under the right topic, and document a solid model answer for every question.
+1. Pick a topic.
+2. Read the question and answer it out loud for about a minute.
+3. Compare with the model answer and the **one-liner** at the bottom.
+4. Open **Source**, then **Learn more**, if you want the follow-up material interviewers often ask next.
 
-## Progress
+Each answer is written to be said in an interview: short definition first, then a table or example, then practical points.
 
-**Overall:** `46 / 46` answers written (`100%`)
+## What you will find in an answer
 
-| Status | Meaning |
-|--------|---------|
-| ⬜ Not started | `0` answers written |
-| 🟡 In progress | Some answers written, but not all |
-| ✅ Done | All answers written |
+- A direct opening (the sentence that answers the question)
+- A comparison table or example when it helps
+- PHP 8.5 / Laravel 13 code where it matters
+- An interview **one-liner**
+- **Source** — the official page the answer is based on
+- **Learn more** — extra docs for that topic
 
-### Topics
+## Maintainer
 
-| # | Topic | Done | Total | Status | File |
-|---|-------|------|-------|--------|------|
-| 01 | 🐘 PHP - Basics | 4 | 4 | ✅ Done | [01-php-basics.md](./01-php-basics.md) |
-| 02 | 🧩 OOP (Object-Oriented Programming) | 16 | 16 | ✅ Done | [02-oop.md](./02-oop.md) |
-| 03 | 🚀 Laravel - Basics | 10 | 10 | ✅ Done | [03-laravel-basics.md](./03-laravel-basics.md) |
-| 04 | 🌐 HTTP & REST API | 9 | 9 | ✅ Done | [04-http-rest-api.md](./04-http-rest-api.md) |
-| 05 | 🔀 Git & Workflow | 1 | 1 | ✅ Done | [05-git-workflow.md](./05-git-workflow.md) |
-| 06 | 🧪 Testing | 1 | 1 | ✅ Done | [06-testing.md](./06-testing.md) |
-| 07 | ♻️ Refactoring & Best Practices | 1 | 1 | ✅ Done | [07-refactoring-best-practices.md](./07-refactoring-best-practices.md) |
-| 08 | 🗄️ Database Design | 1 | 1 | ✅ Done | [08-database-design.md](./08-database-design.md) |
-| 09 | ⚡ Performance & Optimization | 1 | 1 | ✅ Done | [09-performance-optimization.md](./09-performance-optimization.md) |
-| 10 | 🔒 Security | 2 | 2 | ✅ Done | [10-security.md](./10-security.md) |
-
-### How to keep Progress up to date
-
-Whenever you write an answer or add a new question:
-
-1. Replace `> _To be written._` with the real answer
-2. Update **Done** / **Total** for that topic in the table above
-3. Update the topic **Status** (`⬜` / `🟡` / `✅`)
-4. Recalculate **Overall** (`Done sum / Total sum`)
-5. If you add a **new topic**, add a new row and renumber if needed
-6. If you add a **new question** to an existing topic, increase **Total** by 1
-
-## Format
-
-Every question uses this structure so it renders cleanly on GitHub:
-
-````md
-## Q1. Question text here?
-
-**Answer:**
-
-Short opening that states the difference or definition.
-
-| Aspect | Option A | Option B |
-|--------|----------|----------|
-| Point | … | … |
-
-```php
-// examples
-```
-
-- Practical interview points
-
-> [!TIP]
-> **One-liner:** the sentence you would say if time is short.
-
-**Source:** [PHP: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php) — the page this answer is based on.
-
-**Learn more:**
-- [PHP type comparison tables](https://www.php.net/manual/en/types.comparisons.php) — extra detail after the core answer
-- [The `match` expression](https://www.php.net/manual/en/control-structures.match.php) — common follow-up
-
----
-````
-
-Rules:
-
-- One topic per file, titled with `#`
-- Each question is `##` so GitHub’s outline (right sidebar) lists every question
-- Separate questions with `---`
-- Use **tables** for comparisons
-- Use fenced code blocks with a language (`php`, `http`, `bash`)
-- Use GitHub alerts for the interview one-liner: `TIP`
-- After every answer, add **Source** (the official page the model answer is based on) and **Learn more** (2–4 extra links). Prefer [php.net/manual](https://www.php.net/manual/en/), [Laravel 13 docs](https://laravel.com/framework/docs), MDN, RFC, GitHub Docs
-- PHP snippets use **PHP 8.5** syntax (`readonly`, constructor promotion, `match`, `|>`, `clone($obj, [...])`, `array_first()` / `array_last()`)
-- Laravel snippets target **Laravel 13** (`bootstrap/app.php`, `install:api`, typed relations, Form Requests)
-- Keep placeholders as `> _To be written._` until the answer is ready
-
-When the answer is ready, replace the placeholder — do not leave `_To be written._` above the real answer.
-
-## How to Use
-
-1. Pick a topic from the Progress table
-2. Read the question and try answering it out loud first
-3. Compare with the model answer, then open **Source** and **Learn more**
-4. Update the Progress table in this README if you add questions
-
-Good luck with your interviews!
+[Abdelrahman Galhoom](https://github.com/Galhoom22) — backend developer (Laravel / PHP).
