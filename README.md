@@ -15,7 +15,7 @@ These questions are all based on **my personal interview experiences**.
 
 ## Progress
 
-**Overall:** `1 / 46` answers written (`2%`)
+**Overall:** `46 / 46` answers written (`100%`)
 
 | Status | Meaning |
 |--------|---------|
@@ -27,16 +27,16 @@ These questions are all based on **my personal interview experiences**.
 
 | # | Topic | Done | Total | Status | File |
 |---|-------|------|-------|--------|------|
-| 01 | 🐘 PHP - Basics | 1 | 4 | 🟡 In progress | [01-php-basics.md](./01-php-basics.md) |
-| 02 | 🧩 OOP (Object-Oriented Programming) | 0 | 16 | ⬜ Not started | [02-oop.md](./02-oop.md) |
-| 03 | 🚀 Laravel - Basics | 0 | 10 | ⬜ Not started | [03-laravel-basics.md](./03-laravel-basics.md) |
-| 04 | 🌐 HTTP & REST API | 0 | 9 | ⬜ Not started | [04-http-rest-api.md](./04-http-rest-api.md) |
-| 05 | 🔀 Git & Workflow | 0 | 1 | ⬜ Not started | [05-git-workflow.md](./05-git-workflow.md) |
-| 06 | 🧪 Testing | 0 | 1 | ⬜ Not started | [06-testing.md](./06-testing.md) |
-| 07 | ♻️ Refactoring & Best Practices | 0 | 1 | ⬜ Not started | [07-refactoring-best-practices.md](./07-refactoring-best-practices.md) |
-| 08 | 🗄️ Database Design | 0 | 1 | ⬜ Not started | [08-database-design.md](./08-database-design.md) |
-| 09 | ⚡ Performance & Optimization | 0 | 1 | ⬜ Not started | [09-performance-optimization.md](./09-performance-optimization.md) |
-| 10 | 🔒 Security | 0 | 2 | ⬜ Not started | [10-security.md](./10-security.md) |
+| 01 | 🐘 PHP - Basics | 4 | 4 | ✅ Done | [01-php-basics.md](./01-php-basics.md) |
+| 02 | 🧩 OOP (Object-Oriented Programming) | 16 | 16 | ✅ Done | [02-oop.md](./02-oop.md) |
+| 03 | 🚀 Laravel - Basics | 10 | 10 | ✅ Done | [03-laravel-basics.md](./03-laravel-basics.md) |
+| 04 | 🌐 HTTP & REST API | 9 | 9 | ✅ Done | [04-http-rest-api.md](./04-http-rest-api.md) |
+| 05 | 🔀 Git & Workflow | 1 | 1 | ✅ Done | [05-git-workflow.md](./05-git-workflow.md) |
+| 06 | 🧪 Testing | 1 | 1 | ✅ Done | [06-testing.md](./06-testing.md) |
+| 07 | ♻️ Refactoring & Best Practices | 1 | 1 | ✅ Done | [07-refactoring-best-practices.md](./07-refactoring-best-practices.md) |
+| 08 | 🗄️ Database Design | 1 | 1 | ✅ Done | [08-database-design.md](./08-database-design.md) |
+| 09 | ⚡ Performance & Optimization | 1 | 1 | ✅ Done | [09-performance-optimization.md](./09-performance-optimization.md) |
+| 10 | 🔒 Security | 2 | 2 | ✅ Done | [10-security.md](./10-security.md) |
 
 ### How to keep Progress up to date
 
