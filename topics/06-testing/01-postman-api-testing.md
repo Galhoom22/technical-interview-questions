@@ -1,8 +1,6 @@
-# 🧪 Testing
+# Explain your process for testing APIs using an API client like Postman.
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
-
-## Q1. Explain your process for testing APIs using an API client like Postman.
 
 **Answer:**
 
@@ -56,3 +54,7 @@ This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for
 - [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-overview/) — same collection in CI (Newman is the older CLI; Postman now documents this)
 - [Laravel: Testing](https://laravel.com/docs/13.x/testing) — Pest and PHPUnit ship with Laravel 13; `php artisan test`
 - [Laravel: HTTP Tests](https://laravel.com/docs/13.x/http-tests) — repo tests that must still exist beside Postman
+
+---
+
+[Topic](./README.md)

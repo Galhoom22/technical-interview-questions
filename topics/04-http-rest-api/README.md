@@ -1,0 +1,22 @@
+# 🌐 HTTP & REST API
+
+> Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
+>
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
+## Questions
+
+1. [What are the different HTTP methods?](./01-http-methods.md)
+2. [What are HTTP status codes, and what are their main categories?](./02-status-codes.md)
+3. [What are the general types of APIs?](./03-api-types.md)
+4. [What is a RESTful API, and how does it work? Which protocol does it rely on, and how does it utilize HTTP features (e.g., headers and status codes)?](./04-restful-api.md)
+5. [How do you approach API design, and what tools do you use?](./05-api-design.md)
+6. [What is the difference between PUT and POST?](./06-put-vs-post.md)
+7. [When might you use POST for an update operation?](./07-post-for-update.md)
+8. [How do you design an update API that accepts text, images, and a PDF?](./08-multipart-update-with-files.md)
+9. [How do you integrate with an external API?](./09-external-api-integration.md)
+
+---
+
+> [!NOTE]
+> REST is an architectural style (Fielding), not a product. OpenAPI documents HTTP APIs. JSON:API is one optional JSON convention — using JSON over HTTP does not by itself mean “RESTful”.

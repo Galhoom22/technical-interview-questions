@@ -1,8 +1,6 @@
-# 🗄️ Database Design
+# How would you approach designing a database for an e-commerce platform? Describe your initial steps for mapping out the entities and relationships.
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
-
-## Q1. How would you approach designing a database for an e-commerce platform? Describe your initial steps for mapping out the entities and relationships.
 
 **Answer:**
 
@@ -73,3 +71,7 @@ I would sketch this as an ERD (even on paper) and only then write Laravel migrat
 - [Laravel: Migrations](https://laravel.com/docs/13.x/migrations) — FKs, unique indexes, `morphs()`
 - [PostgreSQL: Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html) — referential integrity in practice
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — prove indexes after the schema exists
+
+---
+
+[Topic](./README.md)

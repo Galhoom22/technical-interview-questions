@@ -4,7 +4,7 @@ Real **technical** questions from real interviews I sat, with the answers I woul
 
 This is not a scraped question bank. Every item here is one I was actually asked. There is no HR / behavioral content.
 
-**46 questions** across 10 topics. Examples use **PHP 8.5** and **Laravel 13**. Last reviewed: August 2026.
+**46 questions** across 10 topics. Each question lives in its own file. Examples use **PHP 8.5** and **Laravel 13**. Last reviewed: August 2026.
 
 Sources in this repo are official or primary references: [PHP Manual](https://www.php.net/manual/en/), [Laravel 13 docs](https://laravel.com/framework/docs), [MDN](https://developer.mozilla.org/), [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html), [PHP-FIG](https://www.php-fig.org/), [OWASP](https://owasp.org/), [GitHub Docs](https://docs.github.com/), [Git Book](https://git-scm.com/book/en/v2).
 
@@ -19,23 +19,23 @@ Sources in this repo are official or primary references: [PHP Manual](https://ww
 
 | # | Topic | Questions |
 |---|-------|-----------|
-| 01 | [PHP - Basics](./01-php-basics.md) | 4 |
-| 02 | [OOP](./02-oop.md) | 16 |
-| 03 | [Laravel - Basics](./03-laravel-basics.md) | 10 |
-| 04 | [HTTP & REST API](./04-http-rest-api.md) | 9 |
-| 05 | [Git & Workflow](./05-git-workflow.md) | 1 |
-| 06 | [Testing](./06-testing.md) | 1 |
-| 07 | [Refactoring & Best Practices](./07-refactoring-best-practices.md) | 1 |
-| 08 | [Database Design](./08-database-design.md) | 1 |
-| 09 | [Performance & Optimization](./09-performance-optimization.md) | 1 |
-| 10 | [Security](./10-security.md) | 2 |
+| 01 | [PHP - Basics](./topics/01-php-basics/) | 4 |
+| 02 | [OOP](./topics/02-oop/) | 16 |
+| 03 | [Laravel - Basics](./topics/03-laravel-basics/) | 10 |
+| 04 | [HTTP & REST API](./topics/04-http-rest-api/) | 9 |
+| 05 | [Git & Workflow](./topics/05-git-workflow/) | 1 |
+| 06 | [Testing](./topics/06-testing/) | 1 |
+| 07 | [Refactoring & Best Practices](./topics/07-refactoring-best-practices/) | 1 |
+| 08 | [Database Design](./topics/08-database-design/) | 1 |
+| 09 | [Performance & Optimization](./topics/09-performance-optimization/) | 1 |
+| 10 | [Security](./topics/10-security/) | 2 |
 
 ## How to use this
 
-1. Pick a topic.
-2. Read the question and answer it out loud for about a minute.
+1. Open a topic folder under [`topics/`](./topics/).
+2. Pick **one question file** and answer it out loud for about a minute.
 3. Compare with the model answer and the **one-liner** at the bottom.
-4. Open **Source**, then **Learn more**, if you want the follow-up material interviewers often ask next.
+4. Follow **Previous / Next** to stay in the topic, or open **Source** and **Learn more** for the follow-up material interviewers often ask next.
 
 Each answer is written to be said in an interview: short definition first, then a table or example, then practical points. **Source** and **Learn more** are there so one question also teaches the next layer (the spec, the Laravel 13 default, the follow-up they ask).
 

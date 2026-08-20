@@ -1,0 +1,49 @@
+# What is the concept of Abstraction?
+
+> PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
+
+**Answer:**
+
+Abstraction means exposing **what** something does and hiding **how** it does it. Callers depend on a small, stable interface; the messy details stay inside.
+
+Two layers people mix up:
+
+- **Abstraction (the idea)** — a `PaymentGateway` with `charge()` so the checkout code never talks to Stripe HTTP APIs.
+- **Abstract class (the keyword)** — a language tool that *helps* you build that idea, alongside interfaces.
+
+```php
+abstract class PaymentGateway
+{
+    abstract public function charge(int $cents): string;
+
+    public function receipt(string $id): string
+    {
+        return "Receipt {$id}";
+    }
+}
+
+class StripeGateway extends PaymentGateway
+{
+    public function charge(int $cents): string
+    {
+        // HTTP call to Stripe — hidden from checkout
+        return 'ch_123';
+    }
+}
+```
+
+Checkout calls `charge()`. It does not know about API keys, retry policy, or JSON. That is abstraction.
+
+> [!TIP]
+> **One-liner:** Abstraction hides implementation behind a simple public API so callers depend on *what* happens, not *how*.
+
+**Source:** [PHP: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php) — official `abstract class` / `abstract` methods (the language tool behind the idea).
+
+**Learn more:**
+- [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php) — abstraction with a contract and no shared code
+- [Visibility](https://www.php.net/manual/en/language.oop5.visibility.php) — hide `private` details behind a small public API
+- [Laravel: Service Container](https://laravel.com/docs/13.x/container) — depending on an abstract type in a real app
+
+---
+
+[← Previous](./13-memory-allocation.md) · [Topic](./README.md) · [Next →](./15-abstract-class-vs-interface.md)

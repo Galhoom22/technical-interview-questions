@@ -1,6 +1,4 @@
-# 🔀 Git & Workflow
-
-## Q1. Describe a standard Git and GitHub workflow for collaborating within a team.
+# Describe a standard Git and GitHub workflow for collaborating within a team.
 
 **Answer:**
 
@@ -48,3 +46,7 @@ Hotfixes follow the same path, just faster: branch from `main`, PR, merge, deplo
 - [Git: Branching Workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) — topic branches (the Git book, not GitHub-specific)
 - [Laravel Pint](https://laravel.com/docs/13.x/pint) — first-party style fixer most Laravel CI jobs run
 - [Resolving a merge conflict using the command line](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-using-the-command-line) — what to do when `main` moved
+
+---
+
+[Topic](./README.md)

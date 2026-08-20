@@ -1,8 +1,6 @@
-# ⚡ Performance & Optimization
+# If a project is suffering from slow performance, what steps would you take to identify and resolve the bottlenecks?
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
-
-## Q1. If a project is suffering from slow performance, what steps would you take to identify and resolve the bottlenecks?
 
 **Answer:**
 
@@ -60,3 +58,7 @@ Same endpoint, before/after: query count, time, EXPLAIN. If it is not faster, th
 - [Laravel: Deployment / optimization](https://laravel.com/docs/13.x/deployment#optimization) — config/route/view cache, `APP_DEBUG=false`
 - [Laravel: Cache](https://laravel.com/docs/13.x/cache) and [Queues](https://laravel.com/docs/13.x/queues) — after the query is already cheap
 - [Laravel Horizon](https://laravel.com/docs/13.x/horizon) — Redis queue dashboard (official)
+
+---
+
+[Topic](./README.md)

@@ -1,10 +1,8 @@
-# ♻️ Refactoring & Best Practices
+# If you encounter a massive method (e.g., 400 lines of code), how would you approach refactoring it?
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
-
+>
 > PHP examples use **PHP 8.5** syntax. Official manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
-
-## Q1. If you encounter a massive method (e.g., 400 lines of code), how would you approach refactoring it?
 
 **Answer:**
 
@@ -71,3 +69,7 @@ First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I 
 - [Characterization test](https://en.wikipedia.org/wiki/Characterization_test) — the term (Michael Feathers); Wikipedia summary, not a spec
 - [Laravel: Controllers](https://laravel.com/docs/13.x/controllers) — keep HTTP thin; push work into actions/services
 - [Laravel: Form Request Validation](https://laravel.com/docs/13.x/validation#form-request-validation) — first extraction from a fat controller is often the Form Request
+
+---
+
+[Topic](./README.md)
