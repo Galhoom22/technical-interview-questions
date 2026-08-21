@@ -8,6 +8,8 @@
 
 Factories define **how to build fake (or realistic) model data**. They power tests and seeders so you never insert raw arrays by hand.
 
+**Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories)):
+
 ```php
 class UserFactory extends Factory
 {
@@ -16,19 +18,43 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => 'password', // hashed by the model's `hashed` cast
+            'password' => 'password',
         ];
-    }
-
-    public function admin(): static
-    {
-        return $this->state(['is_admin' => true]);
     }
 }
 
-User::factory()->count(10)->create();
-User::factory()->admin()->create();
-User::factory()->make(); // in memory, no INSERT
+User::factory()->count(3)->make();
+User::factory()->count(3)->create();
+```
+
+**In production:**
+
+```php
+class OrderFactory extends Factory
+{
+    public function definition(): array
+    {
+        return [
+            'user_id' => User::factory(),
+            'status' => 'paid',
+            'total_cents' => 4999,
+            'currency' => 'USD',
+        ];
+    }
+
+    public function pending(): static
+    {
+        return $this->state(['status' => 'pending']);
+    }
+}
+
+it('lists the user orders', function () {
+    $user = User::factory()->create();
+    Order::factory()->count(3)->for($user)->create();
+    Order::factory()->pending()->for($user)->create();
+
+    $this->actingAs($user)->getJson('/api/orders')->assertOk();
+});
 ```
 
 `create()` persists. `make()` does not. States (`admin()`) and sequences customize subsets. `has(Post::factory()->count(3))` builds relationships.

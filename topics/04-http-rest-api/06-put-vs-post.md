@@ -14,9 +14,28 @@
 | Who assigns the id | Server | Client already knows the URI (or sends the full replacement) |
 | Body | New resource fields | **Complete** representation |
 
+**Official** ([MDN: POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) + [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PUT)):
+
 ```http
-POST /api/articles          → 201  created (new id)
-PUT  /api/articles/42       → 200  replaced article 42 entirely
+POST /test HTTP/1.1
+Content-Type: application/json
+
+{"name": "New"}
+
+PUT /new.html HTTP/1.1
+Content-Type: text/html
+
+<full replacement of new.html>
+```
+
+POST: process this entity (often create). PUT: store this as the resource at this URI (idempotent replace).
+
+**In production:**
+
+```http
+POST /api/orders              → 201  new order, server assigns id
+PUT  /api/orders/15           → 200  replace the whole order document
+PATCH /api/orders/15          → 200  only { "status": "paid" }
 ```
 
 `PATCH` is the sibling people mix in: **partial** update, not a full replace. If the client sends only `{ "title": "New" }`, that is PATCH, not PUT.

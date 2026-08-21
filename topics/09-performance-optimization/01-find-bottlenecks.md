@@ -31,14 +31,29 @@ I **measure first**. I do not add Redis, queues, and eager loading at random. Th
 5. **Move off the request** — emails, images, reports → queues ([Horizon](https://laravel.com/docs/13.x/horizon) if you use Redis queues).
 6. **PHP/runtime** — OPcache on, too many service providers doing work on every request, debug mode off in production.
 
+**Official** ([Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading)):
+
 ```php
-// before: N+1
+$books = Book::with('author')->get();
+
+foreach ($books as $book) {
+    echo $book->author->name;
+}
+```
+
+Without `with('author')` this is N+1: one query for books, then one per author.
+
+**In production:**
+
+```php
+// before: N+1 on the order-history page
 foreach (User::all() as $user) {
     echo $user->orders->count();
 }
 
-// after
 User::withCount('orders')->paginate(50);
+
+Model::preventLazyLoading(! app()->isProduction());
 ```
 
 **4. Prove it**

@@ -30,6 +30,45 @@ I design the **contract first**, then implement it.
 
 I do not start from random controller methods. I start from resources, status codes, and the JSON the client will depend on.
 
+**Official** ([OpenAPI Specification](https://spec.openapis.org/oas/latest.html)):
+
+```yaml
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      responses:
+        '200':
+          description: A paged array of pets
+```
+
+**In production:**
+
+```php
+class StoreOrderRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        return [
+            'product_id' => ['required', 'exists:products,id'],
+            'qty' => ['required', 'integer', 'min:1'],
+        ];
+    }
+}
+
+class OrderResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'status' => $this->status,
+            'total_cents' => $this->total_cents,
+        ];
+    }
+}
+```
+
 > [!TIP]
 > **One-liner:** I design resources and error codes first, document them (OpenAPI/Postman), then implement with Laravel Form Requests, API Resources, and token auth.
 

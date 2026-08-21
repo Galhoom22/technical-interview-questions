@@ -20,32 +20,57 @@ A relationship is a method on the model that tells Eloquent how two tables conne
 | `morphTo` | Inverse of morph | Comment belongs to Post **or** Video |
 | `morphToMany` / `morphedByMany` | Polymorphic many-to-many | Tag attached to Post and Video |
 
+**Official** ([Laravel: Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships)):
+
 ```php
 class User extends Model
 {
-    public function profile(): HasOne
-    {
-        return $this->hasOne(Profile::class);
-    }
-
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
-
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }
 
-class Comment extends Model
+class Post extends Model
 {
-    public function commentable(): MorphTo
+    public function user(): BelongsTo
     {
-        return $this->morphTo();
+        return $this->belongsTo(User::class);
     }
 }
+```
+
+**In production:**
+
+```php
+class User extends Model
+{
+    public function cart(): HasOne
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+}
+
+class Order extends Model
+{
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'order_items')
+            ->withPivot('qty', 'unit_cents');
+    }
+}
+
+User::with('orders.items')->paginate(20); // avoid N+1 on the order history page
 ```
 
 **Practical points for the interview:**

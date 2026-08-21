@@ -6,6 +6,27 @@
 
 A trait is a reuse tool for **horizontal** sharing of methods (and properties). PHP copies the trait’s members into the class at compile time. It is not inheritance and not an interface.
 
+**Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php)):
+
+```php
+trait ezcReflectionReturnInfo {
+    function getReturnType() { /*1*/ }
+    function getReturnDescription() { /*2*/ }
+}
+
+class ezcReflectionMethod extends ReflectionMethod {
+    use ezcReflectionReturnInfo;
+}
+
+class ezcReflectionFunction extends ReflectionFunction {
+    use ezcReflectionReturnInfo;
+}
+```
+
+Two unrelated classes reuse the same methods. Conflict resolution uses `insteadof` / `as`.
+
+**In production:**
+
 ```php
 trait HasSlug
 {
@@ -17,24 +38,17 @@ trait HasSlug
     }
 }
 
+class Product
+{
+    use HasSlug; // catalog URLs
+}
+
 class Article
 {
-    use HasSlug;
+    use HasSlug; // blog URLs — no shared parent with Product
 }
 
-(new Article())->slug('Hello World'); // "hello-world"
-```
-
-If two traits define the same method, you must resolve the conflict with `insteadof` and `as`.
-
-```php
-class Example
-{
-    use TraitA, TraitB {
-        TraitA::log insteadof TraitB;
-        TraitB::log as logFromB;
-    }
-}
+(new Product())->slug('Blue T-Shirt'); // "blue-t-shirt"
 ```
 
 **When I use traits:** small, focused behavior used in several classes that do **not** share a parent (`HasFactory` in Laravel is the classic example).

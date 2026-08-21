@@ -23,10 +23,23 @@ It relies on **HTTP** (almost always HTTPS in production). REST is an architectu
 | `ETag` / `If-Match` | Optional optimistic concurrency |
 | Query string | Filtering, pagination: `?page=2&status=paid` |
 
+**Official** ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) + [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)):
+
+```http
+GET /items/2 HTTP/1.1
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"id": 2, "name": "Example"}
+```
+
+**In production:**
+
 ```http
 POST /api/orders HTTP/1.1
-Host: api.example.com
-Authorization: Bearer 123
+Authorization: Bearer {token}
 Accept: application/json
 Content-Type: application/json
 

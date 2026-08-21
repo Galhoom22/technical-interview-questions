@@ -8,21 +8,40 @@ OOP (Object-Oriented Programming) is a way of structuring code around **objects*
 
 Instead of a pile of functions and arrays, you model `User`, `Order`, `Invoice`. Each object knows its own state and the operations that belong to it.
 
-```php
-class Order
-{
-    public function __construct(
-        private array $items,
-    ) {}
+**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
 
-    public function total(): int
+```php
+class SimpleClass
+{
+    public $var = 'a default value';
+
+    public function displayVar()
     {
-        return array_sum($this->items);
+        echo $this->var;
     }
 }
 
-$order = new Order([1000, 2500]);
-$order->total(); // 3500
+$instance = new SimpleClass();
+$instance->displayVar();
+```
+
+Data (`$var`) and behavior (`displayVar()`) live on the same object.
+
+**In production:**
+
+```php
+class Order
+{
+    public function __construct(private array $itemCents) {}
+
+    public function totalCents(): int
+    {
+        return array_sum($this->itemCents);
+    }
+}
+
+$order = new Order([1999, 1299]);
+$order->totalCents(); // 3298 — checkout uses the object, not a loose array
 ```
 
 **Why interviewers ask this:** they want to hear *objects + state + behavior*, not a list of buzzwords. I then connect it to the four principles (encapsulation, abstraction, inheritance, polymorphism) if they follow up.

@@ -32,6 +32,30 @@ Codes I actually return:
 | `429 Too Many Requests` | Rate limited |
 | `500 Internal Server Error` | Unhandled exception |
 
+**Official** ([MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)):
+
+```http
+HTTP/1.1 201 Created
+Location: /new.html
+
+HTTP/1.1 404 Not Found
+
+HTTP/1.1 422 Unprocessable Content
+```
+
+**In production:**
+
+```php
+return OrderResource::make($order)
+    ->response()
+    ->setStatusCode(201)
+    ->header('Location', route('orders.show', $order));
+
+// validation failure → 422 JSON errors (Laravel)
+// unknown order → abort(404)
+// someone else's order → abort(403)
+```
+
 > [!TIP]
 > **One-liner:** Status codes are grouped 1xx–5xx. I pick a specific 2xx/4xx/5xx so the client can branch without parsing a message string.
 

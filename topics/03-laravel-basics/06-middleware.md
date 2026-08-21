@@ -12,18 +12,39 @@ Middleware is a **filter around the HTTP request**. It can inspect, reject, or e
 request → middleware → middleware → controller → middleware → response
 ```
 
+**Official** ([Laravel: Middleware](https://laravel.com/docs/13.x/middleware)):
+
 ```php
-class EnsureUserIsAdmin
+class EnsureTokenIsValid
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user()?->isAdmin()) {
-            abort(403);
+        if ($request->input('token') !== 'my-secret-token') {
+            return redirect('/home');
         }
 
         return $next($request);
     }
 }
+```
+
+**In production:**
+
+```php
+class EnsureCheckoutNotLocked
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        if ($request->user()?->checkout_locked_at) {
+            abort(423, 'Checkout is locked while payment is processing.');
+        }
+
+        return $next($request);
+    }
+}
+
+Route::post('/checkout', CheckoutController::class)
+    ->middleware(['auth', 'checkout.unlocked']);
 ```
 
 **Primary use cases:**

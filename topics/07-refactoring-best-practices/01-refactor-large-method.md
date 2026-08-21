@@ -32,11 +32,21 @@ validate → load models → calculate prices → persist → notify → build r
 | Controller soup | Form Request + Action/Service |
 | God object | Split by responsibility (SRP) |
 
-```php
-// before: one method does everything
-public function checkout(Request $request) { /* 400 lines */ }
+**Official** ([Extract Function](https://refactoring.com/catalog/extractFunction.html) — Fowler):
 
-// after: orchestration only
+```
+function printOwing(invoice) {
+  printBanner();
+  let outstanding = calculateOutstanding(invoice);
+  printDetails(invoice, outstanding);
+}
+```
+
+The 400-line method becomes a short list of named steps. Each extracted function does one job.
+
+**In production:**
+
+```php
 public function checkout(CheckoutRequest $request): JsonResponse
 {
     $cart = $this->carts->forUser($request->user());

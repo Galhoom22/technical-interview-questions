@@ -6,20 +6,37 @@
 
 You instantiate it **from inside the class**, usually with a **static factory** (or `getInstance()` for a singleton). `new self(...)` / `new static(...)` is allowed there because it is the same class.
 
+**Official** ([PHP Manual: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
+
 ```php
-class Database
+class Foo
 {
-    private static ?self $instance = null;
-
-    private function __construct(private string $dsn) {}
-
-    public static function getInstance(): self
+    public static function aStaticMethod()
     {
-        return self::$instance ??= new self(config('database.dsn'));
+        // no $this — this is a function on the class
     }
 }
 
-Database::getInstance();
+Foo::aStaticMethod();
+$classname = 'Foo';
+$classname::aStaticMethod();
+```
+
+**In production:**
+
+```php
+class Order
+{
+    private function __construct(private array $lines) {}
+
+    public static function fromCart(Cart $cart): self
+    {
+        return new self($cart->lines()); // new self is allowed here
+    }
+}
+
+Order::fromCart($cart);
+new Order([]); // blocked if the constructor is private
 ```
 
 Other legitimate paths:

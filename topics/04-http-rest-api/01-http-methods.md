@@ -20,13 +20,24 @@ HTTP methods (verbs) tell the server **what kind of operation** the client wants
 
 **Safe** = no server-side state change. **Idempotent** = repeating the same request leaves the same state (`PUT` / `DELETE` / `GET`). `POST` is not idempotent: two creates can mean two rows.
 
+**Official** ([MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)):
+
+```http
+GET /index.html HTTP/1.1
+POST /test HTTP/1.1
+PUT /new.html HTTP/1.1
+DELETE /file.html HTTP/1.1
+```
+
+**In production:**
+
 ```http
 GET    /api/orders
 POST   /api/orders
 GET    /api/orders/15
-PUT    /api/orders/15
 PATCH  /api/orders/15
 DELETE /api/orders/15
+POST   /api/orders/15/cancel
 ```
 
 > [!TIP]

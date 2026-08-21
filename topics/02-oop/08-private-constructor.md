@@ -6,20 +6,44 @@
 
 Yes. A `private` constructor means **`new ClassName()` is only legal inside that class**. Code outside cannot instantiate it directly. `protected` allows children, but still blocks the outside world.
 
-```php
-class Uuid
-{
-    private function __construct(private string $value) {}
+**Official** ([PHP Manual: Visibility](https://www.php.net/manual/en/language.oop5.visibility.php)):
 
-    public static function fromString(string $value): self
+```php
+class MyClass
+{
+    private function __construct() {}
+
+    public static function from()
     {
-        // validate, then:
-        return new self($value);
+        return new self(); // legal: same class
     }
 }
 
-Uuid::fromString('…'); // ok
-new Uuid('…');         // Error: private constructor
+MyClass::from();
+new MyClass(); // Error: private constructor
+```
+
+Methods, including `__construct`, can be `private` / `protected` / `public`.
+
+**In production:**
+
+```php
+class OrderId
+{
+    private function __construct(private string $uuid) {}
+
+    public static function fromString(string $value): self
+    {
+        if (! str_is_uuid($value)) {
+            throw new InvalidArgumentException('Invalid order id');
+        }
+
+        return new self($value); // only valid UUIDs become objects
+    }
+}
+
+OrderId::fromString($request->string('order_id'));
+new OrderId('nope'); // not allowed — keeps junk IDs out of the domain
 ```
 
 **Why you do this:**

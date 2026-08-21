@@ -12,31 +12,44 @@
 | State | Instance properties | Only static properties / arguments |
 | Typical use | Behavior that needs this object’s data | Factories, utilities, named constructors |
 
+**Official** ([PHP Manual: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
+
 ```php
-class Counter
+class Foo
 {
-    private int $value = 0;
-    private static int $created = 0;
+    public static $my_static = 'foo';
 
-    public function __construct()
+    public function staticValue()
     {
-        self::$created++;
-    }
-
-    public function increment(): void   // needs $this
-    {
-        $this->value++;
-    }
-
-    public static function created(): int  // no instance needed
-    {
-        return self::$created;
+        return self::$my_static; // instance method may read static data
     }
 }
 
-$c = new Counter();
-$c->increment();
-Counter::created();
+print Foo::$my_static;
+$foo = new Foo();
+print $foo->staticValue();
+```
+
+**In production:**
+
+```php
+class Cart
+{
+    public function __construct(private array $lines) {}
+
+    public function totalCents(): int
+    {
+        return array_sum(array_column($this->lines, 'cents')); // needs this cart
+    }
+
+    public static function empty(): self
+    {
+        return new self([]); // named constructor — no existing cart
+    }
+}
+
+Cart::empty();
+$cart->totalCents();
 ```
 
 Static methods are not “faster OOP”. They are functions namespaced on a class. Too many of them usually means the design wanted a service object instead.

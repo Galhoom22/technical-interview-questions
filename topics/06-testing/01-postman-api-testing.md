@@ -24,12 +24,27 @@ I treat Postman as a **repeatable contract check**, not a one-off “send” but
 | Validation | Bad payload → `422` + field errors |
 | Missing | Unknown id → `404` |
 
+**Official** ([Postman: Write scripts to test API response data](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts)):
+
+```javascript
+pm.test('Status code is 200', function () {
+    pm.response.to.have.status(200);
+});
+```
+
+**In production:**
+
 ```javascript
 pm.test('creates order', function () {
     pm.response.to.have.status(201);
     const json = pm.response.json();
     pm.expect(json).to.have.property('id');
+    pm.expect(json.status).to.eql('pending');
     pm.environment.set('orderId', json.id);
+});
+
+pm.test('rejects unauthenticated checkout', function () {
+    pm.response.to.have.status(401);
 });
 ```
 

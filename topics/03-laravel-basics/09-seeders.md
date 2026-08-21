@@ -8,17 +8,14 @@
 
 A seeder is a class that **inserts data** into the database on purpose: lookup tables, an admin user, or a full demo dataset.
 
+**Official** ([Laravel: Seeding](https://laravel.com/docs/13.x/seeding)):
+
 ```php
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call([
-            RoleSeeder::class,
-            AdminUserSeeder::class,
-        ]);
-
-        User::factory()->count(50)->create();
+        User::factory(10)->create();
     }
 }
 ```
@@ -26,6 +23,22 @@ class DatabaseSeeder extends Seeder
 ```bash
 php artisan db:seed
 php artisan migrate:fresh --seed
+```
+
+**In production:**
+
+```php
+public function run(): void
+{
+    $this->call([
+        CurrencySeeder::class,  // USD, EGP — lookup rows, not fake
+        AdminUserSeeder::class, // one real admin for staging
+    ]);
+
+    if (! app()->isProduction()) {
+        User::factory()->count(50)->has(Order::factory()->count(3))->create();
+    }
+}
 ```
 
 Seeders are for **what to insert and how much**. They often **call factories** for dummy rows, and insert fixed rows (countries, roles) without factories.

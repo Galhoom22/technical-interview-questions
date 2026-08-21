@@ -16,28 +16,52 @@ Both define a contract. An **abstract class** can also ship shared code and stat
 | Constants | Yes | Yes |
 | Typical role | Shared base in one family | Capability / role (`Payable`, `Jsonable`) |
 
+**Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php) + [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
+
 ```php
-abstract class Report
+abstract class AbstractClass
 {
-    public function __construct(protected string $title) {}
+    abstract protected function getValue();
 
-    abstract public function generate(): string;
-
-    public function heading(): string
+    public function printOut()
     {
-        return strtoupper($this->title);
+        print $this->getValue();
     }
 }
 
-interface Exportable
+interface Template
 {
-    public function export(): string;
+    public function setVariable($name, $var);
+    public function getHtml($template);
+}
+```
+
+Abstract class: shared `printOut()`. Interface: contract only — a class may `implement` several.
+
+**In production:**
+
+```php
+abstract class Report
+{
+    public function __construct(protected Order $order) {}
+
+    abstract public function generate(): string;
+
+    public function filename(): string
+    {
+        return 'order-'.$this->order->id;
+    }
 }
 
-class PdfReport extends Report implements Exportable
+interface Downloadable
 {
-    public function generate(): string { return '%PDF…'; }
-    public function export(): string { return $this->generate(); }
+    public function downloadHeaders(): array;
+}
+
+class InvoicePdf extends Report implements Downloadable
+{
+    public function generate(): string { /* TCPDF / Dompdf */ return '%PDF'; }
+    public function downloadHeaders(): array { return ['Content-Type' => 'application/pdf']; }
 }
 ```
 

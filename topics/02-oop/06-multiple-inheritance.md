@@ -15,23 +15,44 @@ What you do instead:
 | Reuse *implementation* in a family of types | Single inheritance (`extends`) |
 | Reuse by *delegation* | Composition — inject another object |
 
+**Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php) — “an alternative to multiple inheritance”):
+
 ```php
-interface Auditable
-{
-    public function auditId(): string;
+class Base {
+    public function sayHello() {
+        echo 'Hello ';
+    }
 }
 
-interface Cacheable
-{
-    public function cacheKey(): string;
+trait SayWorld {
+    public function sayHello() {
+        parent::sayHello();
+        echo 'World!';
+    }
 }
 
-class Report extends BaseReport implements Auditable, Cacheable
-{
-    use LogsActivity; // shared implementation
+class MyHelloWorld extends Base {
+    use SayWorld;
+}
 
-    public function auditId(): string { return (string) $this->id; }
-    public function cacheKey(): string { return 'report:'.$this->id; }
+$o = new MyHelloWorld();
+$o->sayHello(); // Hello World!
+```
+
+One `extends`, extra behavior via `use`. A class still cannot `extend A, B`.
+
+**In production:**
+
+```php
+interface Auditable { public function auditId(): string; }
+interface Billable { public function billableAmount(): int; }
+
+class Order extends Model implements Auditable, Billable
+{
+    use HasFactory; // Laravel trait — shared code, not a second parent
+
+    public function auditId(): string { return 'order:'.$this->id; }
+    public function billableAmount(): int { return $this->total_cents; }
 }
 ```
 

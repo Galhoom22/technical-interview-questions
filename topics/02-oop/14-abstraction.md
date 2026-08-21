@@ -11,6 +11,33 @@ Two layers people mix up:
 - **Abstraction (the idea)** — a `PaymentGateway` with `charge()` so the checkout code never talks to Stripe HTTP APIs.
 - **Abstract class (the keyword)** — a language tool that *helps* you build that idea, alongside interfaces.
 
+**Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php)):
+
+```php
+abstract class AbstractClass
+{
+    abstract protected function getValue();
+
+    public function printOut()
+    {
+        print $this->getValue() . "\n";
+    }
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+    protected function getValue()
+    {
+        return "ConcreteClass1";
+    }
+}
+
+$class1 = new ConcreteClass1();
+$class1->printOut(); // callers use printOut(); they do not know getValue()
+```
+
+**In production:**
+
 ```php
 abstract class PaymentGateway
 {
@@ -26,10 +53,11 @@ class StripeGateway extends PaymentGateway
 {
     public function charge(int $cents): string
     {
-        // HTTP call to Stripe — hidden from checkout
-        return 'ch_123';
+        return Http::stripe()->post('/charges', ['amount' => $cents])->json('id');
     }
 }
+
+$checkout->pay(new StripeGateway(), $order->totalCents()); // no Stripe JSON in the controller
 ```
 
 Checkout calls `charge()`. It does not know about API keys, retry policy, or JSON. That is abstraction.

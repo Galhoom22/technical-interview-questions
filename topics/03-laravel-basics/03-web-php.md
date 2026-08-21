@@ -17,11 +17,28 @@ That group typically gives you:
 | Cookie encryption | Session cookie is not plaintext |
 | `SubstituteBindings` | Route-model binding |
 
+**Official** ([Laravel: Routing](https://laravel.com/docs/13.x/routing) — default `web.php`):
+
 ```php
-// routes/web.php
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware('auth')
-    ->name('dashboard');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+```
+
+Those routes sit in the `web` middleware group (session, cookies, CSRF).
+
+**In production:**
+
+```php
+Route::middleware('auth')->group(function () {
+    Route::get('/account/orders', [OrderHistoryController::class, 'index'])
+        ->name('account.orders');
+
+    Route::post('/account/orders/{order}/cancel', [CancelOrderController::class, 'store'])
+        ->name('account.orders.cancel'); // browser form + CSRF token
+});
 ```
 
 These routes are for Blade / Inertia / Livewire pages, not for a stateless mobile API.

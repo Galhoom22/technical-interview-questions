@@ -13,6 +13,26 @@ The class defines:
 - visibility (`public` / `protected` / `private`)
 - how instances are constructed
 
+**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
+
+```php
+class SimpleClass
+{
+    public $var = 'a default value';
+
+    public function displayVar()
+    {
+        echo $this->var;
+    }
+}
+
+$instance = new SimpleClass();
+```
+
+The class is the declaration. `$instance` is one object built from it.
+
+**In production:**
+
 ```php
 class User
 {
@@ -23,11 +43,12 @@ class User
 
     public function mention(): string
     {
-        return '@' . $this->name;
+        return '@'.$this->name;
     }
 }
 
-$user = new User('Omar', 'omar@example.com'); // instance
+$omar = new User('Omar', 'omar@shop.example');
+$sara = new User('Sara', 'sara@shop.example'); // same class, two accounts
 ```
 
 One class, many objects. Each instance has its own property values; they share the method code.

@@ -8,33 +8,50 @@ No. An abstract class is incomplete by definition. PHP throws an error if you `n
 
 You instantiate a **concrete child** that implements every abstract method.
 
+**Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php)):
+
 ```php
-abstract class Animal
+abstract class AbstractClass
 {
-    abstract public function speak(): string;
+    abstract protected function getValue();
 }
 
-class Dog extends Animal
+// $obj = new AbstractClass(); // Error: Cannot instantiate abstract class
+
+class ConcreteClass1 extends AbstractClass
 {
-    public function speak(): string
+    protected function getValue()
     {
-        return 'woof';
+        return "ConcreteClass1";
     }
 }
 
-new Animal(); // Error: Cannot instantiate abstract class Animal
-new Dog();    // ok
+$obj = new ConcreteClass1(); // ok
 ```
 
-You *can* type-hint the abstract class and receive a child. That is polymorphism, not instantiation of the abstract type.
+**In production:**
 
 ```php
-function handle(Animal $animal): string
+abstract class Discount
 {
-    return $animal->speak();
+    abstract public function apply(int $cents): int;
 }
 
-handle(new Dog());
+class CouponDiscount extends Discount
+{
+    public function apply(int $cents): int
+    {
+        return (int) round($cents * 0.9);
+    }
+}
+
+new Discount();        // Error — there is no generic discount
+new CouponDiscount();  // checkout uses a real rule
+
+function quote(Discount $discount, int $cents): int
+{
+    return $discount->apply($cents); // type-hint abstract, pass a child
+}
 ```
 
 > [!TIP]

@@ -18,12 +18,27 @@
 | Overhead | Lower | Higher (hydration) |
 | Best for | Reports, aggregates, bulk SQL | Domain entities, CRUD |
 
-```php
-// Query Builder
-$emails = DB::table('users')->where('active', 1)->pluck('email');
+**Official** ([Laravel: Query Builder](https://laravel.com/docs/13.x/queries) + [Eloquent](https://laravel.com/docs/13.x/eloquent)):
 
-// Eloquent
-$users = User::with('posts')->where('active', true)->get();
+```php
+$users = DB::table('users')
+    ->where('votes', '>', 100)
+    ->get();
+
+$flights = Flight::all();
+```
+
+**In production:**
+
+```php
+$emails = DB::table('users')
+    ->where('newsletter', true)
+    ->pluck('email'); // marketing export — no User models
+
+$orders = Order::with('items')
+    ->where('user_id', $request->user()->id)
+    ->latest()
+    ->paginate(20); // account page — need models, casts, policies
 ```
 
 Eloquent **uses** the Query Builder internally (`User::query()` is a builder). Choosing Eloquent vs `DB::` is about whether you need a model or just SQL.

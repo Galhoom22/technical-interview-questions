@@ -12,9 +12,28 @@ Both load and execute another PHP file in the current scope. The difference is *
 | Use when | The file is mandatory | The file is optional |
 | Typical files | Autoload, config, core classes | Optional template / partial |
 
+**Official** ([PHP Manual: `include`](https://www.php.net/manual/en/function.include.php)):
+
 ```php
-require __DIR__ . '/config.php';   // app cannot run without this
-include __DIR__ . '/banner.php';   // nice to have; failure is not fatal
+echo "A $color $fruit"; // A
+
+include 'vars.php';     // vars.php sets $color = 'green', $fruit = 'apple'
+
+echo "A $color $fruit"; // A green apple
+```
+
+`require` uses the same rules. If `vars.php` is missing, `include` warns and continues; `require` is a fatal error and the script stops.
+
+**In production:**
+
+```php
+// public/index.php — the app cannot boot without Composer
+require __DIR__ . '/../vendor/autoload.php';
+
+$app = require_once __DIR__ . '/../bootstrap/app.php';
+
+// optional marketing partial — a missing file must not take down checkout
+include __DIR__ . '/../resources/views/partials/promo-banner.php';
 ```
 
 `require_once` and `include_once` do the same thing, but skip the file if it was already loaded. That prevents “cannot redeclare function/class” errors.

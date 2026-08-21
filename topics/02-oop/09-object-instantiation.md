@@ -4,10 +4,37 @@
 
 **Answer:**
 
-From user code it looks like one step: `new ClassName(...)`. Internally it is a pipeline the **Zend Engine** runs.
+From user code it looks like one step. Internally it is a pipeline the **Zend Engine** runs.
+
+**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Constructors](https://www.php.net/manual/en/language.oop5.decon.php)):
 
 ```php
-$user = new User('Omar', 'omar@example.com');
+$instance = new SimpleClass();
+
+class BaseClass {
+    function __construct() {
+        print "In BaseClass constructor\n";
+    }
+}
+
+class SubClass extends BaseClass {
+    function __construct() {
+        parent::__construct();
+        print "In SubClass constructor\n";
+    }
+}
+
+$obj = new SubClass();
+```
+
+`new` creates the object first; `__construct` runs after, to initialize it.
+
+**In production:**
+
+```php
+$order = new Order($cart->items());
+
+$billing = app(InvoiceService::class); // container still ends in new InvoiceService(...)
 ```
 
 **Step by step:**

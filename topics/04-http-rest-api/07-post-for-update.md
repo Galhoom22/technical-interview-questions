@@ -18,6 +18,28 @@ REST textbooks say PATCH/PUT for updates. In real systems I still use POST when 
 
 I do **not** use POST for updates just because “it works”. If the client is a JSON API with no files, I prefer `PATCH /api/orders/15`.
 
+**Official** ([Laravel: Form Method Spoofing](https://laravel.com/docs/13.x/routing#form-method-spoofing)):
+
+```html
+<form action="/foo/bar" method="POST">
+    @csrf
+    @method('PUT')
+</form>
+```
+
+The browser still sends POST. Laravel reads `_method=PUT`.
+
+**In production:**
+
+```http
+POST /api/orders/15/cancel HTTP/1.1
+Authorization: Bearer {token}
+
+POST /account/profile HTTP/1.1
+Content-Type: multipart/form-data; boundary=...
+# HTML profile form with avatar — PHP $_FILES only on POST
+```
+
 > [!TIP]
 > **One-liner:** POST for updates when the client is a form, when uploading files (PHP multipart), or when the operation is an action (`/cancel`) rather than a field replace.
 

@@ -21,6 +21,25 @@ You do not call most of them yourself. The engine does.
 | `__serialize()` / `__unserialize()` | `serialize()` / `unserialize()` (`__sleep` / `__wakeup` are soft-deprecated in PHP 8.5) |
 | `__debugInfo()` | The object is dumped with `var_dump()` |
 
+**Official** ([PHP Manual: Magic Methods](https://www.php.net/manual/en/language.oop5.magic.php) — `__toString`):
+
+```php
+class TestClass
+{
+    public function __construct(public $foo) {}
+
+    public function __toString()
+    {
+        return $this->foo;
+    }
+}
+
+$class = new TestClass('Hello');
+echo $class; // Hello — PHP called __toString(), not you
+```
+
+**In production:**
+
 ```php
 readonly class Money
 {
@@ -40,7 +59,8 @@ readonly class Money
     }
 }
 
-echo new Money(1999, 'USD'); // "19.99 USD"
+echo new Money(1999, 'USD'); // "19.99 USD" on an invoice line
+$discounted = (new Money(1999, 'USD'))->withCents(1499);
 ```
 
 **When to use them:**

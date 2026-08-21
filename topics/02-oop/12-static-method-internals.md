@@ -16,18 +16,41 @@ When you call `User::make()`:
 4. It builds a **call frame** (arguments, return slot). It does **not** allocate a `zend_object`.
 5. Inside the method, `$this` is not bound. `self::` is the class where the method was **defined**. `static::` is the class that was **called** (late static binding).
 
+**Official** ([PHP Manual: Late Static Bindings](https://www.php.net/manual/en/language.oop5.late-static-bindings.php)):
+
 ```php
-class ParentId
-{
-    public static function who(): string
-    {
-        return static::class; // late static binding
+class A {
+    public static function who() {
+        echo __CLASS__;
+    }
+    public static function test() {
+        static::who(); // late static binding
     }
 }
 
-class ChildId extends ParentId {}
+class B extends A {
+    public static function who() {
+        echo __CLASS__;
+    }
+}
 
-ChildId::who(); // "ChildId" — no ChildId object was created
+B::test(); // B — no B object was allocated
+```
+
+**In production:**
+
+```php
+class Model
+{
+    public static function query(): string
+    {
+        return static::class; // Order::query() → App\Models\Order
+    }
+}
+
+class Order extends Model {}
+
+Order::query(); // used as Eloquent-style entry — still no Order instance yet
 ```
 
 That is why static works without `new`: there is nothing to construct. The engine is calling a function that happens to live on the class.

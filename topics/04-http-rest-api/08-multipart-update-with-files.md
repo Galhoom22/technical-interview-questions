@@ -23,41 +23,38 @@ Reason: PHP populates `$_FILES` / `$request->file()` for POST multipart. PUT/PAT
 
 `multipart/form-data` — **not** `application/json`. JSON cannot carry raw file bytes without base64 (worse for large PDFs/images).
 
-```http
-POST /api/profiles/1 HTTP/1.1
-Authorization: Bearer 123
-Accept: application/json
-Content-Type: multipart/form-data; boundary=----Boundary
+**Official** ([PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php) + [MDN: MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types)):
 
-------Boundary
-Content-Disposition: form-data; name="bio"
-
-Backend developer
-------Boundary
-Content-Disposition: form-data; name="avatar"; filename="photo.jpg"
-Content-Type: image/jpeg
-
-<binary>
-------Boundary
-Content-Disposition: form-data; name="cv"; filename="cv.pdf"
-Content-Type: application/pdf
-
-<binary>
-------Boundary--
+```html
+<form enctype="multipart/form-data" action="__URL__" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+    Send this file: <input name="userfile" type="file" />
+</form>
 ```
 
-The browser/Postman sets `Content-Type` **including the boundary**. I never set `multipart/form-data` by hand without a boundary.
+`Content-Type` is `multipart/form-data`. PHP fills `$_FILES` for POST, not for PUT.
 
-In Laravel:
+**In production:**
 
 ```php
-$request->validate([
-    'bio' => ['required', 'string'],
-    'avatar' => ['nullable', 'image', 'max:2048'],
-    'cv' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-]);
+public function update(UpdateProfileRequest $request, Profile $profile): JsonResponse
+{
+    $data = $request->validated();
 
-$path = $request->file('avatar')?->store('avatars');
+    if ($request->hasFile('avatar')) {
+        $data['avatar_path'] = $request->file('avatar')->store('avatars');
+    }
+
+    if ($request->hasFile('cv')) {
+        $data['cv_path'] = $request->file('cv')->store('cvs');
+    }
+
+    $profile->update($data);
+
+    return ProfileResource::make($profile)
+        ->response()
+        ->setStatusCode(200);
+}
 ```
 
 ### Headers

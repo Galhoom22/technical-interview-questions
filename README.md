@@ -4,6 +4,8 @@ Real **technical** questions from interviews I sat. Each question is its own fil
 
 **46 questions** · PHP **8.5** · Laravel **13**
 
+Where an answer has code, you get two snippets: **Official** (PHP Manual, Laravel docs, MDN, …) then **In production** (the same idea in a real backend).
+
 ## Topics
 
 | | Topic | Questions |

@@ -33,12 +33,32 @@ A first pass I would put on a whiteboard:
 
 **Step 3 — Relationships**
 
+**Official** ([PostgreSQL: Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html)):
+
+```sql
+CREATE TABLE cities (
+    name     varchar(80) primary key,
+    location point
+);
+
+CREATE TABLE weather (
+    city      varchar(80) references cities(name),
+    temp_lo   int,
+    temp_hi   int,
+    date      date
+);
+```
+
+A row in `weather` cannot name a city that does not exist. That is referential integrity — the same idea as `orders.user_id` → `users.id`.
+
+**In production:**
+
 ```
 User 1──* Address
 User 1──* Order
-User 1──1 Cart (or 1──* if many)
+User 1──1 Cart
 
-Category 1──* Product 1──* Variant 1──* Inventory
+Product 1──* Variant 1──* Inventory
 Cart 1──* CartItem *──1 Variant
 Order 1──* OrderItem *──1 Variant   (item stores price snapshot)
 Order 1──* Payment

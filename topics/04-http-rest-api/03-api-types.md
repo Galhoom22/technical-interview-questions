@@ -20,6 +20,25 @@ Also useful split: **public HTTP APIs** vs **library APIs** (a PHP package’s c
 
 I default to REST for CRUD backends. GraphQL when many clients need different shapes. gRPC for internal service-to-service with strict contracts. SOAP when an enterprise partner still requires it.
 
+**Official** ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST)):
+
+```http
+GET /items/2 HTTP/1.1
+Accept: application/json
+```
+
+REST uses HTTP as the uniform interface: the URI is the resource, the method is the action.
+
+**In production:**
+
+```http
+GET /api/orders/15 HTTP/1.1
+Authorization: Bearer {token}
+Accept: application/json
+```
+
+Same shop also talks to a payment **RPC-style** endpoint (`POST /v1/charges`) and might expose GraphQL later for a storefront that needs nested product+reviews in one round trip.
+
 > [!TIP]
 > **One-liner:** Common API styles are REST, RPC/gRPC, GraphQL, SOAP, and realtime (WebSocket). REST over HTTP + JSON is the default for Laravel backends.
 

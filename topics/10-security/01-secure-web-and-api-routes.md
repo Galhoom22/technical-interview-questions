@@ -16,24 +16,36 @@ Same goal — **authenticate, authorize, validate, throttle** — different tool
 | CORS | Same origin by default | Must be explicit for browser SPAs |
 | Typical extra | `verified`, `password.confirm` | `throttle:api`, abilities/scopes |
 
-**Web routes**
+**Official** ([Laravel: CSRF](https://laravel.com/docs/13.x/csrf) + [Sanctum](https://laravel.com/docs/13.x/sanctum)):
+
+```html
+<form method="POST" action="/profile">
+    @csrf
+    ...
+</form>
+```
+
+```php
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+```
+
+**In production:**
 
 ```php
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/orders', [OrderController::class, 'index']);
-    Route::post('/orders', [OrderController::class, 'store']); // CSRF via web group
+    Route::post('/orders', [OrderController::class, 'store']); // session + CSRF
 });
-```
 
-The `web` group already applies session, cookie encryption, and CSRF. I still add `auth`, policies/`can`, and Form Request validation. I never disable CSRF “to make the AJAX easier” without a real alternative (Sanctum SPA with CSRF cookie is the alternative).
-
-**API routes**
-
-```php
 Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
     Route::apiResource('orders', OrderController::class);
 });
+
+$order = Order::create($request->validated()); // never $request->all()
 ```
+
+The `web` group already applies session, cookie encryption, and CSRF. I still add `auth`, policies/`can`, and Form Request validation.
 
 - Public endpoints stay **outside** `auth:sanctum` (login, health) and are throttled harder.
 - Authorization is **policies / gates**, not “the token exists so they can do anything”.

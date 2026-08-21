@@ -28,6 +28,26 @@ Important nuance: if the static method itself does `new self()` inside, you stil
 
 I do not choose static methods to “save RAM” in a Laravel app. I choose them when there is no instance state. Object overhead is tiny compared to DB queries.
 
+**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
+
+```php
+$a = new SimpleClass();
+$b = new SimpleClass(); // second object — its own $var on the heap
+
+Foo::aStaticMethod();   // no object; class table + call frame only
+```
+
+**In production:**
+
+```php
+$orders = [];
+foreach (range(1, 10_000) as $i) {
+    $orders[] = new Order($i); // 10k heap objects (e.g. hydrating a report badly)
+}
+
+Order::pendingStatus(); // one class in RAM; do not do this 10k times as “optimization”
+```
+
 > [!TIP]
 > **One-liner:** `new` allocates a heap object every time; a static call only uses the already-loaded class plus a stack frame. Static is not a performance strategy — it is “no instance state”.
 

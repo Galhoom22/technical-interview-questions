@@ -8,26 +8,48 @@
 
 A migration is a **version-controlled PHP class that changes the database schema**. It is Git for tables: `up()` applies the change, `down()` reverses it.
 
-```php
-public function up(): void
-{
-    Schema::create('users', function (Blueprint $table) {
-        $table->id();
-        $table->string('email')->unique();
-        $table->timestamps();
-    });
-}
+**Official** ([Laravel: Migrations](https://laravel.com/docs/13.x/migrations)):
 
-public function down(): void
+```php
+return new class extends Migration
 {
-    Schema::dropIfExists('users');
-}
+    public function up(): void
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('airline');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::drop('flights');
+    }
+};
 ```
 
 ```bash
-php artisan make:migration create_users_table
+php artisan make:migration create_flights_table
 php artisan migrate
 php artisan migrate:rollback
+```
+
+**In production:**
+
+```php
+public function up(): void
+{
+    Schema::create('orders', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->restrictOnDelete();
+        $table->unsignedInteger('total_cents');
+        $table->char('currency', 3);
+        $table->string('status');
+        $table->timestamps();
+    });
+}
 ```
 
 Laravel records ran migrations in a `migrations` table, so each change runs once per environment.

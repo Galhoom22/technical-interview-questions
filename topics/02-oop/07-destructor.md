@@ -8,23 +8,48 @@ A destructor is `__destruct()`. PHP calls it when the object is **destroyed**: n
 
 Its purpose is **cleanup** of resources the garbage collector will not close for you in time: file handles, some native connections, temporary files.
 
-```php
-class FileBuffer
-{
-    private $handle;
+**Official** ([PHP Manual: Constructors and Destructors](https://www.php.net/manual/en/language.oop5.decon.php)):
 
-    public function __construct(string $path)
+```php
+class MyDestructableClass
+{
+    function __construct()
     {
-        $this->handle = fopen($path, 'a');
+        print "In constructor\n";
     }
+
+    function __destruct()
+    {
+        print "Destroying " . __CLASS__ . "\n";
+    }
+}
+
+$obj = new MyDestructableClass();
+```
+
+PHP prints the destructor message when `$obj` is destroyed (no more references, or shutdown).
+
+**In production:**
+
+```php
+class ExportTempFile
+{
+    public function __construct(private string $path)
+    {
+        $this->handle = fopen($path, 'w');
+    }
+
+    private $handle;
 
     public function __destruct()
     {
         if (is_resource($this->handle)) {
-            fclose($this->handle);
+            fclose($this->handle); // release the file handle
         }
     }
 }
+
+// Do not email the customer or capture payment from __destruct
 ```
 
 **Practical points for the interview:**

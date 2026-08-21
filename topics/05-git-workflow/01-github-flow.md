@@ -4,10 +4,21 @@
 
 I use **GitHub Flow**: `main` is always deployable. Work happens on short-lived branches. Nothing reaches `main` without a pull request and review.
 
+**Official** ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)):
+
 ```
-main ───●────────────●────────●──
-         \          /        /
-          ●──●──●──●  feature/cart-merge
+Create a branch → make commits → open a pull request →
+address review → merge → delete the branch
+```
+
+**In production:**
+
+```bash
+git switch main && git pull
+git switch -c feature/cart-merge
+git commit -m "Merge guest cart into user cart on login"
+git push -u origin HEAD
+# PR, CI (tests + Pint), one approval, squash-merge, delete branch
 ```
 
 **Day-to-day:**

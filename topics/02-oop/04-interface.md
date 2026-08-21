@@ -6,6 +6,20 @@
 
 An interface is a **contract**: a list of public methods a class **must** implement. It has no state (historically no properties) and does not care *how* the work is done.
 
+**Official** ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
+
+```php
+interface Template
+{
+    public function setVariable($name, $var);
+    public function getHtml($template);
+}
+```
+
+A class that `implements Template` must provide both methods. The interface does not say *how*.
+
+**In production:**
+
 ```php
 interface Mailer
 {
@@ -16,7 +30,7 @@ class SmtpMailer implements Mailer
 {
     public function send(string $to, string $subject, string $body): void
     {
-        // SMTP implementation
+        // real SMTP in production
     }
 }
 
@@ -24,9 +38,11 @@ class LogMailer implements Mailer
 {
     public function send(string $to, string $subject, string $body): void
     {
-        logger()->info("Mail to {$to}: {$subject}");
+        logger()->info("Mail to {$to}: {$subject}"); // tests / local
     }
 }
+
+// Checkout depends on Mailer, not SmtpMailer — bind it in the container
 ```
 
 **Why we use it:**

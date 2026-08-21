@@ -23,10 +23,26 @@ The guest cart lives on the **session** (or a signed cookie / `cart_token`). The
    - Invalid / out of stock → skip or clamp, do not crash login.
 4. Delete leftover guest rows. `session()->regenerate()` (Laravel already does this on login) so the old session id cannot be reused.
 
+**Official** ([Laravel: Events](https://laravel.com/docs/13.x/events) + [Authentication](https://laravel.com/docs/13.x/authentication)):
+
+```php
+use Illuminate\Auth\Events\Login;
+
+class MergeGuestCart
+{
+    public function handle(Login $event): void
+    {
+        // Login fires after credentials succeed; session id is about to rotate
+    }
+}
+```
+
+**In production:**
+
 ```php
 public function handle(Login $event): void
 {
-    $guestId = session()->get('guest_cart_id'); // stored before regenerate
+    $guestId = session()->get('guest_cart_id'); // captured before regenerate
     $this->carts->mergeGuestCart($event->user, $guestId);
 }
 ```

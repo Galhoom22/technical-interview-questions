@@ -20,34 +20,34 @@
 | `null` vs `false` | `true` | `false` |
 | `""` vs `0` | `true` | `false` |
 
-```php
-1 == "1";   // true  — "1" is converted to int 1
-1 === "1";  // false — int vs string
-
-0 == false;   // true
-0 === false;  // false — int vs bool
-
-null == false;   // true
-null === false;  // false
-
-"" == 0;   // true
-"" === 0;  // false
-
-// PHP 8.0+: match is strict (===). switch is loose (==).
-echo match (1) {
-    '1' => 'skipped — match uses ===',
-    1 => 'this arm runs',
-};
-```
-
-Loose comparison is dangerous because the conversion rules are easy to get wrong, especially with `0`, `""`, `null`, `false`, and numeric strings:
+**Official** ([PHP Manual: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php)):
 
 ```php
-"10abc" == 10;  // true in PHP 7 (string becomes 10), false in PHP 8
-0 == "foo";     // true in PHP 7, false in PHP 8
+var_dump(0 == "a");     // true in PHP 7, false in PHP 8 (string-to-number change)
+var_dump("1" == "01");  // true — numeric strings compared numerically
+var_dump(0 == false);   // true — bool/null are compared as bool
+var_dump(1 === "1");    // false — identical: value and type, no juggling
 ```
 
-PHP 8 tightened some of those rules, but relying on them is still a trap. `===` never surprises you.
+**In production:**
+
+```php
+$status = $request->input('status'); // HTML/JSON often sends "1" or "paid"
+
+if ($status == 1) {
+    // also matches true, "1", "01" — a form checkbox can slip through
+}
+
+if ($order->status === 'paid') {
+    // only the string paid
+}
+
+if ($order->user_id === $request->user()->id) {
+    // IDs: always === so "12" never matches int 12 by accident
+}
+```
+
+Loose comparison is dangerous because the conversion rules are easy to get wrong, especially with `0`, `""`, `null`, `false`, and numeric strings. PHP 8 tightened some of those rules, but relying on them is still a trap. `===` never surprises you.
 
 **Practical points for the interview:**
 

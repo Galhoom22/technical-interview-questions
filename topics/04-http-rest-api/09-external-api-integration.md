@@ -18,6 +18,25 @@ I treat the external API as a **client behind an interface**, not as random `Htt
 6. **Errors** — translate 4xx/5xx into domain exceptions; log correlation ids; do not dump their body to the user.
 7. **Tests** — `Http::fake()` so tests never hit the network.
 
+**Official** ([Laravel: HTTP Client](https://laravel.com/docs/13.x/http-client)):
+
+```php
+$response = Http::withToken($token)
+    ->timeout(3)
+    ->get('http://example.com/users');
+
+$response->throw();
+$users = $response->json();
+```
+
+```php
+Http::fake([
+    'example.com/*' => Http::response(['id' => 1], 200),
+]);
+```
+
+**In production:**
+
 ```php
 public function charge(int $cents): string
 {
@@ -25,11 +44,11 @@ public function charge(int $cents): string
         ->withToken(config('services.stripe.key'))
         ->timeout(10)
         ->retry(2, 100)
-        ->post('/charges', ['amount' => $cents]);
+        ->post('/charges', ['amount' => $cents, 'currency' => 'usd']);
 
     $response->throw();
 
-    return $response->json('id');
+    return $response->json('id'); // map to our type — do not return Stripe JSON as-is
 }
 ```
 

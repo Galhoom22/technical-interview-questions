@@ -8,29 +8,25 @@
 
 `routes/api.php` holds **stateless API** routes. They are usually prefixed with `/api` and loaded in the `api` middleware group (throttling, JSON, no session CSRF).
 
-```php
-// routes/api.php  (created by: php artisan install:api)
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-```
+**Official** ([Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — `php artisan install:api`):
 
-Laravel **13** does **not** ship `routes/api.php` on a fresh install. Enable it with:
+```php
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+```
 
 ```bash
 php artisan install:api
 ```
 
-That creates `api.php`, installs Sanctum, and registers the file in `bootstrap/app.php`:
+**In production:**
 
 ```php
-->withRouting(
-    web: __DIR__.'/../routes/web.php',
-    api: __DIR__.'/../routes/api.php',
-    apiPrefix: 'api',
-    commands: __DIR__.'/../routes/console.php',
-    health: '/up',
-)
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
+    Route::apiResource('orders', OrderController::class);
+    Route::post('orders/{order}/refund', [RefundController::class, 'store']);
+});
 ```
 
 | | `web.php` | `api.php` |

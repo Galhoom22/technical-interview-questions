@@ -12,26 +12,41 @@ PHP has **one** array type: an ordered map. Interviewers still expect the three 
 | Associative | String keys | `['name' => 'Omar', 'role' => 'backend']` |
 | Multidimensional | Arrays inside arrays | `$users[0]['email']` |
 
+**Official** ([PHP Manual: Arrays](https://www.php.net/manual/en/language.types.array.php)):
+
 ```php
-$indexed = ['php', 'laravel', 'mysql'];
+$array1 = array(
+    "foo" => "bar",
+    "bar" => "foo",
+);
 
-$associative = [
-    'name' => 'Omar',
-    'role' => 'backend',
+$array2 = [
+    "foo" => "bar",
+    "bar" => "foo",
+];
+```
+
+Same type either way: an ordered map. Keys may be `int` or `string`; values may be anything, including more arrays.
+
+**In production:**
+
+```php
+$skuList = ['TSHIRT-S', 'TSHIRT-M', 'TSHIRT-L']; // indexed list of SKUs
+
+$totals = [
+    'subtotal_cents' => 4999,
+    'tax_cents' => 700,
+    'currency' => 'USD',
 ];
 
-$multidimensional = [
-    ['id' => 1, 'name' => 'Omar'],
-    ['id' => 2, 'name' => 'Sara'],
+$checkout = [
+    ['sku' => 'TSHIRT-M', 'qty' => 2, 'unit_cents' => 1999],
+    ['sku' => 'MUG', 'qty' => 1, 'unit_cents' => 1299],
 ];
 
-array_is_list($indexed);        // true
-array_first($indexed);          // 'php'
-array_last($associative);       // 'backend'
-
-$slug = ' PHP 8.5 '
-    |> trim(...)
-    |> strtolower(...);
+array_is_list($skuList);     // true
+array_first($checkout);      // first line item
+array_last($totals);         // 'USD'
 ```
 
 You can mix numeric and string keys in the same array. Internally PHP still stores it as one hash table (plus a packed list optimization for pure 0-based integer keys).

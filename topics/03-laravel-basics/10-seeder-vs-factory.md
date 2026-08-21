@@ -15,16 +15,35 @@ They work together. They are not the same layer.
 | Knows about | One model (and related factories) | Whole database / feature set |
 | Example | `UserFactory` definition + `admin()` state | “Create 3 roles, 1 admin, 50 users” |
 
-```php
-// Factory: the recipe
-User::factory()->admin()->create();
+**Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories) + [Seeding](https://laravel.com/docs/13.x/seeding)):
 
-// Seeder: the meal plan
+```php
+User::factory()->count(3)->create(); // factory: how one User looks
+
+public function run(): void          // seeder: what to insert
+{
+    User::factory(10)->create();
+}
+```
+
+**In production:**
+
+```php
+it('applies a coupon', function () {
+    $order = Order::factory()->create(['total_cents' => 5000]);
+    // test uses the factory only — no DatabaseSeeder
+});
+
 public function run(): void
 {
-    Role::factory()->create(['name' => 'admin']);
-    User::factory()->admin()->create(['email' => 'admin@example.com']);
-    User::factory()->count(50)->create();
+    Coupon::query()->updateOrCreate(
+        ['code' => 'WELCOME10'],
+        ['percent' => 10, 'active' => true],
+    );
+
+    if (! app()->isProduction()) {
+        Order::factory()->count(20)->create();
+    }
 }
 ```
 

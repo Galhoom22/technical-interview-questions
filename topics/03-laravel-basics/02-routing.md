@@ -8,20 +8,32 @@
 
 Routing maps an **HTTP request** (method + URI) to the code that should handle it: a closure, a controller action, or an invokable controller.
 
+**Official** ([Laravel: Routing](https://laravel.com/docs/13.x/routing)):
+
 ```php
-Route::get('/users/{user}', [UserController::class, 'show']);
-Route::post('/users', [UserController::class, 'store']);
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/{id}', [UserController::class, 'show']);
 ```
 
-Laravel **13** loads those files from `bootstrap/app.php`:
+Laravel **13** registers route files in `bootstrap/app.php`:
 
 ```php
-return Application::configure(basePath: dirname(__DIR__))
-    ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
-        health: '/up',
-    )->create();
+->withRouting(
+    web: __DIR__.'/../routes/web.php',
+    commands: __DIR__.'/../routes/console.php',
+    health: '/up',
+)
+```
+
+**In production:**
+
+```php
+Route::get('/orders/{order}', [OrderController::class, 'show'])
+    ->middleware('auth')
+    ->name('orders.show');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])
+    ->middleware(['auth', 'throttle:6,1']);
 ```
 
 The router:
