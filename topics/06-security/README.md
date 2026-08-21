@@ -1,4 +1,4 @@
-# ♻️ Refactoring & Best Practices
+# 🔒 Security
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
 >
@@ -8,4 +8,9 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 
 ## Questions
 
-1. [If you encounter a massive method (e.g., 400 lines of code), how would you approach refactoring it?](./01-refactor-large-method.md)
+1. [How do you secure endpoints defined in `web.php` and `api.php`?](./01-secure-web-and-api-routes.md)
+2. [If a guest user adds products to their cart, how do you ensure those items are retained in their cart after they log in?](./02-guest-cart-merge-on-login.md)
+
+---
+
+[← Database Design](../05-database-design/) · [Next: Testing →](../07-testing/)

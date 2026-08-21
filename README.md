@@ -17,15 +17,17 @@ Read each answer in this order (same icons in every file):
 
 ## Topics
 
+Listed in reading order.
+
 | | Topic | Questions |
 |---|---------|-----------|
 | 🐘 | [PHP - Basics](./topics/01-php-basics/) | 4 |
 | 🧩 | [OOP](./topics/02-oop/) | 16 |
-| 🚀 | [Laravel - Basics](./topics/03-laravel-basics/) | 10 |
-| 🌐 | [HTTP & REST API](./topics/04-http-rest-api/) | 9 |
-| 🔀 | [Git & Workflow](./topics/05-git-workflow/) | 1 |
-| 🧪 | [Testing](./topics/06-testing/) | 1 |
-| ♻️ | [Refactoring & Best Practices](./topics/07-refactoring-best-practices/) | 1 |
-| 🗄️ | [Database Design](./topics/08-database-design/) | 1 |
-| ⚡ | [Performance & Optimization](./topics/09-performance-optimization/) | 1 |
-| 🔒 | [Security](./topics/10-security/) | 2 |
+| 🌐 | [HTTP & REST API](./topics/03-http-rest-api/) | 9 |
+| 🚀 | [Laravel - Basics](./topics/04-laravel-basics/) | 10 |
+| 🗄️ | [Database Design](./topics/05-database-design/) | 1 |
+| 🔒 | [Security](./topics/06-security/) | 2 |
+| 🧪 | [Testing](./topics/07-testing/) | 1 |
+| 🔀 | [Git & Workflow](./topics/08-git-workflow/) | 1 |
+| ♻️ | [Refactoring & Best Practices](./topics/09-refactoring-best-practices/) | 1 |
+| ⚡ | [Performance & Optimization](./topics/10-performance-optimization/) | 1 |

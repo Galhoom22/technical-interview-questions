@@ -18,3 +18,7 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 8. [What are Factories?](./08-factories.md)
 9. [What is a Seeder?](./09-seeders.md)
 10. [What is the difference between a Seeder and a Factory?](./10-seeder-vs-factory.md)
+
+---
+
+[← HTTP & REST API](../03-http-rest-api/) · [Next: Database Design →](../05-database-design/)

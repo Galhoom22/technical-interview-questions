@@ -22,3 +22,7 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 14. [What is the concept of Abstraction?](./14-abstraction.md)
 15. [What is the difference between an Abstract Class and an Interface?](./15-abstract-class-vs-interface.md)
 16. [Can you instantiate an object directly from an Abstract Class?](./16-instantiate-abstract-class.md)
+
+---
+
+[← PHP - Basics](../01-php-basics/) · [Next: HTTP & REST API →](../03-http-rest-api/)

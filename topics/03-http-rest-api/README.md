@@ -22,3 +22,7 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 
 > [!NOTE]
 > REST is an architectural style (Fielding), not a product. OpenAPI documents HTTP APIs. JSON:API is one optional JSON convention — using JSON over HTTP does not by itself mean “RESTful”.
+
+---
+
+[← OOP](../02-oop/) · [Next: Laravel - Basics →](../04-laravel-basics/)

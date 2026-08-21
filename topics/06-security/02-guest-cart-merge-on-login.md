@@ -94,6 +94,7 @@ I do not keep the cart only in `$_SESSION` arrays if it must survive login acros
 **Learn more:**
 - [Laravel: Authentication](https://laravel.com/docs/13.x/authentication) — when `Login` fires relative to session migrate
 - [Laravel: Session](https://laravel.com/docs/13.x/session) — `session()->regenerate()` / login session rotation
+- [E-commerce schema](../05-database-design/01-ecommerce-schema.md) — `carts` / `cart_items` and guest `session_id`
 - [Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships) — `cart` / `cartItems` as `hasMany`
 - [OWASP API Security](https://owasp.org/www-project-api-security/) — broken object-level authorization if you merge the *wrong* user’s cart
 

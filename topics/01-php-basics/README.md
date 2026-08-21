@@ -10,3 +10,7 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 2. [What is the difference between `require` and `include` in PHP?](./02-require-vs-include.md)
 3. [What are the different types of arrays in PHP?](./03-array-types.md)
 4. [What are Magic Methods in PHP, and when should they be used?](./04-magic-methods.md)
+
+---
+
+[Next: OOP →](../02-oop/)

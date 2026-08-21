@@ -85,7 +85,7 @@ Cardinality I say out loud: many products per category (or many-to-many if a pro
 **Step 4 — Rules that change the schema**
 
 - **Orders do not join live prices.** `order_items` copies name, SKU, unit price. Catalog can change tomorrow; the invoice cannot.
-- **Guest cart** is keyed by `session_id` (or cookie) until login, then merged (see Security Q2).
+- **Guest cart** is keyed by `session_id` (or cookie) until login, then merged (see [Security Q2](../06-security/02-guest-cart-merge-on-login.md)).
 - **Stock** is decremented on checkout in a transaction, not “when they add to cart” unless the business wants reservations.
 - Money as **integer cents** (or `decimal(12,2)` with a documented currency). Never float.
 
@@ -107,7 +107,7 @@ I would sketch this as an ERD (even on paper) and only then write Laravel migrat
 ### 💬 If they follow up
 
 > [!NOTE]
-> - Guest cart? `session_id` until login, then merge (Security Q2).
+> - Guest cart? `session_id` until login, then merge ([Security Q2](../06-security/02-guest-cart-merge-on-login.md)).
 > - Stock? Decrement in a checkout transaction, not “on add to cart” unless the business wants reservations.
 
 ---

@@ -1,4 +1,4 @@
-# 🗄️ Database Design
+# ⚡ Performance & Optimization
 
 > Laravel examples target **Laravel 13**. Official docs: [https://laravel.com/framework/docs](https://laravel.com/framework/docs)
 
@@ -6,4 +6,8 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 
 ## Questions
 
-1. [How would you approach designing a database for an e-commerce platform? Describe your initial steps for mapping out the entities and relationships.](./01-ecommerce-schema.md)
+1. [If a project is suffering from slow performance, what steps would you take to identify and resolve the bottlenecks?](./01-find-bottlenecks.md)
+
+---
+
+[← Refactoring & Best Practices](../09-refactoring-best-practices/)
