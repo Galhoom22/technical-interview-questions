@@ -8,6 +8,15 @@
 
 They work together. They are not the same layer.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Factory | A blueprint for fake (or realistic) model attributes. |
+| Seeder | A class that inserts data on purpose (`db:seed`). |
+| `create()` | Build **and** `INSERT` the model. |
+| Lookup row | Real reference data (currencies, roles) — not fake users. |
+
 | | Factory | Seeder |
 |---|----------|--------|
 | Role | **How one model looks** when fake | **What gets inserted**, and how many |

@@ -4,6 +4,17 @@
 
 **Answer:**
 
+`new` pays for a **heap object** every time. A static call pays for the **already-loaded class** plus a short-lived stack frame.
+
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Heap | Where each object lives until nothing references it. |
+| Stack frame | Memory for one call (arguments, locals). Popped when the method returns. |
+| Class metadata | Loaded **once** (the class entry). Shared by every `new` and every static call. |
+| Instance | One object created from a class. Own property values; shared method code. |
+
 | | `new Foo()` | `Foo::bar()` |
 |---|-------------|--------------|
 | Class metadata | Loaded once (shared) | Loaded once (shared) |

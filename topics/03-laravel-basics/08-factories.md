@@ -8,6 +8,16 @@
 
 Factories define **how to build fake (or realistic) model data**. They power tests and seeders so you never insert raw arrays by hand.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Factory | A blueprint for fake (or realistic) model attributes. |
+| `create()` | Build **and** `INSERT` the model. |
+| `make()` | Build in memory. No `INSERT`. |
+| State | A named variation on a factory (`pending()`, `admin()`). |
+| `fake()` | Laravel helper around Faker (`fake()->email()`). |
+
 **Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories)):
 
 ```php

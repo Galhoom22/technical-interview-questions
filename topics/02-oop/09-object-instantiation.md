@@ -6,6 +6,16 @@
 
 From user code it looks like one step. Internally it is a pipeline the **Zend Engine** runs.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Instantiate | Create an object (`new`, or a factory that calls `new` inside). |
+| Zend Engine | PHP’s runtime. It allocates the object, then calls `__construct`. |
+| Autoload | Load the class file on first use (Composer PSR-4). |
+| Constructor | `__construct` — runs after the engine creates the object, to initialize it. |
+| Uninitialized property | A typed property with no default. Reading it before assign throws. |
+
 **Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Constructors](https://www.php.net/manual/en/language.oop5.decon.php)):
 
 ```php

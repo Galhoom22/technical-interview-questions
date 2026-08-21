@@ -6,6 +6,16 @@
 
 Abstraction means exposing **what** something does and hiding **how** it does it. Callers depend on a small, stable interface; the messy details stay inside.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Abstraction | Show what something does; hide how. |
+| Abstract class | A class marked `abstract` — a template; you cannot `new` it. |
+| Abstract method | A method with a signature but no body — children must write the body. |
+| Concrete method | A normal method with a body (already finished). |
+| Concrete class | A normal (non-abstract) class you can `new`. |
+
 Two layers people mix up:
 
 - **Abstraction (the idea)** — a `PaymentGateway` with `charge()` so the checkout code never talks to Stripe HTTP APIs.

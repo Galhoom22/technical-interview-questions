@@ -6,6 +6,16 @@
 
 Because the method lives on the **class entry**, not on an object.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Static method | Belongs to the class. No `$this`. Call with `ClassName::method()`. |
+| Class entry | Shared class metadata in memory (name, parent, methods table). |
+| Function table | The list of methods on that class entry. A static method is a function flagged `ZEND_ACC_STATIC`. |
+| Late static binding | `static::` is the class that was *called*, not where the method was written. |
+| Stack frame | Memory for one call (arguments, locals). Popped when the method returns. |
+
 When PHP loads a class, it stores metadata in a `zend_class_entry`: name, parent, interfaces, property definitions, and a **function table** of methods. A static method is just a function in that table with the `ZEND_ACC_STATIC` flag.
 
 When you call `User::make()`:

@@ -8,6 +8,15 @@
 
 A seeder is a class that **inserts data** into the database on purpose: lookup tables, an admin user, or a full demo dataset.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Seeder | A class that inserts data on purpose (`db:seed`). |
+| `DatabaseSeeder` | The entry seeder. It `call()`s the others. |
+| Lookup row | Real reference data (currencies, roles) — not fake users. |
+| `migrate:fresh --seed` | Drop all tables, migrate, then seed. |
+
 **Official** ([Laravel: Seeding](https://laravel.com/docs/13.x/seeding)):
 
 ```php

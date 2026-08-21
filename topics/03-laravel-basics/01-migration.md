@@ -8,6 +8,15 @@
 
 A migration is a **version-controlled PHP class that changes the database schema**. It is Git for tables: `up()` applies the change, `down()` reverses it.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Migration | A versioned PHP class that changes the schema. `up()` applies; `down()` reverses. |
+| Schema | The tables, columns, indexes, and constraints. |
+| `migrations` table | Laravel’s log of which migration files already ran on this database. |
+| Rollback | Run `down()` for the last batch (`migrate:rollback`). |
+
 **Official** ([Laravel: Migrations](https://laravel.com/docs/13.x/migrations)):
 
 ```php

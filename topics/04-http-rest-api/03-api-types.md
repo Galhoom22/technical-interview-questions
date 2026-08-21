@@ -8,6 +8,16 @@
 
 “API” just means a contract for programs to talk. The types I name in interviews:
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| REST | Architectural style — resources over HTTP, stateless. Not a new protocol. |
+| RPC | Call a named procedure (`createOrder`), not “noun + verb”. |
+| GraphQL | Client asks for the exact fields on one `/graphql` endpoint. |
+| SOAP | XML envelopes + WSDL. Still required by some enterprise partners. |
+| WebSocket | Persistent two-way channel — not request/response only. |
+
 | Type | Style | Typical transport |
 |------|--------|-------------------|
 | **REST** | Resources + HTTP verbs + status codes | HTTP + JSON |

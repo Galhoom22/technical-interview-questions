@@ -6,6 +6,16 @@
 
 You instantiate it **from inside the class**, usually with a **static factory** (or `getInstance()` for a singleton). `new self(...)` / `new static(...)` is allowed there because it is the same class.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Private constructor | `__construct` only the same class can call. Blocks `new` from outside. |
+| Static factory | A public static method that returns `new self()` / `new static()`. |
+| `new self()` | Create an instance of the class where this code is **written**. |
+| `new static()` | Create an instance of the class that was **called** (late static binding). |
+| Reflection | Can bypass a constructor (`newInstanceWithoutConstructor`). Framework/tests — not domain code. |
+
 **Official** ([PHP Manual: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
 
 ```php

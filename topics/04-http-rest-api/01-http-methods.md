@@ -8,6 +8,15 @@
 
 HTTP methods (verbs) tell the server **what kind of operation** the client wants on a resource.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| HTTP method | The verb — what kind of operation (GET, POST, PUT, PATCH, DELETE). |
+| Resource | A noun the API exposes (`/orders/15`). |
+| Safe | Must not change server state (GET, HEAD, OPTIONS). |
+| Idempotent | Repeating the same request leaves the same state. |
+
 | Method | Intent | Request body | Safe | Idempotent |
 |--------|--------|--------------|------|------------|
 | `GET` | Read | No (should not) | Yes | Yes |

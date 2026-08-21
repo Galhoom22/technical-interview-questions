@@ -10,6 +10,15 @@
 
 `==` asks “are these equal after conversion?”. `===` asks “are these the same thing?”.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Loose equality (`==`) | Compare values after PHP converts types so both sides match. |
+| Strict equality (`===`) | Compare value **and** type. No conversion. Also called *identical*. |
+| Type juggling | PHP changing a value’s type so `==` can compare (e.g. `"1"` → `1`). |
+| `match` | PHP 8+ switch-like expression. Arms use `===`, not `==`. |
+
 | Aspect | `==` | `===` |
 |--------|------|--------|
 | Name | Loose equality | Strict equality |

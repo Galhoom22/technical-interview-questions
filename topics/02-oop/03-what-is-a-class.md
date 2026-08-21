@@ -6,6 +6,16 @@
 
 A class is the **blueprint**. An object (instance) is a **value built from that blueprint**.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Class | The blueprint. `new ClassName()` creates an object from it. |
+| Instance | One object created from a class. Own property values; shared method code. |
+| Property | Data on the object (state). |
+| Method | Behavior on the class or object. |
+| Visibility | `public` / `protected` / `private` — who can access a member. |
+
 The class defines:
 
 - properties (state)

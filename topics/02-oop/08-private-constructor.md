@@ -6,6 +6,15 @@
 
 Yes. A `private` constructor means **`new ClassName()` is only legal inside that class**. Code outside cannot instantiate it directly. `protected` allows children, but still blocks the outside world.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Private constructor | `__construct` only the same class can call. Blocks `new` from outside. |
+| Visibility | `public` / `protected` / `private` — who can access a member. |
+| Static factory | A public static method that returns `new self()` / `new static()`. |
+| Named constructor | A factory with a clear name (`fromString`, `fromCart`) instead of a raw `new`. |
+
 **Official** ([PHP Manual: Visibility](https://www.php.net/manual/en/language.oop5.visibility.php)):
 
 ```php

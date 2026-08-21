@@ -8,6 +8,16 @@
 
 `routes/api.php` holds **stateless API** routes. They are usually prefixed with `/api` and loaded in the `api` middleware group (throttling, JSON, no session CSRF).
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| `api.php` | Stateless API routes. Usually `/api`, `api` middleware group, JSON. |
+| Sanctum | Laravel 13 default API auth (Bearer tokens, or SPA cookies). |
+| Stateless | The server does not keep a login session. Each request carries the token. |
+| Throttle | Rate limit — too many requests → `429`. |
+| `install:api` | Artisan command that creates `api.php`, installs Sanctum, and registers the file. |
+
 **Official** ([Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — `php artisan install:api`):
 
 ```php

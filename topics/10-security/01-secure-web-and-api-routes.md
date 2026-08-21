@@ -8,6 +8,16 @@
 
 Same goal — **authenticate, authorize, validate, throttle** — different tools because `web` is a browser session and `api` is usually a token.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Authentication | Who you are (session or token). |
+| Authorization | What you are allowed to do (policies / gates). |
+| CSRF | Token so a forged form from another site cannot POST as you. |
+| Sanctum | Laravel 13 default API auth (Bearer tokens, or SPA cookies). |
+| Mass assignment | Filling many model fields from request data. Persist `$request->validated()`, never `$request->all()`. |
+
 | | `web.php` | `api.php` |
 |---|-----------|-----------|
 | Identity | Session cookie (`auth`) | Token (`auth:sanctum`). Passport is optional OAuth2, not the Laravel 13 default. |

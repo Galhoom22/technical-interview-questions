@@ -13,6 +13,15 @@
 
 This is a **multipart update with files**. In PHP/Laravel I treat that as **POST** (optionally spoofing PUT/PATCH), not a raw PUT JSON body.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| `multipart/form-data` | Body format that can carry files + text fields. |
+| `$_FILES` | PHP’s file-upload array. Filled on POST multipart, not on PUT. |
+| Boundary | Marker in `Content-Type` that splits each part. The client sets it. |
+| `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
+
 ### Method
 
 Use **`POST`** to the resource (e.g. `/api/profiles/1`).

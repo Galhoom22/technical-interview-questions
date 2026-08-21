@@ -6,6 +6,15 @@
 
 A trait is a reuse tool for **horizontal** sharing of methods (and properties). PHP copies the trait’s members into the class at compile time. It is not inheritance and not an interface.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Trait | Methods (and properties) copied into a class at compile time. Not a parent class. |
+| `use` (in a class) | Pull a trait into this class. |
+| `insteadof` / `as` | Resolve a name clash when two traits define the same method. |
+| Horizontal reuse | Share code across classes that do **not** share a parent. |
+
 **Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php)):
 
 ```php

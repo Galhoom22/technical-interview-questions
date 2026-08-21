@@ -6,6 +6,16 @@
 
 Both define a contract. An **abstract class** can also ship shared code and state. An **interface** is only a contract (multiple allowed).
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Abstract class | A class marked `abstract` — a template; you cannot `new` it. |
+| Abstract method | A method with a signature but no body — children must write the body. |
+| Concrete method | A normal method with a body (already finished). |
+| Interface | A contract of public methods a class must implement. It does not say *how*. |
+| Concrete class | A normal (non-abstract) class you can `new`. |
+
 | Aspect | Abstract class | Interface |
 |--------|----------------|-----------|
 | Instantiated? | No | No |

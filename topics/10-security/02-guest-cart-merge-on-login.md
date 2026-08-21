@@ -8,6 +8,15 @@
 
 The guest cart lives on the **session** (or a signed cookie / `cart_token`). The logged-in cart lives in the **database** on `user_id`. On login I **merge** session → user, then drop the guest cart.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Guest cart | Basket keyed by session / cookie while the user is not logged in. |
+| Merge | On login, move guest lines onto the user’s cart (add qty if the SKU exists). |
+| Session regenerate | Laravel rotates the session id on login. Capture the guest cart key **before** that. |
+| `Login` event | Fires after credentials succeed. A listener is the right place to merge. |
+
 **While guest**
 
 - Cart key: `session()->getId()` (or a UUID in a cookie).

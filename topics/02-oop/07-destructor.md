@@ -8,6 +8,15 @@ A destructor is `__destruct()`. PHP calls it when the object is **destroyed**: n
 
 Its purpose is **cleanup** of resources the garbage collector will not close for you in time: file handles, some native connections, temporary files.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Destructor | `__destruct` — runs when the object is destroyed. For resource cleanup, not business logic. |
+| Constructor | `__construct` — runs after the engine creates the object, to initialize it. |
+| Garbage collection | Free memory when nothing references the object (refcount, then cycle collector). |
+| Shutdown | End of the request — remaining objects are destroyed. Order is not a workflow engine. |
+
 **Official** ([PHP Manual: Constructors and Destructors](https://www.php.net/manual/en/language.oop5.decon.php)):
 
 ```php

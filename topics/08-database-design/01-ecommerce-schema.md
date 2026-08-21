@@ -6,6 +6,16 @@
 
 I start from **what the business does**, not from tables. Tables come after entities and relationships are clear.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Entity | A noun in the domain that becomes a table (`Order`, `Product`). |
+| Foreign key | A column that must match a row in another table. |
+| Snapshot | Copy price/name onto `order_items` so the invoice does not change when the catalog does. |
+| Cardinality | How many: `1──*` (one-to-many), `*──*` (many-to-many). |
+| 3NF | No repeating groups; facts live in the table they belong to. |
+
 **Step 1 — Use cases, not columns**
 
 - Guest and user browse catalog

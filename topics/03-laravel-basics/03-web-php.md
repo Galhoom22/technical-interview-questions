@@ -8,6 +8,15 @@
 
 `routes/web.php` is where **browser / session** routes live. In a default Laravel app they are loaded in the `web` middleware group.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| `web.php` | Browser / session routes. Loaded in the `web` middleware group. |
+| Session | Server-side data keyed by a cookie (logged-in user, flash, cart id). |
+| CSRF | Token so a forged form from another site cannot POST as you. |
+| `auth` middleware | Reject the request unless the user is logged in (session). |
+
 That group typically gives you:
 
 | Feature | Why it is on web routes |

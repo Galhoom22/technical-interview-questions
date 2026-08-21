@@ -8,6 +8,15 @@
 
 **Query Builder** (`DB::table(...)`) builds SQL and returns plain data (arrays / `stdClass`). **Eloquent** is an ORM on top of that builder: each row is a **model** with relationships, casts, events, and mutators.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Query Builder | SQL in PHP (`DB::table`). Returns arrays / `stdClass`, not models. |
+| Eloquent | ORM on top of the Query Builder. Each row is a model (relations, casts, events). |
+| Hydration | Turning SQL rows into model objects. |
+| ORM | Object-Relational Mapper — tables as classes, rows as objects. |
+
 | Aspect | Query Builder | Eloquent |
 |--------|---------------|----------|
 | Entry | `DB::table('users')` | `User::query()` |

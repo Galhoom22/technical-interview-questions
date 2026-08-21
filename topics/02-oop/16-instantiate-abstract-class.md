@@ -8,6 +8,16 @@ No. An abstract class is incomplete by definition. PHP throws an error if you `n
 
 You instantiate a **concrete child** that implements every abstract method.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Abstract class | A class marked `abstract` — a template; you cannot `new` it. |
+| Abstract method | A method with a signature but no body — children must write the body. |
+| Concrete class | A normal (non-abstract) class you can `new`. |
+| Instantiate | Create an object (`new`, or a factory that calls `new` inside). |
+| Type-hint | Require a type (`Discount $d`). You can hint the abstract type and pass a child. |
+
 **Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php)):
 
 ```php

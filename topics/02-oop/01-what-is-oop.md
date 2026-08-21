@@ -8,6 +8,15 @@ OOP (Object-Oriented Programming) is a way of structuring code around **objects*
 
 Instead of a pile of functions and arrays, you model `User`, `Order`, `Invoice`. Each object knows its own state and the operations that belong to it.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| OOP | Structure code around objects, not around a pile of functions and loose data. |
+| Object | A bundle of **data** (properties) and **behavior** (methods) that represents something in the domain. |
+| Class | The blueprint. `new ClassName()` creates an object from it. |
+| Instance | One object created from a class. Own property values; shared method code. |
+
 **Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
 
 ```php

@@ -4,6 +4,16 @@
 
 I use **GitHub Flow**: `main` is always deployable. Work happens on short-lived branches. Nothing reaches `main` without a pull request and review.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| GitHub Flow | Branch from `main` → PR → review → merge → delete the branch. |
+| `main` | Always deployable. No direct commits in a team. |
+| Pull request | Proposed change for review before it hits `main`. |
+| Squash merge | One commit on `main` per PR — keeps history readable. |
+| `git switch -c` | Create and switch to a branch (Git 2.23+; `checkout -b` still works). |
+
 **Official** ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)):
 
 ```

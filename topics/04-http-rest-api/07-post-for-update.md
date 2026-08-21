@@ -8,6 +8,15 @@
 
 REST textbooks say PATCH/PUT for updates. In real systems I still use POST when HTTP or the client cannot do the “pure” verb well.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Method spoofing | HTML form still POSTs; Laravel reads `_method=PUT`. |
+| Action URL | A verb as a resource (`POST /orders/15/cancel`) — not a field patch. |
+| `$_FILES` | PHP’s file-upload array. Filled on POST multipart, not on PUT. |
+| PATCH | Partial update — only the fields you send. |
+
 **Legitimate cases:**
 
 - **HTML forms** only submit GET/POST. Laravel’s `_method=PUT` (method spoofing) is still a POST on the wire.

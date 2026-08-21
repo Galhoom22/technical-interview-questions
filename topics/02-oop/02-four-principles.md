@@ -4,12 +4,24 @@
 
 **Answer:**
 
-| Principle | Meaning | In practice |
-|-----------|---------|-------------|
-| **Encapsulation** | Hide internal state; expose a small public API | `private` properties, public methods |
-| **Abstraction** | Show what something does, hide how | Interfaces, abstract classes |
-| **Inheritance** | A child reuses / specializes a parent | `class Admin extends User` |
-| **Polymorphism** | Same message, different behavior | `Payable[]` of `Invoice` and `Salary` |
+The four names interviewers want, then how they show up in PHP:
+
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Encapsulation | Hide internal state; expose a small public API. |
+| Abstraction | Show what something does; hide how. |
+| Inheritance | A child reuses / specializes a parent (`extends`). |
+| Polymorphism | Same message, different behavior. |
+| Composition | Hold another object as a property and delegate to it, instead of extending it. |
+
+| Principle | In practice |
+|-----------|-------------|
+| **Encapsulation** | `private` properties, public methods |
+| **Abstraction** | Interfaces, abstract classes |
+| **Inheritance** | `class Admin extends User` |
+| **Polymorphism** | `Payable[]` of `Invoice` and `Salary` |
 
 **Official** ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
 

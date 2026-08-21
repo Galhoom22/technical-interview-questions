@@ -4,6 +4,17 @@
 
 **Answer:**
 
+An **instance** method runs on an object (`$this`). A **static** method runs on the class (no `$this`).
+
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Instance method | Belongs to an object. Uses `$this`. Call with `$obj->method()`. |
+| Static method | Belongs to the class. No `$this`. Call with `ClassName::method()`. |
+| `$this` | The current object. Not available in a static method. |
+| Static property | Data that lives once on the class, not per object. |
+
 | Aspect | Instance (non-static) | Static |
 |--------|----------------------|--------|
 | Belongs to | An object | The class |

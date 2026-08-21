@@ -6,6 +6,15 @@
 
 Both load and execute another PHP file in the current scope. The difference is **what happens if the file is missing**.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| `require` | Load a file. If it is missing, a **fatal error** — the script stops. |
+| `include` | Load a file. If it is missing, a **warning** — the script continues. |
+| `require_once` / `include_once` | Same as above, but skip the file if it was already loaded. |
+| Autoload | Load a **class** file on first use (Composer PSR-4). Not a replacement for `vendor/autoload.php`. |
+
 | Aspect | `require` / `require_once` | `include` / `include_once` |
 |--------|----------------------------|----------------------------|
 | Missing file | Fatal error — script **stops** | Warning — script **continues** |

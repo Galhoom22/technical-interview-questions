@@ -6,6 +6,18 @@
 
 **Answer:**
 
+`POST` typically **creates**. `PUT` **replaces** the whole resource at a known URI.
+
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| POST | Create, or process this entity. Not idempotent. |
+| PUT | Replace the whole resource at a known URI. Idempotent. |
+| PATCH | Partial update — only the fields you send. |
+| Idempotent | Repeating the same request leaves the same state. |
+| Resource | A noun the API exposes (`/orders/15`). |
+
 | Aspect | `POST` | `PUT` |
 |--------|--------|-------|
 | Typical intent | **Create** (or a non-CRUD action) | **Replace** the resource at a known URI |

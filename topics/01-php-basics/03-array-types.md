@@ -6,6 +6,16 @@
 
 PHP has **one** array type: an ordered map. Interviewers still expect the three ways we *use* that type:
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Array | PHP’s one array type: an ordered map. Keys are `int` or `string`. |
+| Indexed array | Keys `0`, `1`, `2`, … — a list. |
+| Associative array | String keys — a record of named fields. |
+| Multidimensional array | Arrays inside arrays (a list of records, a tree, …). |
+| `array_is_list()` | PHP 8.1+: `true` if keys are `0..n-1` with no gaps. |
+
 | Type | Keys | Example |
 |------|------|---------|
 | Indexed (numeric) | `0`, `1`, `2`, … | `['php', 'laravel']` |

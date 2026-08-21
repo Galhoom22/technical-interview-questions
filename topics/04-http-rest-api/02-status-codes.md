@@ -8,6 +8,16 @@
 
 Status codes are a **3-digit signal** of how the request turned out. The first digit is the category; the body (if any) carries details.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Status code | A 3-digit signal of how the request turned out. |
+| `2xx` | Success. |
+| `4xx` | The **client** did something wrong (auth, validation, missing id). |
+| `5xx` | The **server** failed. |
+| `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
+
 | Range | Category | Meaning |
 |-------|----------|---------|
 | `1xx` | Informational | Request received, continuing (rare in app APIs) |

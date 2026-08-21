@@ -8,6 +8,16 @@ Magic methods are methods PHP calls **automatically** when a certain action happ
 
 You do not call most of them yourself. The engine does.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Magic method | A `__*` method PHP calls for you when something happens (`new`, `echo $obj`, `clone`, …). |
+| Constructor | `__construct` — runs after the engine creates the object, to initialize it. |
+| Destructor | `__destruct` — runs when the object is destroyed. For resource cleanup, not business logic. |
+| `__toString` | How the object looks when used as a string (`echo $obj`). |
+| Overloading | `__get` / `__set` / `__call` — intercept missing properties/methods. Easy to hide bugs; use sparingly. |
+
 | Method | PHP calls it when… |
 |--------|---------------------|
 | `__construct()` | The object is created with `new` |

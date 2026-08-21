@@ -8,6 +8,16 @@
 
 I treat the external API as a **client behind an interface**, not as random `Http::get` calls in controllers.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| HTTP client | Laravel `Http` facade (Guzzle) for calling other APIs. |
+| Timeout | Fail the outbound call if the vendor is slow. |
+| Idempotency key | A header so a retried POST does not charge twice. |
+| `Http::fake()` | Tests never hit the network. |
+| DTO | Our type. Map vendor JSON into it — do not leak their shape. |
+
 **Steps:**
 
 1. **Read their contract** — base URL, auth (Bearer, API key, OAuth), rate limits, error shape.

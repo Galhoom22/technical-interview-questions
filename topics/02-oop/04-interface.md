@@ -6,6 +6,15 @@
 
 An interface is a **contract**: a list of public methods a class **must** implement. It has no state (historically no properties) and does not care *how* the work is done.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Interface | A contract of public methods a class must implement. It does not say *how*. |
+| `implements` | This class promises to provide every method on that interface. |
+| Polymorphism | Same message, different behavior. |
+| Decoupling | Depend on the interface, not on `SmtpMailer` — swap the implementation (tests vs production). |
+
 **Official** ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
 
 ```php

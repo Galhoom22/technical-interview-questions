@@ -6,6 +6,16 @@
 
 I **measure first**. I do not add Redis, queues, and eager loading at random. The slow part is often one query or one external HTTP call.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Bottleneck | The slow part you **measured**, not a guess. |
+| N+1 | One query plus one query per row because a relation was lazy-loaded. |
+| Eager loading | `with()` so related rows load in fewer queries (avoid N+1). |
+| `EXPLAIN` | The database plan for a query (seq scan vs index). |
+| Telescope | Laravel’s first-party request inspector (queries, outgoing HTTP, jobs). |
+
 **1. Define “slow”**
 
 - Which URL, which job, which environment?

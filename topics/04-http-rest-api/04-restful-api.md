@@ -10,6 +10,16 @@ A RESTful API exposes **resources** (nouns) over **HTTP**. The client is statele
 
 It relies on **HTTP** (almost always HTTPS in production). REST is an architectural style, not a new protocol.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| REST | Architectural style — resources over HTTP, stateless. Not a new protocol. |
+| Resource | A noun the API exposes (`/orders/15`). |
+| Stateless | Every request carries what the server needs. No “previous click” on the server. |
+| Representation | The JSON (or HTML) body that stands for the resource. |
+| Uniform interface | URLs name resources, methods name actions, status codes name outcomes. |
+
 **How it uses HTTP:**
 
 | HTTP feature | REST use |

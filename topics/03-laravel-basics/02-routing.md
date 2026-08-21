@@ -8,6 +8,15 @@
 
 Routing maps an **HTTP request** (method + URI) to the code that should handle it: a closure, a controller action, or an invokable controller.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Routing | Map HTTP method + URI to a controller or closure. |
+| Route-model binding | `{order}` in the URL becomes an `Order` model. |
+| Named route | `->name('orders.show')` so `route()` stays stable if the path changes. |
+| Middleware | A filter around the HTTP request (and the response on the way out). |
+
 **Official** ([Laravel: Routing](https://laravel.com/docs/13.x/routing)):
 
 ```php

@@ -8,6 +8,16 @@
 
 I do **not** rewrite the 400 lines in one heroic commit. I make it safe, understand it, then peel it into pieces that each do one thing.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Extract Function | Turn a block into a named function (Fowler). First move on a huge method. |
+| Characterization test | Lock current behavior (same input → same result) before changing structure. |
+| Orchestrator | A short method that calls collaborators. It does not do all the work. |
+| Seam | A place you can split the method without changing what it does. |
+| SRP | Single Responsibility — one reason to change. |
+
 **1. Freeze behavior**
 
 - If tests exist, run them. If not, I add **characterization tests** around the current output (same input → same result) before changing structure.

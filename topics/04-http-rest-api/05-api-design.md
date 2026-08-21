@@ -8,6 +8,16 @@
 
 I design the **contract first**, then implement it.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Contract | The URLs, methods, JSON shapes, and status codes clients can depend on. |
+| OpenAPI | Machine-readable HTTP contract (the spec you document against). |
+| Form Request | Laravel class that validates (and often authorizes) the incoming request. |
+| API Resource | Laravel class that shapes a model into JSON. |
+| Versioning | `/api/v1/...` when a public API will break clients later. |
+
 **Approach:**
 
 1. **List use cases** — who calls this, what they must do (mobile app, admin, webhook).

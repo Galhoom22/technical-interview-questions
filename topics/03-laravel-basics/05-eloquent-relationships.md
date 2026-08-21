@@ -8,6 +8,16 @@
 
 A relationship is a method on the model that tells Eloquent how two tables connect. It returns a relation object; you query through it or eager-load it with `with()`.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Relationship | A method that tells Eloquent how two tables connect. |
+| Eager loading | `with()` so related rows load in fewer queries (avoid N+1). |
+| N+1 | One query plus one query per row because a relation was lazy-loaded. |
+| Pivot | Extra table for `belongsToMany`. |
+| Polymorphic | One relation can point at more than one model type (`morphTo`). |
+
 | Relationship | DB shape | Example |
 |--------------|----------|---------|
 | `hasOne` | Other table holds this id (one row) | User `hasOne` Profile |

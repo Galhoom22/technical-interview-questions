@@ -6,6 +6,16 @@
 
 You don’t — **PHP allows a class to extend only one parent**. Multiple inheritance of classes is not supported.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Multiple inheritance | Extending more than one class — PHP does not allow this. |
+| Interface | A contract of public methods a class must implement. It does not say *how*. |
+| Trait | Methods (and properties) copied into a class at compile time. Not a parent class. |
+| Composition | Hold another object as a property and delegate to it, instead of extending it. |
+| Diamond problem | Two parents define the same method — whose version wins? PHP avoids this by allowing only one `extends`. |
+
 What you do instead:
 
 | Need | Tool |

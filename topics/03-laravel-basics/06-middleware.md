@@ -8,6 +8,15 @@
 
 Middleware is a **filter around the HTTP request**. It can inspect, reject, or enrich the request before the controller, and it can tweak the response on the way out.
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Middleware | A filter around the HTTP request (and the response on the way out). |
+| `handle` | The middleware method. Call `$next($request)` to continue, or abort/redirect. |
+| Global middleware | Runs on every request. |
+| Route middleware | Runs only on the routes you attach it to (or a group). |
+
 ```
 request → middleware → middleware → controller → middleware → response
 ```

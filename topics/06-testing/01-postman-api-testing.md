@@ -6,6 +6,16 @@
 
 I treat Postman as a **repeatable contract check**, not a one-off “send” button. Same collection works for me, the frontend, and CI (Newman).
 
+**Key terms:**
+
+| Term | Plain meaning |
+|------|----------------|
+| Collection | A folder of Postman requests for one API. |
+| Environment | `local` / `staging` variables (`baseUrl`, `token`). |
+| `pm.test` | A Postman assertion on the response. |
+| Newman | CLI that runs the same collection in CI. |
+| Contract | The URLs, methods, JSON shapes, and status codes clients can depend on. |
+
 **Setup:**
 
 1. **Collection** per API (`Orders API`).
