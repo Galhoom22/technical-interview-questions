@@ -6,7 +6,7 @@
 
 I start from **what the business does**, not from tables. Tables come after entities and relationships are clear.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ I start from **what the business does**, not from tables. Tables come after enti
 | Cardinality | How many: `1──*` (one-to-many), `*──*` (many-to-many). |
 | 3NF | No repeating groups; facts live in the table they belong to. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 I draw the **shop story** first (browse, cart, pay), then the nouns, then the arrows. Tables are last. `order_items` takes a **snapshot** of price so yesterday’s invoice does not change when you discount the T-shirt tomorrow.
 
@@ -47,7 +47,9 @@ A first pass I would put on a whiteboard:
 
 **Step 3 — Relationships**
 
-**📘 Official** ([PostgreSQL: Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html)):
+---
+
+### 📘 Official ([PostgreSQL: Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html))
 
 ```sql
 CREATE TABLE cities (
@@ -65,7 +67,7 @@ CREATE TABLE weather (
 
 A row in `weather` cannot name a city that does not exist. That is referential integrity — the same idea as `orders.user_id` → `users.id`.
 
-**💼 In production:**
+### 💼 In production
 
 ```
 User 1──* Address
@@ -95,14 +97,20 @@ Cardinality I say out loud: many products per category (or many-to-many if a pro
 
 I would sketch this as an ERD (even on paper) and only then write Laravel migrations. I do not start with 40 tables; I start with catalog + cart + order, and add warehouse/refunds when the use case is real.
 
-**⚠️ Watch out:**
+---
 
-Never store money as float. Never join live `products.price` for an old order. Do not start from 40 tables.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Never store money as float. Never join live `products.price` for an old order. Do not start from 40 tables.
 
-- Guest cart? `session_id` until login, then merge (Security Q2).
-- Stock? Decrement in a checkout transaction, not “on add to cart” unless the business wants reservations.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Guest cart? `session_id` until login, then merge (Security Q2).
+> - Stock? Decrement in a checkout transaction, not “on add to cart” unless the business wants reservations.
+
+---
 
 > [!TIP]
 > **One-liner:** List use cases, name entities, draw cardinality, snapshot prices on `order_items`, then normalize and add FKs/indexes — migrations last, not first.

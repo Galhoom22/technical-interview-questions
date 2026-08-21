@@ -8,7 +8,7 @@
 
 **Query Builder** (`DB::table(...)`) builds SQL and returns plain data (arrays / `stdClass`). **Eloquent** is an ORM on top of that builder: each row is a **model** with relationships, casts, events, and mutators.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,7 +17,7 @@
 | Hydration | Turning SQL rows into model objects. |
 | ORM | Object-Relational Mapper — tables as classes, rows as objects. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 Query Builder is **SQL in PHP** (cheap rows). Eloquent is that builder **plus a model** — relations, casts, events. Eloquent sits on top; it is not a second database.
 
@@ -31,7 +31,9 @@ Query Builder is **SQL in PHP** (cheap rows). Eloquent is that builder **plus a 
 | Overhead | Lower | Higher (hydration) |
 | Best for | Reports, aggregates, bulk SQL | Domain entities, CRUD |
 
-**📘 Official** ([Laravel: Query Builder](https://laravel.com/docs/13.x/queries) + [Eloquent](https://laravel.com/docs/13.x/eloquent)):
+---
+
+### 📘 Official ([Laravel: Query Builder](https://laravel.com/docs/13.x/queries) + [Eloquent](https://laravel.com/docs/13.x/eloquent))
 
 ```php
 $users = DB::table('users')
@@ -41,7 +43,7 @@ $users = DB::table('users')
 $flights = Flight::all();
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 $emails = DB::table('users')
@@ -58,14 +60,20 @@ Eloquent **uses** the Query Builder internally (`User::query()` is a builder). C
 
 I use Eloquent for domain work. I drop to Query Builder (or `selectRaw`) for heavy reports, bulk updates, and queries where hydrating thousands of models would be wasteful.
 
-**⚠️ Watch out:**
+---
 
-Hydrating 50k Eloquent models for a CSV is the trap. `User::query()` is still the Query Builder underneath.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Hydrating 50k Eloquent models for a CSV is the trap. `User::query()` is still the Query Builder underneath.
 
-- When `DB::table`? Reports, aggregates, bulk SQL.
-- Relationships? Stay on Eloquent (`with()`).
+### 💬 If they follow up
+
+> [!NOTE]
+> - When `DB::table`? Reports, aggregates, bulk SQL.
+> - Relationships? Stay on Eloquent (`with()`).
+
+---
 
 > [!TIP]
 > **One-liner:** Query Builder is SQL in PHP. Eloquent is that builder plus models — relationships, casts, and events. Eloquent sits on top of the Query Builder.

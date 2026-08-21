@@ -10,7 +10,7 @@ A RESTful API exposes **resources** (nouns) over **HTTP**. The client is statele
 
 It relies on **HTTP** (almost always HTTPS in production). REST is an architectural style, not a new protocol.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -20,7 +20,7 @@ It relies on **HTTP** (almost always HTTPS in production). REST is an architectu
 | Representation | The JSON (or HTML) body that stands for the resource. |
 | Uniform interface | URLs name resources, methods name actions, status codes name outcomes. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 REST is a **stateless post office**: every letter carries the address and the stamp. The clerk does not remember your last visit. HTTPS is the truck; REST is how you write the envelope.
 
@@ -37,7 +37,9 @@ REST is a **stateless post office**: every letter carries the address and the st
 | `ETag` / `If-Match` | Optional optimistic concurrency |
 | Query string | Filtering, pagination: `?page=2&status=paid` |
 
-**📘 Official** ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) + [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)):
+---
+
+### 📘 Official ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) + [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods))
 
 ```http
 GET /items/2 HTTP/1.1
@@ -49,7 +51,7 @@ Content-Type: application/json
 {"id": 2, "name": "Example"}
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```http
 POST /api/orders HTTP/1.1
@@ -70,14 +72,20 @@ Location: /api/orders/15
 
 Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), Sanctum, throttle middleware. I keep URLs as nouns, verbs in the HTTP method — not `POST /api/getOrder`.
 
-**⚠️ Watch out:**
+---
 
-`POST /api/getOrder` is RPC dressed as HTTP. REST is not a new protocol — it *uses* HTTP.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> `POST /api/getOrder` is RPC dressed as HTTP. REST is not a new protocol — it *uses* HTTP.
 
-- Auth header? `Authorization: Bearer`. Create? `201` + `Location`.
-- Session on the API? Not for stateless Bearer; Sanctum SPA still uses cookies + CSRF.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Auth header? `Authorization: Bearer`. Create? `201` + `Location`.
+> - Session on the API? Not for stateless Bearer; Sanctum SPA still uses cookies + CSRF.
+
+---
 
 > [!TIP]
 > **One-liner:** REST uses HTTP as the protocol: URLs name resources, methods name actions, headers carry metadata/auth, status codes carry the result, JSON is the usual representation.

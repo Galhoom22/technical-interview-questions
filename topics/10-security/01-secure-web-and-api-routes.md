@@ -8,7 +8,7 @@
 
 Same goal — **authenticate, authorize, validate, throttle** — different tools because `web` is a browser session and `api` is usually a token.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ Same goal — **authenticate, authorize, validate, throttle** — different tool
 | Sanctum | Laravel 13 default API auth (Bearer tokens, or SPA cookies). |
 | Mass assignment | Filling many model fields from request data. Persist `$request->validated()`, never `$request->all()`. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 `web.php` is a **session badge + CSRF stamp**. `api.php` is a **token at the hatch**. Both still need “who are you,” “may you,” “is this input valid,” and “slow down.”
 
@@ -30,7 +30,9 @@ Same goal — **authenticate, authorize, validate, throttle** — different tool
 | CORS | Same origin by default | Must be explicit for browser SPAs |
 | Typical extra | `verified`, `password.confirm` | `throttle:api`, abilities/scopes |
 
-**📘 Official** ([Laravel: CSRF](https://laravel.com/docs/13.x/csrf) + [Sanctum](https://laravel.com/docs/13.x/sanctum)):
+---
+
+### 📘 Official ([Laravel: CSRF](https://laravel.com/docs/13.x/csrf) + [Sanctum](https://laravel.com/docs/13.x/sanctum))
 
 ```html
 <form method="POST" action="/profile">
@@ -45,7 +47,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -75,14 +77,20 @@ The `web` group already applies session, cookie encryption, and CSRF. I still ad
 - Rate limit login and sensitive POSTs (`429`).
 - Signed URLs for one-click email actions.
 
-**⚠️ Watch out:**
+---
 
-Never `$request->all()` into `create()`. Token ≠ permission — use policies. Do not put tokens in query strings. `APP_DEBUG=false` in production.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Never `$request->all()` into `create()`. Token ≠ permission — use policies. Do not put tokens in query strings. `APP_DEBUG=false` in production.
 
-- Sanctum SPA vs Bearer? SPA still uses CSRF cookies; stateless Bearer does not.
-- Mass assignment in Laravel 13? `#[Fillable]`, `$request->validated()`, `preventSilentlyDiscardingAttributes` locally.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Sanctum SPA vs Bearer? SPA still uses CSRF cookies; stateless Bearer does not.
+> - Mass assignment in Laravel 13? `#[Fillable]`, `$request->validated()`, `preventSilentlyDiscardingAttributes` locally.
+
+---
 
 > [!TIP]
 > **One-liner:** `web.php` = session + CSRF + `auth`. `api.php` = Sanctum/token + throttle + CORS. Both still need policies and validation.

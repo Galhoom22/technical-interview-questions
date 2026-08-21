@@ -8,7 +8,7 @@
 
 Routing maps an **HTTP request** (method + URI) to the code that should handle it: a closure, a controller action, or an invokable controller.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,11 +17,13 @@ Routing maps an **HTTP request** (method + URI) to the code that should handle i
 | Named route | `->name('orders.show')` so `route()` stays stable if the path changes. |
 | Middleware | A filter around the HTTP request (and the response on the way out). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 Routing is the **front desk**: “GET `/orders/15` goes to `OrderController@show`.” Named routes are the desk’s nickname so the URL can change without breaking links.
 
-**📘 Official** ([Laravel: Routing](https://laravel.com/docs/13.x/routing)):
+---
+
+### 📘 Official ([Laravel: Routing](https://laravel.com/docs/13.x/routing))
 
 ```php
 Route::get('/user', [UserController::class, 'index']);
@@ -38,7 +40,7 @@ Laravel **13** registers route files in `bootstrap/app.php`:
 )
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 Route::get('/orders/{order}', [OrderController::class, 'show'])
@@ -59,14 +61,20 @@ The router:
 
 Named routes (`->name('users.show')`) keep `route()` URLs from going stale when the path changes.
 
-**⚠️ Watch out:**
+---
 
-Do not hardcode `/orders/15` in Blade. Use `route('orders.show', $order)`. Forgetting `web` vs `api` middleware is a common CSRF/session bug.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not hardcode `/orders/15` in Blade. Use `route('orders.show', $order)`. Forgetting `web` vs `api` middleware is a common CSRF/session bug.
 
-- Where are files registered in Laravel 13? `bootstrap/app.php` → `withRouting`.
-- `{order}` type-hint? Route-model binding — 404 if missing.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Where are files registered in Laravel 13? `bootstrap/app.php` → `withRouting`.
+> - `{order}` type-hint? Route-model binding — 404 if missing.
+
+---
 
 > [!TIP]
 > **One-liner:** Routing is the map from “HTTP method + URL” to the controller (or closure) that handles that request.

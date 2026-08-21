@@ -8,7 +8,7 @@
 
 `routes/api.php` holds **stateless API** routes. They are usually prefixed with `/api` and loaded in the `api` middleware group (throttling, JSON, no session CSRF).
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,11 +18,13 @@
 | Throttle | Rate limit — too many requests → `429`. |
 | `install:api` | Artisan command that creates `api.php`, installs Sanctum, and registers the file. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 `api.php` is the **JSON hatch** for apps: `/api`, throttle, tokens. No session CSRF on Bearer; a first-party SPA still uses Sanctum cookies.
 
-**📘 Official** ([Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — `php artisan install:api`):
+---
+
+### 📘 Official ([Laravel Sanctum](https://laravel.com/docs/13.x/sanctum) — `php artisan install:api`)
 
 ```php
 Route::get('/user', function (Request $request) {
@@ -34,7 +36,7 @@ Route::get('/user', function (Request $request) {
 php artisan install:api
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
@@ -53,14 +55,20 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 
 **Laravel 13:** `api.php` is not on a fresh install. You add it with `php artisan install:api`, which also installs Sanctum and wires the `api` middleware group.
 
-**⚠️ Watch out:**
+---
 
-A fresh Laravel 13 app has **no** `api.php` until `install:api`. “Bearer skips CSRF” is true; “Sanctum SPA skips CSRF” is not.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> A fresh Laravel 13 app has **no** `api.php` until `install:api`. “Bearer skips CSRF” is true; “Sanctum SPA skips CSRF” is not.
 
-- Passport? Optional OAuth2 — not the Laravel 13 default.
-- Prefix? `/api` via `apiPrefix` in `withRouting`.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Passport? Optional OAuth2 — not the Laravel 13 default.
+> - Prefix? `/api` via `apiPrefix` in `withRouting`.
+
+---
 
 > [!TIP]
 > **One-liner:** `api.php` is for JSON APIs — `/api` prefix, rate limiting, Sanctum token (or SPA cookies). Stateless Bearer skips CSRF; Sanctum SPA still uses CSRF cookies.

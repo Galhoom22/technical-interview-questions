@@ -6,7 +6,7 @@
 
 I **measure first**. I do not add Redis, queues, and eager loading at random. The slow part is often one query or one external HTTP call.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ I **measure first**. I do not add Redis, queues, and eager loading at random. Th
 | `EXPLAIN` | The database plan for a query (seq scan vs index). |
 | Telescope | Laravel’s first-party request inspector (queries, outgoing HTTP, jobs). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 I treat slowness like a **doctor**: measure (Telescope, slow log, EXPLAIN), name the organ (N+1, missing index, Stripe timeout), then operate. Redis and “more RAM” are not the first prescription.
 
@@ -45,7 +45,9 @@ I treat slowness like a **doctor**: measure (Telescope, slow log, EXPLAIN), name
 5. **Move off the request** — emails, images, reports → queues ([Horizon](https://laravel.com/docs/13.x/horizon) if you use Redis queues).
 6. **PHP/runtime** — OPcache on, too many service providers doing work on every request, debug mode off in production.
 
-**📘 Official** ([Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading)):
+---
+
+### 📘 Official ([Laravel: Eager Loading](https://laravel.com/docs/13.x/eloquent-relationships#eager-loading))
 
 ```php
 $books = Book::with('author')->get();
@@ -57,7 +59,7 @@ foreach ($books as $book) {
 
 Without `with('author')` this is N+1: one query for books, then one per author.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 // before: N+1 on the order-history page
@@ -76,14 +78,20 @@ Same endpoint, before/after: query count, time, EXPLAIN. If it is not faster, th
 
 **What I do not do first:** rewrite the app, switch databases, or “add more RAM” without a profile. Hardware is last, after a real bottleneck is named.
 
-**⚠️ Watch out:**
+---
 
-Do not add cache, queues, and eager loading at random. If after/before is not faster, revert — the guess was wrong.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not add cache, queues, and eager loading at random. If after/before is not faster, revert — the guess was wrong.
 
-- Usual Laravel #1? N+1 — `with()` / `withCount`, `preventLazyLoading` locally.
-- Then? Indexes (`EXPLAIN`), then cache/queues.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Usual Laravel #1? N+1 — `with()` / `withCount`, `preventLazyLoading` locally.
+> - Then? Indexes (`EXPLAIN`), then cache/queues.
+
+---
 
 > [!TIP]
 > **One-liner:** Measure (Telescope/slow log/EXPLAIN), fix N+1 and indexes first, then cache and queues — never optimize from a guess.

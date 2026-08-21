@@ -8,7 +8,7 @@
 
 I do **not** rewrite the 400 lines in one heroic commit. I make it safe, understand it, then peel it into pieces that each do one thing.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ I do **not** rewrite the 400 lines in one heroic commit. I make it safe, underst
 | Seam | A place you can split the method without changing what it does. |
 | SRP | Single Responsibility — one reason to change. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 A 400-line method is a **tangled headphone cable**. I do not buy new headphones. I freeze the sound with tests, find one knot (extract function), pull gently, repeat until the method only *orchestrates*.
 
@@ -46,7 +46,9 @@ validate → load models → calculate prices → persist → notify → build r
 | Controller soup | Form Request + Action/Service |
 | God object | Split by responsibility (SRP) |
 
-**📘 Official** ([Extract Function](https://refactoring.com/catalog/extractFunction.html) — Fowler):
+---
+
+### 📘 Official ([Extract Function](https://refactoring.com/catalog/extractFunction.html) — Fowler)
 
 ```
 function printOwing(invoice) {
@@ -58,7 +60,7 @@ function printOwing(invoice) {
 
 The 400-line method becomes a short list of named steps. Each extracted function does one job.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 public function checkout(CheckoutRequest $request): JsonResponse
@@ -82,14 +84,20 @@ public function checkout(CheckoutRequest $request): JsonResponse
 
 First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I never promise a full rewrite by Friday unless the tests already lock the behavior.
 
-**⚠️ Watch out:**
+---
 
-Do not clean *and* change business rules in the same diff. Do not rewrite 400 lines in one heroic commit.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not clean *and* change business rules in the same diff. Do not rewrite 400 lines in one heroic commit.
 
-- First Fowler move? Extract Function.
-- How long? Tests + 3–5 extracts first; no “done by Friday” rewrite unless tests already lock behavior.
+### 💬 If they follow up
+
+> [!NOTE]
+> - First Fowler move? Extract Function.
+> - How long? Tests + 3–5 extracts first; no “done by Friday” rewrite unless tests already lock behavior.
+
+---
 
 > [!TIP]
 > **One-liner:** Characterize with tests, find the separate jobs inside the method, extract them one green step at a time, and keep the original method as a short orchestrator.

@@ -6,7 +6,7 @@
 
 Both define a contract. An **abstract class** can also ship shared code and state. An **interface** is only a contract (multiple allowed).
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ Both define a contract. An **abstract class** can also ship shared code and stat
 | Interface | A contract of public methods a class must implement. It does not say *how*. |
 | Concrete class | A normal (non-abstract) class you can `new`. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 An interface is a **job contract** (many allowed). An abstract class is a **half-finished kit** — some parts already built, some blanks the child must fill — and you get only one kit (`extends`).
 
@@ -30,7 +30,9 @@ An interface is a **job contract** (many allowed). An abstract class is a **half
 | Constants | Yes | Yes |
 | Typical role | Shared base in one family | Capability / role (`Payable`, `Jsonable`) |
 
-**📘 Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php) + [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
+---
+
+### 📘 Official ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php) + [Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php))
 
 ```php
 abstract class AbstractClass
@@ -52,7 +54,7 @@ interface Template
 
 Abstract class: shared `printOut()`. Interface: contract only — a class may `implement` several.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 abstract class Report
@@ -81,14 +83,20 @@ class InvoicePdf extends Report implements Downloadable
 
 **How I choose:** if types only share a *role*, I use an interface. If they share a *family* and real code/state, I use an abstract class. Often both: abstract base + interface for the public contract.
 
-**⚠️ Watch out:**
+---
 
-You cannot `new` either. PHP 8.4+ property hooks on interfaces exist — do not recite “interfaces never have properties” as if it were still absolute.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> You cannot `new` either. PHP 8.4+ property hooks on interfaces exist — do not recite “interfaces never have properties” as if it were still absolute.
 
-- Can a class have both? Yes: `extends Report implements Downloadable`.
-- Multiple abstract classes? No — one `extends`.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Can a class have both? Yes: `extends Report implements Downloadable`.
+> - Multiple abstract classes? No — one `extends`.
+
+---
 
 > [!TIP]
 > **One-liner:** An interface is a pure contract (a class can have many). An abstract class is a partial implementation you extend once — it can hold properties and real methods.

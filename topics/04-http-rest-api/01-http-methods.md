@@ -8,7 +8,7 @@
 
 HTTP methods (verbs) tell the server **what kind of operation** the client wants on a resource.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,7 +17,7 @@ HTTP methods (verbs) tell the server **what kind of operation** the client wants
 | Safe | Must not change server state (GET, HEAD, OPTIONS). |
 | Idempotent | Repeating the same request leaves the same state. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 HTTP methods are **verbs on a noun**. GET is reading the order; POST is creating one; DELETE is throwing it away. Safe means “reading the sign”; idempotent means “pressing the same button twice doesn’t make two orders.”
 
@@ -33,7 +33,9 @@ HTTP methods are **verbs on a noun**. GET is reading the order; POST is creating
 
 **Safe** = no server-side state change. **Idempotent** = repeating the same request leaves the same state (`PUT` / `DELETE` / `GET`). `POST` is not idempotent: two creates can mean two rows.
 
-**📘 Official** ([MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)):
+---
+
+### 📘 Official ([MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods))
 
 ```http
 GET /index.html HTTP/1.1
@@ -42,7 +44,7 @@ PUT /new.html HTTP/1.1
 DELETE /file.html HTTP/1.1
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```http
 GET    /api/orders
@@ -53,14 +55,20 @@ DELETE /api/orders/15
 POST   /api/orders/15/cancel
 ```
 
-**⚠️ Watch out:**
+---
 
-GET must not change state. Two POSTs can create two rows. PUT replaces the **whole** document — a partial body is PATCH.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> GET must not change state. Two POSTs can create two rows. PUT replaces the **whole** document — a partial body is PATCH.
 
-- OPTIONS? CORS preflight / “what methods are allowed.”
-- POST `/cancel`? An action, not a field patch — legitimate.
+### 💬 If they follow up
+
+> [!NOTE]
+> - OPTIONS? CORS preflight / “what methods are allowed.”
+> - POST `/cancel`? An action, not a field patch — legitimate.
+
+---
 
 > [!TIP]
 > **One-liner:** The verbs you use every day are GET (read), POST (create/action), PUT (full replace), PATCH (partial update), DELETE (remove), plus HEAD and OPTIONS.

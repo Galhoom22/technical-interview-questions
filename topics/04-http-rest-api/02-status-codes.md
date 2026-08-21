@@ -8,7 +8,7 @@
 
 Status codes are a **3-digit signal** of how the request turned out. The first digit is the category; the body (if any) carries details.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ Status codes are a **3-digit signal** of how the request turned out. The first d
 | `5xx` | The **server** failed. |
 | `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 A status code is a **traffic light**: 2xx go, 4xx you drove wrong, 5xx the road failed. The body is the explanation on the ticket.
 
@@ -46,7 +46,9 @@ Codes I actually return:
 | `429 Too Many Requests` | Rate limited |
 | `500 Internal Server Error` | Unhandled exception |
 
-**📘 Official** ([MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)):
+---
+
+### 📘 Official ([MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status))
 
 ```http
 HTTP/1.1 201 Created
@@ -57,7 +59,7 @@ HTTP/1.1 404 Not Found
 HTTP/1.1 422 Unprocessable Content
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 return OrderResource::make($order)
@@ -70,14 +72,20 @@ return OrderResource::make($order)
 // someone else's order → abort(403)
 ```
 
-**⚠️ Watch out:**
+---
 
-401 = not logged in. 403 = logged in but not allowed. Do not dump 500 stack traces to the client. Laravel validation is 422 (MDN: Unprocessable Content).
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> 401 = not logged in. 403 = logged in but not allowed. Do not dump 500 stack traces to the client. Laravel validation is 422 (MDN: Unprocessable Content).
 
-- Create? `201` + `Location`.
-- Delete with no body? `204`.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Create? `201` + `Location`.
+> - Delete with no body? `204`.
+
+---
 
 > [!TIP]
 > **One-liner:** Status codes are grouped 1xx–5xx. I pick a specific 2xx/4xx/5xx so the client can branch without parsing a message string.

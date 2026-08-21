@@ -8,7 +8,7 @@
 
 `routes/web.php` is where **browser / session** routes live. In a default Laravel app they are loaded in the `web` middleware group.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,7 +17,7 @@
 | CSRF | Token so a forged form from another site cannot POST as you. |
 | `auth` middleware | Reject the request unless the user is logged in (session). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 `web.php` is the **browser storefront**: cookies, session, CSRF on forms. Not the mobile JSON hatch.
 
@@ -30,7 +30,9 @@ That group typically gives you:
 | Cookie encryption | Session cookie is not plaintext |
 | `SubstituteBindings` | Route-model binding |
 
-**📘 Official** ([Laravel: Routing](https://laravel.com/docs/13.x/routing) — default `web.php`):
+---
+
+### 📘 Official ([Laravel: Routing](https://laravel.com/docs/13.x/routing) — default `web.php`)
 
 ```php
 use Illuminate\Support\Facades\Route;
@@ -42,7 +44,7 @@ Route::get('/', function () {
 
 Those routes sit in the `web` middleware group (session, cookies, CSRF).
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 Route::middleware('auth')->group(function () {
@@ -56,14 +58,20 @@ Route::middleware('auth')->group(function () {
 
 These routes are for Blade / Inertia / Livewire pages, not for a stateless mobile API.
 
-**⚠️ Watch out:**
+---
 
-Do not disable CSRF “to make AJAX easier.” Use the token (or Sanctum SPA cookies). Putting API token routes here mixes session and stateless by accident.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not disable CSRF “to make AJAX easier.” Use the token (or Sanctum SPA cookies). Putting API token routes here mixes session and stateless by accident.
 
-- What’s in the `web` group? Session, cookie encryption, CSRF, bindings.
-- Same as `api.php`? No — see the next question.
+### 💬 If they follow up
+
+> [!NOTE]
+> - What’s in the `web` group? Session, cookie encryption, CSRF, bindings.
+> - Same as `api.php`? No — see the next question.
+
+---
 
 > [!TIP]
 > **One-liner:** `web.php` holds session-based browser routes — cookies, CSRF, and auth via the `web` middleware group.

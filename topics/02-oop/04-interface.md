@@ -6,7 +6,7 @@
 
 An interface is a **contract**: a list of public methods a class **must** implement. It has no state (historically no properties) and does not care *how* the work is done.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -15,11 +15,13 @@ An interface is a **contract**: a list of public methods a class **must** implem
 | Polymorphism | Same message, different behavior. |
 | Decoupling | Depend on the interface, not on `SmtpMailer` — swap the implementation (tests vs production). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 An interface is a **job description**: “you must be able to `send` mail.” SMTP, a log fake, and SES all apply for the job. Checkout does not hire a specific person; it hires the role.
 
-**📘 Official** ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
+---
+
+### 📘 Official ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php))
 
 ```php
 interface Template
@@ -31,7 +33,7 @@ interface Template
 
 A class that `implements Template` must provide both methods. The interface does not say *how*.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 interface Mailer
@@ -67,14 +69,20 @@ class LogMailer implements Mailer
 
 In Laravel this is the Service Container pattern: bind `Mailer::class` to `SmtpMailer::class`.
 
-**⚠️ Watch out:**
+---
 
-An interface is not a parent class and (historically) has no shared code. Do not put SMTP details on the interface — that is the implementation.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> An interface is not a parent class and (historically) has no shared code. Do not put SMTP details on the interface — that is the implementation.
 
-- Multiple interfaces? Yes. Multiple `extends`? No.
-- Abstract class vs interface? Shared code/state → abstract class. Role only → interface. Often both.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Multiple interfaces? Yes. Multiple `extends`? No.
+> - Abstract class vs interface? Shared code/state → abstract class. Role only → interface. Often both.
+
+---
 
 > [!TIP]
 > **One-liner:** An interface is a contract of public methods. You use it so code depends on *behavior*, not a specific class — which makes swapping and testing easy.

@@ -6,7 +6,7 @@
 
 Yes. A `private` constructor means **`new ClassName()` is only legal inside that class**. Code outside cannot instantiate it directly. `protected` allows children, but still blocks the outside world.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -15,11 +15,13 @@ Yes. A `private` constructor means **`new ClassName()` is only legal inside that
 | Static factory | A public static method that returns `new self()` / `new static()`. |
 | Named constructor | A factory with a clear name (`fromString`, `fromCart`) instead of a raw `new`. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 A private constructor is a **locked factory door**. Customers cannot walk in and `new` junk. They use the public window (`fromString`) so only valid IDs get made.
 
-**📘 Official** ([PHP Manual: Visibility](https://www.php.net/manual/en/language.oop5.visibility.php)):
+---
+
+### 📘 Official ([PHP Manual: Visibility](https://www.php.net/manual/en/language.oop5.visibility.php))
 
 ```php
 class MyClass
@@ -38,7 +40,7 @@ new MyClass(); // Error: private constructor
 
 Methods, including `__construct`, can be `private` / `protected` / `public`.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 class OrderId
@@ -65,14 +67,20 @@ new OrderId('nope'); // not allowed — keeps junk IDs out of the domain
 - Singleton (I mention it because they ask; I rarely use it)
 - Forcing all creation through a factory or the container
 
-**⚠️ Watch out:**
+---
 
-`protected` still allows children to `new`. `private` does not. Do not reach for a Singleton unless they ask — named factories are the usual real answer.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> `protected` still allows children to `new`. `private` does not. Do not reach for a Singleton unless they ask — named factories are the usual real answer.
 
-- How do you instantiate then? Public static factory → `new self()` inside the class.
-- Can a child call it? Not if it is `private`. Use `protected` if subclasses should exist.
+### 💬 If they follow up
+
+> [!NOTE]
+> - How do you instantiate then? Public static factory → `new self()` inside the class.
+> - Can a child call it? Not if it is `private`. Use `protected` if subclasses should exist.
+
+---
 
 > [!TIP]
 > **One-liner:** Yes. Private constructors block `new` from outside and force creation through a static factory (or similar) inside the class.

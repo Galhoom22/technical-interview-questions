@@ -8,7 +8,7 @@
 
 I design the **contract first**, then implement it.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ I design the **contract first**, then implement it.
 | API Resource | Laravel class that shapes a model into JSON. |
 | Versioning | `/api/v1/...` when a public API will break clients later. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 API design is writing the **menu before the kitchen**. OpenAPI is the printed menu; Form Requests and API Resources are how Laravel cooks it.
 
@@ -44,7 +44,9 @@ API design is writing the **menu before the kitchen**. OpenAPI is the printed me
 
 I do not start from random controller methods. I start from resources, status codes, and the JSON the client will depend on.
 
-**📘 Official** ([OpenAPI Specification](https://spec.openapis.org/oas/latest.html)):
+---
+
+### 📘 Official ([OpenAPI Specification](https://spec.openapis.org/oas/latest.html))
 
 ```yaml
 paths:
@@ -56,7 +58,7 @@ paths:
           description: A paged array of pets
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 class StoreOrderRequest extends FormRequest
@@ -83,14 +85,20 @@ class OrderResource extends JsonResource
 }
 ```
 
-**⚠️ Watch out:**
+---
 
-Do not start from random controller methods. The JSON the client depends on *is* the product. Version public APIs before you break them.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not start from random controller methods. The JSON the client depends on *is* the product. Version public APIs before you break them.
 
-- Tools? OpenAPI + Postman + Pest. Auth? Sanctum.
-- Pagination/throttle? From day one, not “later.”
+### 💬 If they follow up
+
+> [!NOTE]
+> - Tools? OpenAPI + Postman + Pest. Auth? Sanctum.
+> - Pagination/throttle? From day one, not “later.”
+
+---
 
 > [!TIP]
 > **One-liner:** I design resources and error codes first, document them (OpenAPI/Postman), then implement with Laravel Form Requests, API Resources, and token auth.

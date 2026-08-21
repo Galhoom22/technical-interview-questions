@@ -8,7 +8,7 @@ OOP (Object-Oriented Programming) is a way of structuring code around **objects*
 
 Instead of a pile of functions and arrays, you model `User`, `Order`, `Invoice`. Each object knows its own state and the operations that belong to it.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,11 +17,13 @@ Instead of a pile of functions and arrays, you model `User`, `Order`, `Invoice`.
 | Class | The blueprint. `new ClassName()` creates an object from it. |
 | Instance | One object created from a class. Own property values; shared method code. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 OOP is modeling the shop as **Order**, **Cart**, **User** — things that *know their data* and *the operations that belong to them* — instead of a pile of functions and loose arrays.
 
-**📘 Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
+---
+
+### 📘 Official ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php))
 
 ```php
 class SimpleClass
@@ -40,7 +42,7 @@ $instance->displayVar();
 
 Data (`$var`) and behavior (`displayVar()`) live on the same object.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 class Order
@@ -59,14 +61,20 @@ $order->totalCents(); // 3298 — checkout uses the object, not a loose array
 
 **Why interviewers ask this:** they want to hear *objects + state + behavior*, not a list of buzzwords. I then connect it to the four principles (encapsulation, abstraction, inheritance, polymorphism) if they follow up.
 
-**⚠️ Watch out:**
+---
 
-Listing the four buzzwords with no example is a weak answer. They want *objects + state + behavior*, then the principles if they follow up.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Listing the four buzzwords with no example is a weak answer. They want *objects + state + behavior*, then the principles if they follow up.
 
-- What are the four principles? Encapsulation, abstraction, inheritance, polymorphism.
-- Why objects instead of functions? The data and the rules that change it live together (`$order->totalCents()`).
+### 💬 If they follow up
+
+> [!NOTE]
+> - What are the four principles? Encapsulation, abstraction, inheritance, polymorphism.
+> - Why objects instead of functions? The data and the rules that change it live together (`$order->totalCents()`).
+
+---
 
 > [!TIP]
 > **One-liner:** OOP models the problem as objects that combine data and the operations on that data, instead of separate functions and unstructured data.

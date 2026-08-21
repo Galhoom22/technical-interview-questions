@@ -8,7 +8,7 @@
 
 Factories define **how to build fake (or realistic) model data**. They power tests and seeders so you never insert raw arrays by hand.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,11 +18,13 @@ Factories define **how to build fake (or realistic) model data**. They power tes
 | State | A named variation on a factory (`pending()`, `admin()`). |
 | `fake()` | Laravel helper around Faker (`fake()->email()`). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 A factory is the **cookie recipe**: how one `User` or `Order` looks when fake. `create()` bakes and puts it in the tin; `make()` only mixes the dough.
 
-**📘 Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories)):
+---
+
+### 📘 Official ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories))
 
 ```php
 class UserFactory extends Factory
@@ -41,7 +43,7 @@ User::factory()->count(3)->make();
 User::factory()->count(3)->create();
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 class OrderFactory extends Factory
@@ -73,14 +75,20 @@ it('lists the user orders', function () {
 
 `create()` persists. `make()` does not. States (`admin()`) and sequences customize subsets. `has(Post::factory()->count(3))` builds relationships.
 
-**⚠️ Watch out:**
+---
 
-Do not insert raw arrays in tests. Hashing: the `hashed` cast hashes `password` when set — do not double-hash unless you know you need to.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not insert raw arrays in tests. Hashing: the `hashed` cast hashes `password` when set — do not double-hash unless you know you need to.
 
-- Relationships in factories? `has()` / `for()`.
-- States? `Order::factory()->pending()->create()`.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Relationships in factories? `has()` / `for()`.
+> - States? `Order::factory()->pending()->create()`.
+
+---
 
 > [!TIP]
 > **One-liner:** A factory is a blueprint for fake model attributes — used in tests and seeders via `Model::factory()->create()`.

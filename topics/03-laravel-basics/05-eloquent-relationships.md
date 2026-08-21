@@ -8,7 +8,7 @@
 
 A relationship is a method on the model that tells Eloquent how two tables connect. It returns a relation object; you query through it or eager-load it with `with()`.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ A relationship is a method on the model that tells Eloquent how two tables conne
 | Pivot | Extra table for `belongsToMany`. |
 | Polymorphic | One relation can point at more than one model type (`morphTo`). |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 A relationship is a **labeled arrow** between tables: User → many Orders. `with()` loads the arrows in a few queries instead of one query per row (N+1).
 
@@ -34,7 +34,9 @@ A relationship is a **labeled arrow** between tables: User → many Orders. `wit
 | `morphTo` | Inverse of morph | Comment belongs to Post **or** Video |
 | `morphToMany` / `morphedByMany` | Polymorphic many-to-many | Tag attached to Post and Video |
 
-**📘 Official** ([Laravel: Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships)):
+---
+
+### 📘 Official ([Laravel: Eloquent Relationships](https://laravel.com/docs/13.x/eloquent-relationships))
 
 ```php
 class User extends Model
@@ -54,7 +56,7 @@ class Post extends Model
 }
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 class User extends Model
@@ -94,14 +96,20 @@ User::with('orders.items')->paginate(20); // avoid N+1 on the order history page
 - Pivot extras: `->withPivot('approved')->withTimestamps()`.
 - Foreign key names default to `{model}_id`. Override when the column is not conventional.
 
-**⚠️ Watch out:**
+---
 
-N+1 is the follow-up they always run. Define **both sides** (`hasMany` + `belongsTo`) when both are queried. Wrong FK name silently returns empty.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> N+1 is the follow-up they always run. Define **both sides** (`hasMany` + `belongsTo`) when both are queried. Wrong FK name silently returns empty.
 
-- How do you catch N+1 locally? `Model::preventLazyLoading(! app()->isProduction())`.
-- Pivot extras? `withPivot` / `withTimestamps`.
+### 💬 If they follow up
+
+> [!NOTE]
+> - How do you catch N+1 locally? `Model::preventLazyLoading(! app()->isProduction())`.
+> - Pivot extras? `withPivot` / `withTimestamps`.
+
+---
 
 > [!TIP]
 > **One-liner:** Eloquent relationships map table links: `hasOne` / `hasMany` / `belongsTo`, `belongsToMany` (pivot), `hasManyThrough`, and `morph*` for polymorphic relations.

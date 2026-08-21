@@ -13,7 +13,7 @@
 
 This is a **multipart update with files**. In PHP/Laravel I treat that as **POST** (optionally spoofing PUT/PATCH), not a raw PUT JSON body.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -22,7 +22,7 @@ This is a **multipart update with files**. In PHP/Laravel I treat that as **POST
 | Boundary | Marker in `Content-Type` that splits each part. The client sets it. |
 | `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 JSON cannot carry a PDF cleanly. `multipart/form-data` is the **envelope with pockets**: one pocket for bio, one for the photo, one for the CV. PHP only unpacks those pockets on POST.
 
@@ -36,7 +36,9 @@ Reason: PHP populates `$_FILES` / `$request->file()` for POST multipart. PUT/PAT
 
 `multipart/form-data` — **not** `application/json`. JSON cannot carry raw file bytes without base64 (worse for large PDFs/images).
 
-**📘 Official** ([PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php) + [MDN: MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types)):
+---
+
+### 📘 Official ([PHP: POST method uploads](https://www.php.net/manual/en/features.file-upload.post-method.php) + [MDN: MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types))
 
 ```html
 <form enctype="multipart/form-data" action="__URL__" method="POST">
@@ -47,7 +49,7 @@ Reason: PHP populates `$_FILES` / `$request->file()` for POST multipart. PUT/PAT
 
 `Content-Type` is `multipart/form-data`. PHP fills `$_FILES` for POST, not for PUT.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 public function update(UpdateProfileRequest $request, Profile $profile): JsonResponse
@@ -94,14 +96,20 @@ Do not send `application/json` at the same time as the files.
 
 I store files on disk/S3, save paths on the model, and return JSON with public URLs — I do not echo the PDF back in the same response unless asked.
 
-**⚠️ Watch out:**
+---
 
-Never set `Content-Type: multipart/form-data` by hand without the boundary. Do not send JSON and files as one JSON body (base64 PDFs hurt). PUT will not fill `$_FILES`.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Never set `Content-Type: multipart/form-data` by hand without the boundary. Do not send JSON and files as one JSON body (base64 PDFs hurt). PUT will not fill `$_FILES`.
 
-- Status? 200 + JSON (new URLs), 422 validation, 413 too large.
-- Where do files live? Disk/S3 path on the model — not the binary in the JSON.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Status? 200 + JSON (new URLs), 422 validation, 413 too large.
+> - Where do files live? Disk/S3 path on the model — not the binary in the JSON.
+
+---
 
 > [!TIP]
 > **One-liner:** POST + `multipart/form-data` for text + files (PHP’s file upload model), `Accept: application/json`, and 200/422/401/403/404 as the main status codes.

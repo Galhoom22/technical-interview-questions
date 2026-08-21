@@ -6,7 +6,7 @@
 
 PHP has **one** array type: an ordered map. Interviewers still expect the three ways we *use* that type:
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ PHP has **one** array type: an ordered map. Interviewers still expect the three 
 | Multidimensional array | Arrays inside arrays (a list of records, a tree, …). |
 | `array_is_list()` | PHP 8.1+: `true` if keys are `0..n-1` with no gaps. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 PHP has one toolbox (the array). You use it as a numbered list, a labeled drawer, or a drawer of drawers. Same tool, three jobs.
 
@@ -26,7 +26,9 @@ PHP has one toolbox (the array). You use it as a numbered list, a labeled drawer
 | Associative | String keys | `['name' => 'Omar', 'role' => 'backend']` |
 | Multidimensional | Arrays inside arrays | `$users[0]['email']` |
 
-**📘 Official** ([PHP Manual: Arrays](https://www.php.net/manual/en/language.types.array.php)):
+---
+
+### 📘 Official ([PHP Manual: Arrays](https://www.php.net/manual/en/language.types.array.php))
 
 ```php
 $array1 = array(
@@ -42,7 +44,7 @@ $array2 = [
 
 Same type either way: an ordered map. Keys may be `int` or `string`; values may be anything, including more arrays.
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 $skuList = ['TSHIRT-S', 'TSHIRT-M', 'TSHIRT-L']; // indexed list of SKUs
@@ -74,14 +76,20 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 - PHP 8.5 `array_first()` / `array_last()` return the first or last value (or `null` if empty).
 - PHP 8.5 pipe operator `|>` is useful for transforming values without nested calls.
 
-**⚠️ Watch out:**
+---
 
-The key `"8"` is stored as int `8`. Mixing list keys and string keys in one array is legal and usually a mess. Deep nested arrays are a smell — switch to objects/DTOs.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> The key `"8"` is stored as int `8`. Mixing list keys and string keys in one array is legal and usually a mess. Deep nested arrays are a smell — switch to objects/DTOs.
 
-- How do you detect a list? `array_is_list()` (PHP 8.1+).
-- `array_first` / `array_last`? PHP 8.5 value helpers (older: `array_key_first` / `array_key_last`).
+### 💬 If they follow up
+
+> [!NOTE]
+> - How do you detect a list? `array_is_list()` (PHP 8.1+).
+> - `array_first` / `array_last`? PHP 8.5 value helpers (older: `array_key_first` / `array_key_last`).
+
+---
 
 > [!TIP]
 > **One-liner:** PHP has one array type used in three ways — indexed, associative, and multidimensional (arrays of arrays).

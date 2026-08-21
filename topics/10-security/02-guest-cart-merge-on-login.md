@@ -8,7 +8,7 @@
 
 The guest cart lives on the **session** (or a signed cookie / `cart_token`). The logged-in cart lives in the **database** on `user_id`. On login I **merge** session → user, then drop the guest cart.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,7 +17,7 @@ The guest cart lives on the **session** (or a signed cookie / `cart_token`). The
 | Session regenerate | Laravel rotates the session id on login. Capture the guest cart key **before** that. |
 | `Login` event | Fires after credentials succeed. A listener is the right place to merge. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 The guest basket is a **sticky note** on this browser. On login you **pour it into the user’s real cart**, add quantities if the SKU was already there, throw the sticky note away — but copy the note *before* Laravel changes the session lock.
 
@@ -36,7 +36,9 @@ The guest basket is a **sticky note** on this browser. On login you **pour it in
    - Invalid / out of stock → skip or clamp, do not crash login.
 4. Delete leftover guest rows. `session()->regenerate()` (Laravel already does this on login) so the old session id cannot be reused.
 
-**📘 Official** ([Laravel: Events](https://laravel.com/docs/13.x/events) + [Authentication](https://laravel.com/docs/13.x/authentication)):
+---
+
+### 📘 Official ([Laravel: Events](https://laravel.com/docs/13.x/events) + [Authentication](https://laravel.com/docs/13.x/authentication))
 
 ```php
 use Illuminate\Auth\Events\Login;
@@ -50,7 +52,7 @@ class MergeGuestCart
 }
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 public function handle(Login $event): void
@@ -69,14 +71,20 @@ public function handle(Login $event): void
 
 I do not keep the cart only in `$_SESSION` arrays if it must survive login across servers — persist `cart_items` and attach `user_id` on merge.
 
-**⚠️ Watch out:**
+---
 
-Session regenerates on login — merge with a cart key stored **in** the session, captured before rotate. Do not merge the *wrong* user’s cart (IDOR).
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Session regenerates on login — merge with a cart key stored **in** the session, captured before rotate. Do not merge the *wrong* user’s cart (IDOR).
 
-- Same SKU on both? Add quantities, cap at stock.
-- Two devices? This login merges *this* session, not the other phone.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Same SKU on both? Add quantities, cap at stock.
+> - Two devices? This login merges *this* session, not the other phone.
+
+---
 
 > [!TIP]
 > **One-liner:** Persist the guest cart by session id, then on `Login` merge quantities into the user’s cart and delete the guest rows — watch session regeneration so you don’t lose the id.

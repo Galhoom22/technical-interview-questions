@@ -6,7 +6,7 @@
 
 Abstraction means exposing **what** something does and hiding **how** it does it. Callers depend on a small, stable interface; the messy details stay inside.
 
-**🔑 Key terms:**
+### 🔑 Key terms
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ Abstraction means exposing **what** something does and hiding **how** it does it
 | Concrete method | A normal method with a body (already finished). |
 | Concrete class | A normal (non-abstract) class you can `new`. |
 
-**🧠 Analogy:**
+### 🧠 Analogy
 
 Abstraction is the **checkout button**: you press “pay.” You do not see Stripe JSON, keys, or retries. An `abstract class` is one *language tool* that helps build that idea — not the idea itself.
 
@@ -25,7 +25,9 @@ Two layers people mix up:
 - **Abstraction (the idea)** — a `PaymentGateway` with `charge()` so the checkout code never talks to Stripe HTTP APIs.
 - **Abstract class (the keyword)** — a language tool that *helps* you build that idea, alongside interfaces.
 
-**📘 Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php)):
+---
+
+### 📘 Official ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php))
 
 ```php
 abstract class AbstractClass
@@ -50,7 +52,7 @@ $class1 = new ConcreteClass1();
 $class1->printOut(); // callers use printOut(); they do not know getValue()
 ```
 
-**💼 In production:**
+### 💼 In production
 
 ```php
 abstract class PaymentGateway
@@ -76,14 +78,20 @@ $checkout->pay(new StripeGateway(), $order->totalCents()); // no Stripe JSON in 
 
 Checkout calls `charge()`. It does not know about API keys, retry policy, or JSON. That is abstraction.
 
-**⚠️ Watch out:**
+---
 
-Do not mix up **abstraction** (the idea) with **`abstract class`** (one keyword). Interfaces also abstract. Hiding everything behind `__get` is not good abstraction.
+### ⚠️ Watch out
 
-**💬 If they follow up:**
+> [!WARNING]
+> Do not mix up **abstraction** (the idea) with **`abstract class`** (one keyword). Interfaces also abstract. Hiding everything behind `__get` is not good abstraction.
 
-- Can you `new` an abstract class? No — next questions.
-- Why not only interfaces? When children share real methods/state, an abstract class is the family template.
+### 💬 If they follow up
+
+> [!NOTE]
+> - Can you `new` an abstract class? No — next questions.
+> - Why not only interfaces? When children share real methods/state, an abstract class is the family template.
+
+---
 
 > [!TIP]
 > **One-liner:** Abstraction hides implementation behind a simple public API so callers depend on *what* happens, not *how*.
