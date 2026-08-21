@@ -17,7 +17,7 @@ Read each answer in this order (same icons in every file):
 
 ## Topics
 
-Listed in reading order.
+Listed in **study order** — read top to bottom.
 
 | | Topic | Questions |
 |---|---------|-----------|

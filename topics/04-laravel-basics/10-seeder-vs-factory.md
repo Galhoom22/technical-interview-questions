@@ -66,12 +66,8 @@ Tests usually call **factories directly** (fast, isolated). Seeders are for **en
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > They are not interchangeable. A seeder that only calls `User::factory(10)` with no lookup rows is a demo script, not “the” production bootstrap.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Which in Pest? Factory. Which on staging? Seeder (maybe calling factories behind `! app()->isProduction()`).

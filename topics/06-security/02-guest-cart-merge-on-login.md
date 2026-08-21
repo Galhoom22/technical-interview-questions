@@ -73,12 +73,8 @@ I do not keep the cart only in `$_SESSION` arrays if it must survive login acros
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Session regenerates on login — merge with a cart key stored **in** the session, captured before rotate. Do not merge the *wrong* user’s cart (IDOR).
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Same SKU on both? Add quantities, cap at stock.

@@ -22,7 +22,7 @@ GitHub Flow is a **short side road**: leave `main` (always shippable), do the wo
 
 ### 📘 Official ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow))
 
-```
+```text
 Create a branch → make commits → open a pull request →
 address review → merge → delete the branch
 ```
@@ -64,12 +64,8 @@ Hotfixes follow the same path, just faster: branch from `main`, PR, merge, deplo
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > No commits on `main`. No secrets in Git. No force-push on `main`. Do not `reset --hard` on a branch others pulled.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Conflicts? Merge/rebase `main` onto the feature branch, fix, push.

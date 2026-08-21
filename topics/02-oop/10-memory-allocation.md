@@ -67,12 +67,8 @@ Order::pendingStatus(); // one class in RAM; do not do this 10k times as “opti
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not choose static methods to “save RAM” in Laravel. Object overhead is tiny next to a DB query. If the static method `new`s inside, you still pay for the object.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - 10,000 `new Order`? 10,000 heap objects. 10,000 `Order::status()`? Still one class + short frames.

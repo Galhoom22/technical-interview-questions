@@ -93,12 +93,8 @@ $discounted = (new Money(1999, 'USD'))->withCents(1499);
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not replace a real public API with `__get` / `__set` / `__call` — typos become “features”, static analysis goes blind. Do not send mail or capture payment from `__destruct`.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - PHP 8.5 `clone($object, [...])`? Wither-style copy for `readonly` classes.

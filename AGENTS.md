@@ -15,7 +15,7 @@ Root is `README.md` (humans) + `topics/` + this file. Do not add LICENSE, CONTRI
 
 ## Layout
 
-```
+```text
 topics/NN-kebab-topic/
   README.md          # index + prev/next topic
   NN-kebab-slug.md   # one question
@@ -34,9 +34,11 @@ Same-topic files are also study order. Keep Previous / Next / Topic footers corr
 5. `### 🧠 Analogy` — 3–5 lines
 6. `---` then `### 📘 Official ([Name](url))` — snippet from the cited doc, not paraphrased trivia
 7. `### 💼 In production` — e-commerce/backend (orders, cart, checkout, Sanctum, Form Requests)
-8. `---` then `### ⚠️ Watch out` wrapping `> [!WARNING]`
-9. `### 💬 If they follow up` wrapping `> [!NOTE]` — 1–2 bullets
+8. `---` then `> [!WARNING]` — the interview trap (no extra `###` heading; the alert is the label)
+9. `> [!NOTE]` — follow-up questions, 1–2 bullets (same: no extra `###`)
 10. `---` then `> [!TIP]` one-liner, `**Source:**`, `**Learn more:**`, `---`, nav
+
+Fences always have a language tag (`php`, `sql`, `html`, `javascript`, `text`, …).
 
 Exactly **three** `---` phase breaks in the body (after analogy, after production, before TIP). Do not put `---` after every section. Do not double the nav rule.
 

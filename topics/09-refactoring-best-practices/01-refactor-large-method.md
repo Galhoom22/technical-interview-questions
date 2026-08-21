@@ -31,7 +31,7 @@ A 400-line method is a **tangled headphone cable**. I do not buy new headphones.
 
 A 400-line method is usually several *jobs* glued together. I label them in comments first:
 
-```
+```text
 validate → load models → calculate prices → persist → notify → build response
 ```
 
@@ -50,7 +50,7 @@ validate → load models → calculate prices → persist → notify → build r
 
 ### 📘 Official ([Extract Function](https://refactoring.com/catalog/extractFunction.html) — Fowler)
 
-```
+```javascript
 function printOwing(invoice) {
   printBanner();
   let outstanding = calculateOutstanding(invoice);
@@ -86,12 +86,8 @@ First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I 
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not clean *and* change business rules in the same diff. Do not rewrite 400 lines in one heroic commit.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - First Fowler move? Extract Function.

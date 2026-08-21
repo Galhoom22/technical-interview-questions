@@ -63,12 +63,8 @@ $order->totalCents(); // 3298 — checkout uses the object, not a loose array
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Listing the four buzzwords with no example is a weak answer. They want *objects + state + behavior*, then the principles if they follow up.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - What are the four principles? Encapsulation, abstraction, inheritance, polymorphism.

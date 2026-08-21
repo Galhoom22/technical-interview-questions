@@ -73,12 +73,8 @@ That is why static works without `new`: there is nothing to construct. The engin
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > If the static method does `new self()` inside, you still allocate an object. The *call* was cheap; the factory still pays.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - `self::` vs `static::`? `self` is where the method was written; `static` is who was called (`Order::query()` → `Order`).

@@ -60,12 +60,8 @@ Seeders are for **what to insert and how much**. They often **call factories** f
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not `db:seed` dummy users in production. `migrate:fresh --seed` wipes the database.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - `DatabaseSeeder`? The entry — `call()` the others.

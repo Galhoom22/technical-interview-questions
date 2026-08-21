@@ -68,12 +68,8 @@ In Laravel, `app(UserService::class)` is not `new` in your controller — the **
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > `__construct` does not allocate the object. If it throws, you never get a usable variable. Typed properties with no default are uninitialized until assigned.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Where does `app(Foo::class)` fit? The container still ends in the same `new` pipeline after resolving dependencies.

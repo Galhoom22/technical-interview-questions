@@ -62,12 +62,8 @@ I use Eloquent for domain work. I drop to Query Builder (or `selectRaw`) for hea
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Hydrating 50k Eloquent models for a CSV is the trap. `User::query()` is still the Query Builder underneath.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - When `DB::table`? Reports, aggregates, bulk SQL.

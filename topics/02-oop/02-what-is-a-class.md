@@ -71,12 +71,8 @@ One class, many objects. Each instance has its own property values; they share t
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > The class is not the object. `User` in the file is the cutter; `$omar` is one cookie. They share method code, not property values.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Where does the class file load from? Autoload (Composer PSR-4) on first `new` / `::`.

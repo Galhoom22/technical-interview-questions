@@ -77,12 +77,8 @@ it('lists the user orders', function () {
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not insert raw arrays in tests. Hashing: the `hashed` cast hashes `password` when set — do not double-hash unless you know you need to.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Relationships in factories? `has()` / `for()`.

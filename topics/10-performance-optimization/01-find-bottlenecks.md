@@ -80,12 +80,8 @@ Same endpoint, before/after: query count, time, EXPLAIN. If it is not faster, th
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not add cache, queues, and eager loading at random. If after/before is not faster, revert — the guess was wrong.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Usual Laravel #1? N+1 — `with()` / `withCount`, `preventLazyLoading` locally.

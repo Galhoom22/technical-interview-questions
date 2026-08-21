@@ -75,12 +75,8 @@ class ExportTempFile
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not put business logic in `__destruct`. Shutdown order is not a workflow. Prefer `close()` / `try/finally`.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - When does it run? No more references, or request shutdown.

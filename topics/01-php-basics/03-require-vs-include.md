@@ -62,12 +62,8 @@ include __DIR__ . '/../resources/views/partials/promo-banner.php';
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Never `include` a path from user input (local/remote file inclusion). Do not use a bare relative path — it follows the current working directory, not the file you think.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - `require_once`? Same as `require`, but skip if already loaded (avoids “cannot redeclare”).

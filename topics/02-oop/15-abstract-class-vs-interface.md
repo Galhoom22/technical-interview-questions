@@ -85,12 +85,8 @@ class InvoicePdf extends Report implements Downloadable
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > You cannot `new` either. PHP 8.4+ property hooks on interfaces exist — do not recite “interfaces never have properties” as if it were still absolute.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Can a class have both? Yes: `extends Report implements Downloadable`.

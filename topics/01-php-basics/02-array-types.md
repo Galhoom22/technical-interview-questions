@@ -78,12 +78,8 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > The key `"8"` is stored as int `8`. Mixing list keys and string keys in one array is legal and usually a mess. Deep nested arrays are a smell — switch to objects/DTOs.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - How do you detect a list? `array_is_list()` (PHP 8.1+).

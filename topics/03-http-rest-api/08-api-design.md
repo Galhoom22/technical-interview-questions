@@ -87,12 +87,8 @@ class OrderResource extends JsonResource
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not start from random controller methods. The JSON the client depends on *is* the product. Version public APIs before you break them.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Tools? OpenAPI + Postman + Pest. Auth? Sanctum.

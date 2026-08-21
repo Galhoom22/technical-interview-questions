@@ -74,12 +74,8 @@ Loose comparison is dangerous because the conversion rules are easy to get wrong
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > `switch` and `in_array()` are loose (`==`) unless you opt into strict. `0`, `""`, `null`, and `"1"` are where people fail this question.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Why did `0 == "foo"` change? PHP 8 stopped treating non-numeric strings as `0` in that comparison. Still prefer `===`.

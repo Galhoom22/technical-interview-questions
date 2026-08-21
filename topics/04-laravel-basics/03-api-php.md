@@ -57,12 +57,8 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > A fresh Laravel 13 app has **no** `api.php` until `install:api`. “Bearer skips CSRF” is true; “Sanctum SPA skips CSRF” is not.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Passport? Optional OAuth2 — not the Laravel 13 default.

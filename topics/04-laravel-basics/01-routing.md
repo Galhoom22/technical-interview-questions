@@ -63,12 +63,8 @@ Named routes (`->name('users.show')`) keep `route()` URLs from going stale when 
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not hardcode `/orders/15` in Blade. Use `route('orders.show', $order)`. Forgetting `web` vs `api` middleware is a common CSRF/session bug.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Where are files registered in Laravel 13? `bootstrap/app.php` → `withRouting`.

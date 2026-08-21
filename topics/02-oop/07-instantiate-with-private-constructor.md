@@ -65,12 +65,8 @@ A **child class** cannot call a **private** parent constructor. If subclasses sh
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Visibility is per class, not per file. A “friend” in the same file cannot `new` it. Reflection can cheat — say that out loud as a test/framework trick, not as the design.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - `new self()` vs `new static()`? `self` is the class where the code is written; `static` is the class that was called.

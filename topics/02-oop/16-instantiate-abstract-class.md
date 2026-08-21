@@ -72,12 +72,8 @@ function quote(Discount $discount, int $cents): int
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > If the child skips an abstract method, PHP still treats it as incomplete (error / still abstract). Forgetting `abstract` on the class when it has abstract methods is also fatal.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Can you type-hint the abstract class? Yes — pass a concrete child.

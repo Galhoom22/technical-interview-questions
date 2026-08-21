@@ -74,12 +74,8 @@ Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), San
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > `POST /api/getOrder` is RPC dressed as HTTP. REST is not a new protocol — it *uses* HTTP.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Auth header? `Authorization: Bearer`. Create? `201` + `Location`.

@@ -98,12 +98,8 @@ I store files on disk/S3, save paths on the model, and return JSON with public U
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Never set `Content-Type: multipart/form-data` by hand without the boundary. Do not send JSON and files as one JSON body (base64 PDFs hurt). PUT will not fill `$_FILES`.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Status? 200 + JSON (new URLs), 422 validation, 413 too large.

@@ -76,12 +76,8 @@ This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Hardcoded URLs and tokens die. Prod collections should be read-only GETs if you use them at all. Postman is not a substitute for `php artisan test`.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - CI? Newman / Postman CLI on the same collection.

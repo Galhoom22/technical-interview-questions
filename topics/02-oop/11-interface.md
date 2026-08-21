@@ -71,12 +71,8 @@ In Laravel this is the Service Container pattern: bind `Mailer::class` to `SmtpM
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > An interface is not a parent class and (historically) has no shared code. Do not put SMTP details on the interface — that is the implementation.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Multiple interfaces? Yes. Multiple `extends`? No.

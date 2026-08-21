@@ -57,12 +57,8 @@ POST   /api/orders/15/cancel
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > GET must not change state. Two POSTs can create two rows. PUT replaces the **whole** document — a partial body is PATCH.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - OPTIONS? CORS preflight / “what methods are allowed.”

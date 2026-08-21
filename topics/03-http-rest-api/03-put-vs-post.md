@@ -60,12 +60,8 @@ PATCH /api/orders/15          → 200  only { "status": "paid" }
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Sending one field with PUT is a lie — that is PATCH. Two identical POSTs can mean two rows.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Who assigns the id? POST: server. PUT: the URI already exists.

@@ -98,12 +98,8 @@ User::with('orders.items')->paginate(20); // avoid N+1 on the order history page
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > N+1 is the follow-up they always run. Define **both sides** (`hasMany` + `belongsTo`) when both are queried. Wrong FK name silently returns empty.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - How do you catch N+1 locally? `Model::preventLazyLoading(! app()->isProduction())`.

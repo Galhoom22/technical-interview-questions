@@ -60,12 +60,8 @@ These routes are for Blade / Inertia / Livewire pages, not for a stateless mobil
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not disable CSRF “to make AJAX easier.” Use the token (or Sanctum SPA cookies). Putting API token routes here mixes session and stateless by accident.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - What’s in the `web` group? Session, cookie encryption, CSRF, bindings.

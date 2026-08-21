@@ -21,7 +21,7 @@ Middleware is a **filter around the HTTP request**. It can inspect, reject, or e
 
 Middleware is the **security line at the door**: check ID, stamp the ticket, then the controller. On the way out it can still add a header.
 
-```
+```text
 request → middleware → middleware → controller → middleware → response
 ```
 
@@ -84,12 +84,8 @@ Laravel **13** registers middleware in `bootstrap/app.php` (`withMiddleware()`),
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Forgetting `$next($request)` drops the request. Laravel 13: `bootstrap/app.php`, not `Http/Kernel.php`. Do not stuff validation into middleware — Form Request is the layer.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Global vs route? Every request vs the routes you attach.

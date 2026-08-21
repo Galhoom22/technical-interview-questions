@@ -57,12 +57,8 @@ Same shop also talks to a payment **RPC-style** endpoint (`POST /v1/charges`) an
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > “REST” is not “any JSON over HTTP.” A bag of `/getOrder` RPCs is not REST. Pick the style on purpose.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Default for Laravel CRUD? REST + JSON.

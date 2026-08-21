@@ -73,12 +73,8 @@ Static methods are not “faster OOP”. They are functions namespaced on a clas
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > `$this` inside a static method throws. Static is not a performance trick. A class full of static utilities usually wanted a service object.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Can an instance method read static data? Yes (`self::$count`). The reverse cannot use instance state.

@@ -73,12 +73,8 @@ Laravel records ran migrations in a `migrations` table, so each change runs once
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not “fix production” in phpMyAdmin and skip the migration file. Editing an already-ran migration on a shared DB breaks teammates — add a new migration instead.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - How does Laravel know it ran? The `migrations` table.

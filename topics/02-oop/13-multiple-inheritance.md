@@ -76,12 +76,8 @@ If an interviewer says “so traits are multiple inheritance?”, I correct it: 
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > “Traits = multiple inheritance” is the trap. Traits copy methods; they are not a second type in the tree. Name clashes must be resolved explicitly.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Can a class `extend A, B`? No.

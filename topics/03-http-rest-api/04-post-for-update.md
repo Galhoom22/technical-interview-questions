@@ -57,12 +57,8 @@ Content-Type: multipart/form-data; boundary=...
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not use POST for JSON updates “because it works.” If the client can PATCH and there are no files, PATCH.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Method spoofing? `@method('PUT')` — still POST on the wire.

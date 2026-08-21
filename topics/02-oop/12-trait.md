@@ -72,12 +72,8 @@ class Article
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > A trait is not a second parent. If two traits define the same method, you must pick with `insteadof` / `as`. A fat trait is a hidden god object — prefer a collaborator.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Laravel example? `HasFactory` on Eloquent models.

@@ -88,12 +88,8 @@ I mention inheritance last on purpose. In PHP I prefer **composition + interface
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Inheritance is the principle people overuse. Deep `extends` trees hurt more than they help. Lead with encapsulation and polymorphism; mention inheritance last.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Composition vs inheritance? I inject a collaborator instead of extending, unless it really *is* a kind of the parent.

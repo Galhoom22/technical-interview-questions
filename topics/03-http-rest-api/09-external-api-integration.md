@@ -72,12 +72,8 @@ Async work (slow third parties) goes on a **queue**. Webhooks inbound get their 
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Never commit keys. Never `Http::get` from a controller in five places. Never return Stripe’s JSON as your API. Always set a timeout.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Retries? Idempotent GET, or POST with an idempotency key.

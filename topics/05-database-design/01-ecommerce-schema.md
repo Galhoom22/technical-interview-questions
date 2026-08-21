@@ -69,7 +69,7 @@ A row in `weather` cannot name a city that does not exist. That is referential i
 
 ### 💼 In production
 
-```
+```text
 User 1──* Address
 User 1──* Order
 User 1──1 Cart
@@ -99,12 +99,8 @@ I would sketch this as an ERD (even on paper) and only then write Laravel migrat
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Never store money as float. Never join live `products.price` for an old order. Do not start from 40 tables.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Guest cart? `session_id` until login, then merge ([Security Q2](../06-security/02-guest-cart-merge-on-login.md)).

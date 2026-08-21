@@ -79,12 +79,8 @@ The `web` group already applies session, cookie encryption, and CSRF. I still ad
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Never `$request->all()` into `create()`. Token ≠ permission — use policies. Do not put tokens in query strings. `APP_DEBUG=false` in production.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Sanctum SPA vs Bearer? SPA still uses CSRF cookies; stateless Bearer does not.

@@ -74,12 +74,8 @@ return OrderResource::make($order)
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > 401 = not logged in. 403 = logged in but not allowed. Do not dump 500 stack traces to the client. Laravel validation is 422 (MDN: Unprocessable Content).
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Create? `201` + `Location`.

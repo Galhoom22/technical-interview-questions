@@ -80,12 +80,8 @@ Checkout calls `charge()`. It does not know about API keys, retry policy, or JSO
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > Do not mix up **abstraction** (the idea) with **`abstract class`** (one keyword). Interfaces also abstract. Hiding everything behind `__get` is not good abstraction.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - Can you `new` an abstract class? No — next questions.

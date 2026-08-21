@@ -69,12 +69,8 @@ new OrderId('nope'); // not allowed — keeps junk IDs out of the domain
 
 ---
 
-### ⚠️ Watch out
-
 > [!WARNING]
 > `protected` still allows children to `new`. `private` does not. Do not reach for a Singleton unless they ask — named factories are the usual real answer.
-
-### 💬 If they follow up
 
 > [!NOTE]
 > - How do you instantiate then? Public static factory → `new self()` inside the class.
