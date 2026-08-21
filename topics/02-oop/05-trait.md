@@ -6,7 +6,7 @@
 
 A trait is a reuse tool for **horizontal** sharing of methods (and properties). PHP copies the trait’s members into the class at compile time. It is not inheritance and not an interface.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -15,11 +15,11 @@ A trait is a reuse tool for **horizontal** sharing of methods (and properties). 
 | `insteadof` / `as` | Resolve a name clash when two traits define the same method. |
 | Horizontal reuse | Share code across classes that do **not** share a parent. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 A trait is a **photocopied recipe** taped into two unrelated cookbooks. `Product` and `Article` both need `slug()`; they are not parent/child, so you copy the recipe in (`use HasSlug`).
 
-**Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php)):
+**📘 Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php)):
 
 ```php
 trait ezcReflectionReturnInfo {
@@ -38,7 +38,7 @@ class ezcReflectionFunction extends ReflectionFunction {
 
 Two unrelated classes reuse the same methods. Conflict resolution uses `insteadof` / `as`.
 
-**In production:**
+**💼 In production:**
 
 ```php
 trait HasSlug
@@ -68,11 +68,11 @@ class Article
 
 **When I avoid them:** as a dumping ground for unrelated methods. If the trait needs a lot of hidden state, it probably wants to be a collaborator object instead (composition).
 
-**Watch out:**
+**⚠️ Watch out:**
 
 A trait is not a second parent. If two traits define the same method, you must pick with `insteadof` / `as`. A fat trait is a hidden god object — prefer a collaborator.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Laravel example? `HasFactory` on Eloquent models.
 - Trait vs abstract class? No shared parent → trait. Family with shared state → abstract class.

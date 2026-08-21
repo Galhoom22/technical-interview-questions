@@ -6,7 +6,7 @@
 
 Both load and execute another PHP file in the current scope. The difference is **what happens if the file is missing**.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -15,7 +15,7 @@ Both load and execute another PHP file in the current scope. The difference is *
 | `require_once` / `include_once` | Same as above, but skip the file if it was already loaded. |
 | Autoload | Load a **class** file on first use (Composer PSR-4). Not a replacement for `vendor/autoload.php`. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 `require` is a load-bearing wall: if it is missing, the building cannot stand. `include` is a poster on that wall: ugly if missing, the shop still opens.
 
@@ -25,7 +25,7 @@ Both load and execute another PHP file in the current scope. The difference is *
 | Use when | The file is mandatory | The file is optional |
 | Typical files | Autoload, config, core classes | Optional template / partial |
 
-**Official** ([PHP Manual: `include`](https://www.php.net/manual/en/function.include.php)):
+**📘 Official** ([PHP Manual: `include`](https://www.php.net/manual/en/function.include.php)):
 
 ```php
 echo "A $color $fruit"; // A
@@ -37,7 +37,7 @@ echo "A $color $fruit"; // A green apple
 
 `require` uses the same rules. If `vars.php` is missing, `include` warns and continues; `require` is a fatal error and the script stops.
 
-**In production:**
+**💼 In production:**
 
 ```php
 // public/index.php — the app cannot boot without Composer
@@ -58,11 +58,11 @@ include __DIR__ . '/../resources/views/partials/promo-banner.php';
 - In modern PHP I almost never `require` class files by hand — Composer’s PSR-4 autoloader does that. `require` still matters for `vendor/autoload.php`, config, and a few bootstrap files.
 - `include` returning `false` on failure is not a substitute for handling errors. If the file is required for correctness, use `require`.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Never `include` a path from user input (local/remote file inclusion). Do not use a bare relative path — it follows the current working directory, not the file you think.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - `require_once`? Same as `require`, but skip if already loaded (avoids “cannot redeclare”).
 - Why not `require` every class? Composer PSR-4 autoload does that. `require` still boots `vendor/autoload.php`.

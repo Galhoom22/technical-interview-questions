@@ -6,7 +6,7 @@
 
 You don’t — **PHP allows a class to extend only one parent**. Multiple inheritance of classes is not supported.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ You don’t — **PHP allows a class to extend only one parent**. Multiple inher
 | Composition | Hold another object as a property and delegate to it, instead of extending it. |
 | Diamond problem | Two parents define the same method — whose version wins? PHP avoids this by allowing only one `extends`. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 PHP will not let a class have two biological parents. It can sign many **job contracts** (interfaces), tape in **recipes** (traits), or **hire** a helper (composition).
 
@@ -29,7 +29,7 @@ What you do instead:
 | Reuse *implementation* in a family of types | Single inheritance (`extends`) |
 | Reuse by *delegation* | Composition — inject another object |
 
-**Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php) — “an alternative to multiple inheritance”):
+**📘 Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php) — “an alternative to multiple inheritance”):
 
 ```php
 class Base {
@@ -55,7 +55,7 @@ $o->sayHello(); // Hello World!
 
 One `extends`, extra behavior via `use`. A class still cannot `extend A, B`.
 
-**In production:**
+**💼 In production:**
 
 ```php
 interface Auditable { public function auditId(): string; }
@@ -72,11 +72,11 @@ class Order extends Model implements Auditable, Billable
 
 If an interviewer says “so traits are multiple inheritance?”, I correct it: traits are compiler-assisted copy-paste, not a second parent class. There is no diamond-problem of *types* — only method-name conflicts you must resolve explicitly.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 “Traits = multiple inheritance” is the trap. Traits copy methods; they are not a second type in the tree. Name clashes must be resolved explicitly.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Can a class `extend A, B`? No.
 - How do you share code then? One `extends`, many `implements`, `use` traits, or inject a collaborator.

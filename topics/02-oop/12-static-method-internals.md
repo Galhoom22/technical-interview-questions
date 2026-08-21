@@ -6,7 +6,7 @@
 
 Because the method lives on the **class entry**, not on an object.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ Because the method lives on the **class entry**, not on an object.
 | Late static binding | `static::` is the class that was *called*, not where the method was written. |
 | Stack frame | Memory for one call (arguments, locals). Popped when the method returns. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 The class is a **shared bulletin board** (one copy in memory). A static call pins a note on that board and takes it down when done. Nobody built a new object to do it.
 
@@ -30,7 +30,7 @@ When you call `User::make()`:
 4. It builds a **call frame** (arguments, return slot). It does **not** allocate a `zend_object`.
 5. Inside the method, `$this` is not bound. `self::` is the class where the method was **defined**. `static::` is the class that was **called** (late static binding).
 
-**Official** ([PHP Manual: Late Static Bindings](https://www.php.net/manual/en/language.oop5.late-static-bindings.php)):
+**📘 Official** ([PHP Manual: Late Static Bindings](https://www.php.net/manual/en/language.oop5.late-static-bindings.php)):
 
 ```php
 class A {
@@ -51,7 +51,7 @@ class B extends A {
 B::test(); // B — no B object was allocated
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 class Model
@@ -69,11 +69,11 @@ Order::query(); // used as Eloquent-style entry — still no Order instance yet
 
 That is why static works without `new`: there is nothing to construct. The engine is calling a function that happens to live on the class.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 If the static method does `new self()` inside, you still allocate an object. The *call* was cheap; the factory still pays.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - `self::` vs `static::`? `self` is where the method was written; `static` is who was called (`Order::query()` → `Order`).
 - Is the class loaded every call? No — autoload once, then the class entry is reused.

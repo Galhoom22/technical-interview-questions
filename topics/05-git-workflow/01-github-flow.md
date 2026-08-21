@@ -4,7 +4,7 @@
 
 I use **GitHub Flow**: `main` is always deployable. Work happens on short-lived branches. Nothing reaches `main` without a pull request and review.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -14,18 +14,18 @@ I use **GitHub Flow**: `main` is always deployable. Work happens on short-lived 
 | Squash merge | One commit on `main` per PR — keeps history readable. |
 | `git switch -c` | Create and switch to a branch (Git 2.23+; `checkout -b` still works). |
 
-**Analogy:**
+**🧠 Analogy:**
 
 GitHub Flow is a **short side road**: leave `main` (always shippable), do the work, get a review at the junction, merge, delete the road. Nobody drives the wrong way on `main`.
 
-**Official** ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)):
+**📘 Official** ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)):
 
 ```
 Create a branch → make commits → open a pull request →
 address review → merge → delete the branch
 ```
 
-**In production:**
+**💼 In production:**
 
 ```bash
 git switch main && git pull
@@ -60,11 +60,11 @@ git push -u origin HEAD
 
 Hotfixes follow the same path, just faster: branch from `main`, PR, merge, deploy.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 No commits on `main`. No secrets in Git. No force-push on `main`. Do not `reset --hard` on a branch others pulled.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Conflicts? Merge/rebase `main` onto the feature branch, fix, push.
 - Squash vs merge commit? Squash for a readable `main`; team policy wins.

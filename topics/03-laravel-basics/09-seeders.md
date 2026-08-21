@@ -8,7 +8,7 @@
 
 A seeder is a class that **inserts data** into the database on purpose: lookup tables, an admin user, or a full demo dataset.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,11 +17,11 @@ A seeder is a class that **inserts data** into the database on purpose: lookup t
 | Lookup row | Real reference data (currencies, roles) — not fake users. |
 | `migrate:fresh --seed` | Drop all tables, migrate, then seed. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 A seeder is the **stocking plan** for the shop: which rows, how many. It often *calls* factories for dummy customers, and inserts real currencies by hand.
 
-**Official** ([Laravel: Seeding](https://laravel.com/docs/13.x/seeding)):
+**📘 Official** ([Laravel: Seeding](https://laravel.com/docs/13.x/seeding)):
 
 ```php
 class DatabaseSeeder extends Seeder
@@ -38,7 +38,7 @@ php artisan db:seed
 php artisan migrate:fresh --seed
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 public function run(): void
@@ -56,11 +56,11 @@ public function run(): void
 
 Seeders are for **what to insert and how much**. They often **call factories** for dummy rows, and insert fixed rows (countries, roles) without factories.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Do not `db:seed` dummy users in production. `migrate:fresh --seed` wipes the database.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - `DatabaseSeeder`? The entry — `call()` the others.
 - Tests? Usually factories directly, not the full seeder.

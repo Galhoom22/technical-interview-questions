@@ -8,7 +8,7 @@
 
 A migration is a **version-controlled PHP class that changes the database schema**. It is Git for tables: `up()` applies the change, `down()` reverses it.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,11 +17,11 @@ A migration is a **version-controlled PHP class that changes the database schema
 | `migrations` table | Laravel’s log of which migration files already ran on this database. |
 | Rollback | Run `down()` for the last batch (`migrate:rollback`). |
 
-**Analogy:**
+**🧠 Analogy:**
 
 A migration is **Git for tables**: `up()` is the commit that adds `orders`; `down()` is revert. Every environment plays the same tape.
 
-**Official** ([Laravel: Migrations](https://laravel.com/docs/13.x/migrations)):
+**📘 Official** ([Laravel: Migrations](https://laravel.com/docs/13.x/migrations)):
 
 ```php
 return new class extends Migration
@@ -49,7 +49,7 @@ php artisan migrate
 php artisan migrate:rollback
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 public function up(): void
@@ -69,11 +69,11 @@ Laravel records ran migrations in a `migrations` table, so each change runs once
 
 **Why it matters:** the team shares schema through Git instead of manually clicking phpMyAdmin. Staging and production stay in sync with the same files.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Do not “fix production” in phpMyAdmin and skip the migration file. Editing an already-ran migration on a shared DB breaks teammates — add a new migration instead.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - How does Laravel know it ran? The `migrations` table.
 - `migrate:fresh`? Drop all tables, run everything again — local/dev, not a casual prod move.

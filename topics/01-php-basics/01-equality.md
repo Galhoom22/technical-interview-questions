@@ -10,7 +10,7 @@
 
 `==` asks “are these equal after conversion?”. `===` asks “are these the same thing?”.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -19,7 +19,7 @@
 | Type juggling | PHP changing a value’s type so `==` can compare (e.g. `"1"` → `1`). |
 | `match` | PHP 8+ switch-like expression. Arms use `===`, not `==`. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 `==` is squinting at two badges until they *look* the same. `===` is checking the badge **type** as well as the number. `"1"` and `1` pass the squint; they fail the type check.
 
@@ -33,7 +33,7 @@
 | `null` vs `false` | `true` | `false` |
 | `""` vs `0` | `true` | `false` |
 
-**Official** ([PHP Manual: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php)):
+**📘 Official** ([PHP Manual: Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php)):
 
 ```php
 var_dump(0 == "a");     // true in PHP 7, false in PHP 8 (string-to-number change)
@@ -42,7 +42,7 @@ var_dump(0 == false);   // true — bool/null are compared as bool
 var_dump(1 === "1");    // false — identical: value and type, no juggling
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 $status = $request->input('status'); // HTML/JSON often sends "1" or "paid"
@@ -70,11 +70,11 @@ Loose comparison is dangerous because the conversion rules are easy to get wrong
 - Same idea for `array_search()` and `array_keys()` with the strict flag.
 - If you need “is this empty?”, do not use `== null` or `== false`. Use `=== null`, `=== ''`, or `empty()` / `isset()` depending on the intent.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 `switch` and `in_array()` are loose (`==`) unless you opt into strict. `0`, `""`, `null`, and `"1"` are where people fail this question.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Why did `0 == "foo"` change? PHP 8 stopped treating non-numeric strings as `0` in that comparison. Still prefer `===`.
 - `match` vs `switch`? `match` uses `===`. That is one reason it is safer.

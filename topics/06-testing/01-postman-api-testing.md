@@ -6,7 +6,7 @@
 
 I treat Postman as a **repeatable contract check**, not a one-off “send” button. Same collection works for me, the frontend, and CI (Newman).
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ I treat Postman as a **repeatable contract check**, not a one-off “send” but
 | Newman | CLI that runs the same collection in CI. |
 | Contract | The URLs, methods, JSON shapes, and status codes clients can depend on. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 Postman is a **shared checklist**, not a screenshot of one 200. Login once, stamp the token, then the folder proves 201/401/422 the same way every time.
 
@@ -38,7 +38,7 @@ Postman is a **shared checklist**, not a screenshot of one 200. Login once, stam
 | Validation | Bad payload → `422` + field errors |
 | Missing | Unknown id → `404` |
 
-**Official** ([Postman: Write scripts to test API response data](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts)):
+**📘 Official** ([Postman: Write scripts to test API response data](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts)):
 
 ```javascript
 pm.test('Status code is 200', function () {
@@ -46,7 +46,7 @@ pm.test('Status code is 200', function () {
 });
 ```
 
-**In production:**
+**💼 In production:**
 
 ```javascript
 pm.test('creates order', function () {
@@ -72,11 +72,11 @@ pm.test('rejects unauthenticated checkout', function () {
 
 This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for sharing with non-PHP teammates. Automated tests in the repo still own regressions (`php artisan test`).
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Hardcoded URLs and tokens die. Prod collections should be read-only GETs if you use them at all. Postman is not a substitute for `php artisan test`.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - CI? Newman / Postman CLI on the same collection.
 - Negative cases? 401, 403, 422, 404 in the same folder as the happy path.

@@ -8,7 +8,7 @@
 
 “API” just means a contract for programs to talk. The types I name in interviews:
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@
 | SOAP | XML envelopes + WSDL. Still required by some enterprise partners. |
 | WebSocket | Persistent two-way channel — not request/response only. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 REST is **nouns + HTTP verbs**. RPC is **“do createOrder.”** GraphQL is **“give me exactly these fields.”** SOAP is the old XML envelope some banks still require.
 
@@ -34,7 +34,7 @@ Also useful split: **public HTTP APIs** vs **library APIs** (a PHP package’s c
 
 I default to REST for CRUD backends. GraphQL when many clients need different shapes. gRPC for internal service-to-service with strict contracts. SOAP when an enterprise partner still requires it.
 
-**Official** ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST)):
+**📘 Official** ([MDN: REST](https://developer.mozilla.org/en-US/docs/Glossary/REST)):
 
 ```http
 GET /items/2 HTTP/1.1
@@ -43,7 +43,7 @@ Accept: application/json
 
 REST uses HTTP as the uniform interface: the URI is the resource, the method is the action.
 
-**In production:**
+**💼 In production:**
 
 ```http
 GET /api/orders/15 HTTP/1.1
@@ -53,11 +53,11 @@ Accept: application/json
 
 Same shop also talks to a payment **RPC-style** endpoint (`POST /v1/charges`) and might expose GraphQL later for a storefront that needs nested product+reviews in one round trip.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 “REST” is not “any JSON over HTTP.” A bag of `/getOrder` RPCs is not REST. Pick the style on purpose.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Default for Laravel CRUD? REST + JSON.
 - When GraphQL? Many clients, different shapes, one round trip.

@@ -6,7 +6,7 @@
 
 You instantiate it **from inside the class**, usually with a **static factory** (or `getInstance()` for a singleton). `new self(...)` / `new static(...)` is allowed there because it is the same class.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,11 +16,11 @@ You instantiate it **from inside the class**, usually with a **static factory** 
 | `new static()` | Create an instance of the class that was **called** (late static binding). |
 | Reflection | Can bypass a constructor (`newInstanceWithoutConstructor`). Framework/tests — not domain code. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 The locked door still opens from **inside**. A public static window (`fromCart`) is allowed to `new self()`. Reflection picking the lock is for the framework, not checkout.
 
-**Official** ([PHP Manual: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
+**📘 Official** ([PHP Manual: Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
 
 ```php
 class Foo
@@ -36,7 +36,7 @@ $classname = 'Foo';
 $classname::aStaticMethod();
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 class Order
@@ -61,11 +61,11 @@ Other legitimate paths:
 
 A **child class** cannot call a **private** parent constructor. If subclasses should exist, the constructor should be `protected`.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Visibility is per class, not per file. A “friend” in the same file cannot `new` it. Reflection can cheat — say that out loud as a test/framework trick, not as the design.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - `new self()` vs `new static()`? `self` is the class where the code is written; `static` is the class that was called.
 - Singleton? I mention `getInstance()` because they ask; I rarely use it in Laravel (the container already holds one).

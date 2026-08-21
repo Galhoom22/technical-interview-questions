@@ -6,7 +6,7 @@
 
 A class is the **blueprint**. An object (instance) is a **value built from that blueprint**.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -16,7 +16,7 @@ A class is the **blueprint**. An object (instance) is a **value built from that 
 | Method | Behavior on the class or object. |
 | Visibility | `public` / `protected` / `private` — who can access a member. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 The class is the **cookie cutter**. Each `new` presses out one cookie. Same shape, different icing (`$omar` vs `$sara`).
 
@@ -27,7 +27,7 @@ The class defines:
 - visibility (`public` / `protected` / `private`)
 - how instances are constructed
 
-**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
+**📘 Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php)):
 
 ```php
 class SimpleClass
@@ -45,7 +45,7 @@ $instance = new SimpleClass();
 
 The class is the declaration. `$instance` is one object built from it.
 
-**In production:**
+**💼 In production:**
 
 ```php
 class User
@@ -67,11 +67,11 @@ $sara = new User('Sara', 'sara@shop.example'); // same class, two accounts
 
 One class, many objects. Each instance has its own property values; they share the method code.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 The class is not the object. `User` in the file is the cutter; `$omar` is one cookie. They share method code, not property values.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Where does the class file load from? Autoload (Composer PSR-4) on first `new` / `::`.
 - `public` constructor properties? PHP 8+ promoted properties — still just properties on the instance.

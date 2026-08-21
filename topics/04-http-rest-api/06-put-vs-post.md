@@ -8,7 +8,7 @@
 
 `POST` typically **creates**. `PUT` **replaces** the whole resource at a known URI.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@
 | Idempotent | Repeating the same request leaves the same state. |
 | Resource | A noun the API exposes (`/orders/15`). |
 
-**Analogy:**
+**🧠 Analogy:**
 
 POST is **dropping a new box on the counter** (the shop assigns the ticket number). PUT is **replacing the box already on shelf 15** — same shelf, whole new contents. Twice PUT, still one box.
 
@@ -30,7 +30,7 @@ POST is **dropping a new box on the counter** (the shop assigns the ticket numbe
 | Who assigns the id | Server | Client already knows the URI (or sends the full replacement) |
 | Body | New resource fields | **Complete** representation |
 
-**Official** ([MDN: POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) + [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PUT)):
+**📘 Official** ([MDN: POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) + [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PUT)):
 
 ```http
 POST /test HTTP/1.1
@@ -46,7 +46,7 @@ Content-Type: text/html
 
 POST: process this entity (often create). PUT: store this as the resource at this URI (idempotent replace).
 
-**In production:**
+**💼 In production:**
 
 ```http
 POST /api/orders              → 201  new order, server assigns id
@@ -56,11 +56,11 @@ PATCH /api/orders/15          → 200  only { "status": "paid" }
 
 `PATCH` is the sibling people mix in: **partial** update, not a full replace. If the client sends only `{ "title": "New" }`, that is PATCH, not PUT.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Sending one field with PUT is a lie — that is PATCH. Two identical POSTs can mean two rows.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Who assigns the id? POST: server. PUT: the URI already exists.
 - Idempotent? PUT yes, POST no.

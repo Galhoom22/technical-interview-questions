@@ -8,7 +8,7 @@
 
 I treat the external API as a **client behind an interface**, not as random `Http::get` calls in controllers.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -18,7 +18,7 @@ I treat the external API as a **client behind an interface**, not as random `Htt
 | `Http::fake()` | Tests never hit the network. |
 | DTO | Our type. Map vendor JSON into it — do not leak their shape. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 Stripe is a **vendor behind a locked door**. Checkout talks to *our* `Payable`. Credentials live in `.env`. Tests knock on a fake door (`Http::fake()`), not the real one.
 
@@ -32,7 +32,7 @@ Stripe is a **vendor behind a locked door**. Checkout talks to *our* `Payable`. 
 6. **Errors** — translate 4xx/5xx into domain exceptions; log correlation ids; do not dump their body to the user.
 7. **Tests** — `Http::fake()` so tests never hit the network.
 
-**Official** ([Laravel: HTTP Client](https://laravel.com/docs/13.x/http-client)):
+**📘 Official** ([Laravel: HTTP Client](https://laravel.com/docs/13.x/http-client)):
 
 ```php
 $response = Http::withToken($token)
@@ -49,7 +49,7 @@ Http::fake([
 ]);
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 public function charge(int $cents): string
@@ -68,11 +68,11 @@ public function charge(int $cents): string
 
 Async work (slow third parties) goes on a **queue**. Webhooks inbound get their own signed endpoint — that is the other direction of the same integration.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Never commit keys. Never `Http::get` from a controller in five places. Never return Stripe’s JSON as your API. Always set a timeout.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Retries? Idempotent GET, or POST with an idempotency key.
 - Slow vendor? Queue. Inbound? Signed webhook.

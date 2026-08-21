@@ -8,7 +8,7 @@
 
 They work together. They are not the same layer.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -17,7 +17,7 @@ They work together. They are not the same layer.
 | `create()` | Build **and** `INSERT` the model. |
 | Lookup row | Real reference data (currencies, roles) — not fake users. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 The factory is the **recipe for one cookie**. The seeder is the **party plan**: 3 roles, 1 admin, 50 users. Tests use the recipe; environments use the plan.
 
@@ -28,7 +28,7 @@ The factory is the **recipe for one cookie**. The seeder is the **party plan**: 
 | Knows about | One model (and related factories) | Whole database / feature set |
 | Example | `UserFactory` definition + `admin()` state | “Create 3 roles, 1 admin, 50 users” |
 
-**Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories) + [Seeding](https://laravel.com/docs/13.x/seeding)):
+**📘 Official** ([Laravel: Eloquent Factories](https://laravel.com/docs/13.x/eloquent-factories) + [Seeding](https://laravel.com/docs/13.x/seeding)):
 
 ```php
 User::factory()->count(3)->create(); // factory: how one User looks
@@ -39,7 +39,7 @@ public function run(): void          // seeder: what to insert
 }
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 it('applies a coupon', function () {
@@ -62,11 +62,11 @@ public function run(): void
 
 Tests usually call **factories directly** (fast, isolated). Seeders are for **environments** (local demo, staging). Production rarely runs dummy factories; it may run a seeder for required lookup rows only.
 
-**Watch out:**
+**⚠️ Watch out:**
 
 They are not interchangeable. A seeder that only calls `User::factory(10)` with no lookup rows is a demo script, not “the” production bootstrap.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - Which in Pest? Factory. Which on staging? Seeder (maybe calling factories behind `! app()->isProduction()`).
 - Schema? Neither replaces migrations.

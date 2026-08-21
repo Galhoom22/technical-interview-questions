@@ -6,7 +6,7 @@
 
 `new` pays for a **heap object** every time. A static call pays for the **already-loaded class** plus a short-lived stack frame.
 
-**Key terms:**
+**🔑 Key terms:**
 
 | Term | Plain meaning |
 |------|----------------|
@@ -15,7 +15,7 @@
 | Class metadata | Loaded **once** (the class entry). Shared by every `new` and every static call. |
 | Instance | One object created from a class. Own property values; shared method code. |
 
-**Analogy:**
+**🧠 Analogy:**
 
 `new` is buying a **new chair** (heap, stays until thrown away). A static call is **reading the fire-exit sign** already on the wall (class metadata + a short-lived stack frame).
 
@@ -43,7 +43,7 @@ Important nuance: if the static method itself does `new self()` inside, you stil
 
 I do not choose static methods to “save RAM” in a Laravel app. I choose them when there is no instance state. Object overhead is tiny compared to DB queries.
 
-**Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
+**📘 Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Static Keyword](https://www.php.net/manual/en/language.oop5.static.php)):
 
 ```php
 $a = new SimpleClass();
@@ -52,7 +52,7 @@ $b = new SimpleClass(); // second object — its own $var on the heap
 Foo::aStaticMethod();   // no object; class table + call frame only
 ```
 
-**In production:**
+**💼 In production:**
 
 ```php
 $orders = [];
@@ -63,11 +63,11 @@ foreach (range(1, 10_000) as $i) {
 Order::pendingStatus(); // one class in RAM; do not do this 10k times as “optimization”
 ```
 
-**Watch out:**
+**⚠️ Watch out:**
 
 Do not choose static methods to “save RAM” in Laravel. Object overhead is tiny next to a DB query. If the static method `new`s inside, you still pay for the object.
 
-**If they follow up:**
+**💬 If they follow up:**
 
 - 10,000 `new Order`? 10,000 heap objects. 10,000 `Order::status()`? Still one class + short frames.
 - Why not micro-optimize this? Measure queries first.

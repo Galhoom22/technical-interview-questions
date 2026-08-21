@@ -4,7 +4,16 @@ Real **technical** questions from interviews I sat. Each question is its own fil
 
 **46 questions** · PHP **8.5** · Laravel **13**
 
-Where an answer has code, you get two snippets: **Official** (PHP Manual, Laravel docs, MDN, …) then **In production** (the same idea in a real backend). Each answer also has **Key terms**, a short **analogy**, a **watch-out**, and likely **follow-ups** — the interview words, a simple picture, the trap, and what they ask next.
+Read each answer in this order (same icons in every file):
+
+| | Section | What to do |
+|---|---------|------------|
+| 🔑 | Key terms | Words you will say in the interview |
+| 🧠 | Analogy | The picture if they say “explain it simply” |
+| 📘 | Official | How the docs write it (PHP Manual, Laravel, MDN, …) |
+| 💼 | In production | The same idea in a real backend |
+| ⚠️ | Watch out | The trap that fails this question |
+| 💬 | Follow-up | What they usually ask next |
 
 ## Topics
 
