@@ -83,4 +83,4 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
 
 ---
 
-[← Previous](./03-web-php.md) · [Topic](./README.md) · [Next →](./05-eloquent-relationships.md)
+[← Previous](./02-web-php.md) · [Topic](./README.md) · [Next →](./04-middleware.md)

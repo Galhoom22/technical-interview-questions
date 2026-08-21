@@ -88,4 +88,4 @@ Named routes (`->name('users.show')`) keep `route()` URLs from going stale when 
 
 ---
 
-[← Previous](./01-migration.md) · [Topic](./README.md) · [Next →](./03-web-php.md)
+[Topic](./README.md) · [Next →](./02-web-php.md)

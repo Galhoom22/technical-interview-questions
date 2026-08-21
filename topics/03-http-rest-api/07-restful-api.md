@@ -100,4 +100,4 @@ Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), San
 
 ---
 
-[← Previous](./03-api-types.md) · [Topic](./README.md) · [Next →](./05-api-design.md)
+[← Previous](./06-api-types.md) · [Topic](./README.md) · [Next →](./08-api-design.md)

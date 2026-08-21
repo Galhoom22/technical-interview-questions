@@ -85,4 +85,4 @@ These routes are for Blade / Inertia / Livewire pages, not for a stateless mobil
 
 ---
 
-[← Previous](./02-routing.md) · [Topic](./README.md) · [Next →](./04-api-php.md)
+[← Previous](./01-routing.md) · [Topic](./README.md) · [Next →](./03-api-php.md)

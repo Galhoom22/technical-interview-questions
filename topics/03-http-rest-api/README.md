@@ -10,12 +10,12 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 
 1. [What are the different HTTP methods?](./01-http-methods.md)
 2. [What are HTTP status codes, and what are their main categories?](./02-status-codes.md)
-3. [What are the general types of APIs?](./03-api-types.md)
-4. [What is a RESTful API, and how does it work? Which protocol does it rely on, and how does it utilize HTTP features (e.g., headers and status codes)?](./04-restful-api.md)
-5. [How do you approach API design, and what tools do you use?](./05-api-design.md)
-6. [What is the difference between PUT and POST?](./06-put-vs-post.md)
-7. [When might you use POST for an update operation?](./07-post-for-update.md)
-8. [How do you design an update API that accepts text, images, and a PDF?](./08-multipart-update-with-files.md)
+3. [What is the difference between PUT and POST?](./03-put-vs-post.md)
+4. [When might you use POST for an update operation?](./04-post-for-update.md)
+5. [How do you design an update API that accepts text, images, and a PDF?](./05-multipart-update-with-files.md)
+6. [What are the general types of APIs?](./06-api-types.md)
+7. [What is a RESTful API, and how does it work? Which protocol does it rely on, and how does it utilize HTTP features (e.g., headers and status codes)?](./07-restful-api.md)
+8. [How do you approach API design, and what tools do you use?](./08-api-design.md)
 9. [How do you integrate with an external API?](./09-external-api-integration.md)
 
 ---

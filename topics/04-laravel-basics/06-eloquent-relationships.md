@@ -124,4 +124,4 @@ User::with('orders.items')->paginate(20); // avoid N+1 on the order history page
 
 ---
 
-[← Previous](./04-api-php.md) · [Topic](./README.md) · [Next →](./06-middleware.md)
+[← Previous](./05-migration.md) · [Topic](./README.md) · [Next →](./07-eloquent-vs-query-builder.md)

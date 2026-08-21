@@ -104,4 +104,4 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 
 ---
 
-[← Previous](./02-require-vs-include.md) · [Topic](./README.md) · [Next →](./04-magic-methods.md)
+[← Previous](./01-equality.md) · [Topic](./README.md) · [Next →](./03-require-vs-include.md)

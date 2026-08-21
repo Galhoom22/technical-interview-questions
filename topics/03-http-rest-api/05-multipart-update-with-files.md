@@ -124,4 +124,4 @@ I store files on disk/S3, save paths on the model, and return JSON with public U
 
 ---
 
-[← Previous](./07-post-for-update.md) · [Topic](./README.md) · [Next →](./09-external-api-integration.md)
+[← Previous](./04-post-for-update.md) · [Topic](./README.md) · [Next →](./06-api-types.md)

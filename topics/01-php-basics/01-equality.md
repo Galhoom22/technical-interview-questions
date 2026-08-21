@@ -102,4 +102,4 @@ Loose comparison is dangerous because the conversion rules are easy to get wrong
 
 ---
 
-[Topic](./README.md) · [Next →](./02-require-vs-include.md)
+[Topic](./README.md) · [Next →](./02-array-types.md)

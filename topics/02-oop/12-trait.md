@@ -97,4 +97,4 @@ class Article
 
 ---
 
-[← Previous](./04-interface.md) · [Topic](./README.md) · [Next →](./06-multiple-inheritance.md)
+[← Previous](./11-interface.md) · [Topic](./README.md) · [Next →](./13-multiple-inheritance.md)

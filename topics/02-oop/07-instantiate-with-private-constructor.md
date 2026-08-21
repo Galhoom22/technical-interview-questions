@@ -90,4 +90,4 @@ A **child class** cannot call a **private** parent constructor. If subclasses sh
 
 ---
 
-[← Previous](./09-object-instantiation.md) · [Topic](./README.md) · [Next →](./11-static-vs-instance.md)
+[← Previous](./06-private-constructor.md) · [Topic](./README.md) · [Next →](./08-static-vs-instance.md)

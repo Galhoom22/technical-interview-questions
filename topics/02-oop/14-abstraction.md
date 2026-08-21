@@ -105,4 +105,4 @@ Checkout calls `charge()`. It does not know about API keys, retry policy, or JSO
 
 ---
 
-[← Previous](./13-memory-allocation.md) · [Topic](./README.md) · [Next →](./15-abstract-class-vs-interface.md)
+[← Previous](./13-multiple-inheritance.md) · [Topic](./README.md) · [Next →](./15-abstract-class-vs-interface.md)

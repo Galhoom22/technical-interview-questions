@@ -113,4 +113,4 @@ I mention inheritance last on purpose. In PHP I prefer **composition + interface
 
 ---
 
-[← Previous](./01-what-is-oop.md) · [Topic](./README.md) · [Next →](./03-what-is-a-class.md)
+[← Previous](./02-what-is-a-class.md) · [Topic](./README.md) · [Next →](./04-object-instantiation.md)

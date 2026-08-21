@@ -82,4 +82,4 @@ Content-Type: multipart/form-data; boundary=...
 
 ---
 
-[← Previous](./06-put-vs-post.md) · [Topic](./README.md) · [Next →](./08-multipart-update-with-files.md)
+[← Previous](./03-put-vs-post.md) · [Topic](./README.md) · [Next →](./05-multipart-update-with-files.md)

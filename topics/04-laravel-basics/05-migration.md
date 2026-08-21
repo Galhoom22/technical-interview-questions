@@ -98,4 +98,4 @@ Laravel records ran migrations in a `migrations` table, so each change runs once
 
 ---
 
-[Topic](./README.md) · [Next →](./02-routing.md)
+[← Previous](./04-middleware.md) · [Topic](./README.md) · [Next →](./06-eloquent-relationships.md)

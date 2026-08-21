@@ -90,4 +90,4 @@ include __DIR__ . '/../resources/views/partials/promo-banner.php';
 
 ---
 
-[← Previous](./01-equality.md) · [Topic](./README.md) · [Next →](./03-array-types.md)
+[← Previous](./02-array-types.md) · [Topic](./README.md) · [Next →](./04-magic-methods.md)

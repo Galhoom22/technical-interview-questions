@@ -101,4 +101,4 @@ If an interviewer says “so traits are multiple inheritance?”, I correct it: 
 
 ---
 
-[← Previous](./05-trait.md) · [Topic](./README.md) · [Next →](./07-destructor.md)
+[← Previous](./12-trait.md) · [Topic](./README.md) · [Next →](./14-abstraction.md)

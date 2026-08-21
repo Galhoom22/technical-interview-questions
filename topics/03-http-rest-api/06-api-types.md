@@ -82,4 +82,4 @@ Same shop also talks to a payment **RPC-style** endpoint (`POST /v1/charges`) an
 
 ---
 
-[← Previous](./02-status-codes.md) · [Topic](./README.md) · [Next →](./04-restful-api.md)
+[← Previous](./05-multipart-update-with-files.md) · [Topic](./README.md) · [Next →](./07-restful-api.md)

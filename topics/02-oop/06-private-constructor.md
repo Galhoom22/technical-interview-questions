@@ -94,4 +94,4 @@ new OrderId('nope'); // not allowed — keeps junk IDs out of the domain
 
 ---
 
-[← Previous](./07-destructor.md) · [Topic](./README.md) · [Next →](./09-object-instantiation.md)
+[← Previous](./05-destructor.md) · [Topic](./README.md) · [Next →](./07-instantiate-with-private-constructor.md)

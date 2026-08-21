@@ -92,4 +92,4 @@ Order::pendingStatus(); // one class in RAM; do not do this 10k times as “opti
 
 ---
 
-[← Previous](./12-static-method-internals.md) · [Topic](./README.md) · [Next →](./14-abstraction.md)
+[← Previous](./09-static-method-internals.md) · [Topic](./README.md) · [Next →](./11-interface.md)

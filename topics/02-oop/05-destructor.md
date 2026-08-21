@@ -100,4 +100,4 @@ class ExportTempFile
 
 ---
 
-[← Previous](./06-multiple-inheritance.md) · [Topic](./README.md) · [Next →](./08-private-constructor.md)
+[← Previous](./04-object-instantiation.md) · [Topic](./README.md) · [Next →](./06-private-constructor.md)

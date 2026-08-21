@@ -113,4 +113,4 @@ class OrderResource extends JsonResource
 
 ---
 
-[← Previous](./04-restful-api.md) · [Topic](./README.md) · [Next →](./06-put-vs-post.md)
+[← Previous](./07-restful-api.md) · [Topic](./README.md) · [Next →](./09-external-api-integration.md)

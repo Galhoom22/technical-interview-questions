@@ -96,4 +96,4 @@ One class, many objects. Each instance has its own property values; they share t
 
 ---
 
-[← Previous](./02-four-principles.md) · [Topic](./README.md) · [Next →](./04-interface.md)
+[← Previous](./01-what-is-oop.md) · [Topic](./README.md) · [Next →](./03-four-principles.md)

@@ -8,12 +8,12 @@ How to read a question: 🔑 terms · 🧠 analogy · 📘 docs · 💼 work · 
 
 ## Questions
 
-1. [What is a Migration?](./01-migration.md)
-2. [What is Routing?](./02-routing.md)
-3. [What is the `web.php` file?](./03-web-php.md)
-4. [What is the `api.php` file?](./04-api-php.md)
-5. [Explain the different types of Eloquent relationships in Laravel.](./05-eloquent-relationships.md)
-6. [What is Middleware, and what are its primary use cases?](./06-middleware.md)
+1. [What is Routing?](./01-routing.md)
+2. [What is the `web.php` file?](./02-web-php.md)
+3. [What is the `api.php` file?](./03-api-php.md)
+4. [What is Middleware, and what are its primary use cases?](./04-middleware.md)
+5. [What is a Migration?](./05-migration.md)
+6. [Explain the different types of Eloquent relationships in Laravel.](./06-eloquent-relationships.md)
 7. [What is the difference between Eloquent ORM and the Query Builder?](./07-eloquent-vs-query-builder.md)
 8. [What are Factories?](./08-factories.md)
 9. [What is a Seeder?](./09-seeders.md)

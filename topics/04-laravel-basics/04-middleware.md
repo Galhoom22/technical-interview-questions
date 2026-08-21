@@ -110,4 +110,4 @@ Laravel **13** registers middleware in `bootstrap/app.php` (`withMiddleware()`),
 
 ---
 
-[← Previous](./05-eloquent-relationships.md) · [Topic](./README.md) · [Next →](./07-eloquent-vs-query-builder.md)
+[← Previous](./03-api-php.md) · [Topic](./README.md) · [Next →](./05-migration.md)

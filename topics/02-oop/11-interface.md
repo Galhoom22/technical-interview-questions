@@ -96,4 +96,4 @@ In Laravel this is the Service Container pattern: bind `Mailer::class` to `SmtpM
 
 ---
 
-[← Previous](./03-what-is-a-class.md) · [Topic](./README.md) · [Next →](./05-trait.md)
+[← Previous](./10-memory-allocation.md) · [Topic](./README.md) · [Next →](./12-trait.md)

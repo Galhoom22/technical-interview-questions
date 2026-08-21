@@ -87,4 +87,4 @@ I use Eloquent for domain work. I drop to Query Builder (or `selectRaw`) for hea
 
 ---
 
-[← Previous](./06-middleware.md) · [Topic](./README.md) · [Next →](./08-factories.md)
+[← Previous](./06-eloquent-relationships.md) · [Topic](./README.md) · [Next →](./08-factories.md)

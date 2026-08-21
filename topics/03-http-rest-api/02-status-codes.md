@@ -100,4 +100,4 @@ return OrderResource::make($order)
 
 ---
 
-[← Previous](./01-http-methods.md) · [Topic](./README.md) · [Next →](./03-api-types.md)
+[← Previous](./01-http-methods.md) · [Topic](./README.md) · [Next →](./03-put-vs-post.md)

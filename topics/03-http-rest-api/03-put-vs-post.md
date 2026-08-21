@@ -85,4 +85,4 @@ PATCH /api/orders/15          → 200  only { "status": "paid" }
 
 ---
 
-[← Previous](./05-api-design.md) · [Topic](./README.md) · [Next →](./07-post-for-update.md)
+[← Previous](./02-status-codes.md) · [Topic](./README.md) · [Next →](./04-post-for-update.md)

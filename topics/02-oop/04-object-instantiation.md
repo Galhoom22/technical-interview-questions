@@ -94,4 +94,4 @@ In Laravel, `app(UserService::class)` is not `new` in your controller — the **
 
 ---
 
-[← Previous](./08-private-constructor.md) · [Topic](./README.md) · [Next →](./10-instantiate-with-private-constructor.md)
+[← Previous](./03-four-principles.md) · [Topic](./README.md) · [Next →](./05-destructor.md)

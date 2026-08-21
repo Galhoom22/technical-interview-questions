@@ -98,4 +98,4 @@ That is why static works without `new`: there is nothing to construct. The engin
 
 ---
 
-[← Previous](./11-static-vs-instance.md) · [Topic](./README.md) · [Next →](./13-memory-allocation.md)
+[← Previous](./08-static-vs-instance.md) · [Topic](./README.md) · [Next →](./10-memory-allocation.md)

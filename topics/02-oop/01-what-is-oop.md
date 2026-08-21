@@ -90,4 +90,4 @@ $order->totalCents(); // 3298 — checkout uses the object, not a loose array
 
 ---
 
-[Topic](./README.md) · [Next →](./02-four-principles.md)
+[Topic](./README.md) · [Next →](./02-what-is-a-class.md)

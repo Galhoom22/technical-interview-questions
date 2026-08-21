@@ -98,4 +98,4 @@ Static methods are not “faster OOP”. They are functions namespaced on a clas
 
 ---
 
-[← Previous](./10-instantiate-with-private-constructor.md) · [Topic](./README.md) · [Next →](./12-static-method-internals.md)
+[← Previous](./07-instantiate-with-private-constructor.md) · [Topic](./README.md) · [Next →](./09-static-method-internals.md)
