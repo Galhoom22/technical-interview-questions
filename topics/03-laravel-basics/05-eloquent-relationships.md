@@ -18,6 +18,10 @@ A relationship is a method on the model that tells Eloquent how two tables conne
 | Pivot | Extra table for `belongsToMany`. |
 | Polymorphic | One relation can point at more than one model type (`morphTo`). |
 
+**Analogy:**
+
+A relationship is a **labeled arrow** between tables: User → many Orders. `with()` loads the arrows in a few queries instead of one query per row (N+1).
+
 | Relationship | DB shape | Example |
 |--------------|----------|---------|
 | `hasOne` | Other table holds this id (one row) | User `hasOne` Profile |
@@ -89,6 +93,15 @@ User::with('orders.items')->paginate(20); // avoid N+1 on the order history page
 - Avoid N+1: `User::with('posts.tags')->get()`. In local/staging, `Model::preventLazyLoading(! app()->isProduction())` makes missed eager loads throw instead of silently multiplying queries.
 - Pivot extras: `->withPivot('approved')->withTimestamps()`.
 - Foreign key names default to `{model}_id`. Override when the column is not conventional.
+
+**Watch out:**
+
+N+1 is the follow-up they always run. Define **both sides** (`hasMany` + `belongsTo`) when both are queried. Wrong FK name silently returns empty.
+
+**If they follow up:**
+
+- How do you catch N+1 locally? `Model::preventLazyLoading(! app()->isProduction())`.
+- Pivot extras? `withPivot` / `withTimestamps`.
 
 > [!TIP]
 > **One-liner:** Eloquent relationships map table links: `hasOne` / `hasMany` / `belongsTo`, `belongsToMany` (pivot), `hasManyThrough`, and `morph*` for polymorphic relations.

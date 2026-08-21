@@ -17,6 +17,10 @@ The guest cart lives on the **session** (or a signed cookie / `cart_token`). The
 | Session regenerate | Laravel rotates the session id on login. Capture the guest cart key **before** that. |
 | `Login` event | Fires after credentials succeed. A listener is the right place to merge. |
 
+**Analogy:**
+
+The guest basket is a **sticky note** on this browser. On login you **pour it into the user’s real cart**, add quantities if the SKU was already there, throw the sticky note away — but copy the note *before* Laravel changes the session lock.
+
 **While guest**
 
 - Cart key: `session()->getId()` (or a UUID in a cookie).
@@ -64,6 +68,15 @@ public function handle(Login $event): void
 - Guests who never log in: expire old `session_id` carts with a scheduled command.
 
 I do not keep the cart only in `$_SESSION` arrays if it must survive login across servers — persist `cart_items` and attach `user_id` on merge.
+
+**Watch out:**
+
+Session regenerates on login — merge with a cart key stored **in** the session, captured before rotate. Do not merge the *wrong* user’s cart (IDOR).
+
+**If they follow up:**
+
+- Same SKU on both? Add quantities, cap at stock.
+- Two devices? This login merges *this* session, not the other phone.
 
 > [!TIP]
 > **One-liner:** Persist the guest cart by session id, then on `Login` merge quantities into the user’s cart and delete the guest rows — watch session regeneration so you don’t lose the id.

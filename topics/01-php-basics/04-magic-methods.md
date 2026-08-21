@@ -18,6 +18,10 @@ You do not call most of them yourself. The engine does.
 | `__toString` | How the object looks when used as a string (`echo $obj`). |
 | Overloading | `__get` / `__set` / `__call` — intercept missing properties/methods. Easy to hide bugs; use sparingly. |
 
+**Analogy:**
+
+Magic methods are automatic doors: they open when you walk up (`echo $obj`, `new`, `clone`). You do not push a button named `__toString`.
+
 | Method | PHP calls it when… |
 |--------|---------------------|
 | `__construct()` | The object is created with `new` |
@@ -84,6 +88,15 @@ $discounted = (new Money(1999, 'USD'))->withCents(1499);
 
 - Do not replace a real public API with `__get` / `__set` / `__call`. They hide typos, break static analysis, and are slower.
 - Do not put business logic in `__destruct`. Shutdown order is not something you want to depend on.
+
+**Watch out:**
+
+Do not replace a real public API with `__get` / `__set` / `__call` — typos become “features”, static analysis goes blind. Do not send mail or capture payment from `__destruct`.
+
+**If they follow up:**
+
+- PHP 8.5 `clone($object, [...])`? Wither-style copy for `readonly` classes.
+- `__sleep` / `__wakeup`? Soft-deprecated in 8.5; use `__serialize` / `__unserialize`.
 
 > [!TIP]
 > **One-liner:** Magic methods are hooks PHP runs for you (`__construct`, `__toString`, `__get`, …). Use them for construction, string form, and serialization — not as a hidden public API.

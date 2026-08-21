@@ -15,6 +15,10 @@
 | Class metadata | Loaded **once** (the class entry). Shared by every `new` and every static call. |
 | Instance | One object created from a class. Own property values; shared method code. |
 
+**Analogy:**
+
+`new` is buying a **new chair** (heap, stays until thrown away). A static call is **reading the fire-exit sign** already on the wall (class metadata + a short-lived stack frame).
+
 | | `new Foo()` | `Foo::bar()` |
 |---|-------------|--------------|
 | Class metadata | Loaded once (shared) | Loaded once (shared) |
@@ -58,6 +62,15 @@ foreach (range(1, 10_000) as $i) {
 
 Order::pendingStatus(); // one class in RAM; do not do this 10k times as “optimization”
 ```
+
+**Watch out:**
+
+Do not choose static methods to “save RAM” in Laravel. Object overhead is tiny next to a DB query. If the static method `new`s inside, you still pay for the object.
+
+**If they follow up:**
+
+- 10,000 `new Order`? 10,000 heap objects. 10,000 `Order::status()`? Still one class + short frames.
+- Why not micro-optimize this? Measure queries first.
 
 > [!TIP]
 > **One-liner:** `new` allocates a heap object every time; a static call only uses the already-loaded class plus a stack frame. Static is not a performance strategy — it is “no instance state”.

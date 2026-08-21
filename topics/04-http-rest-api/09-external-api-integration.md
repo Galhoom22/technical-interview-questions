@@ -18,6 +18,10 @@ I treat the external API as a **client behind an interface**, not as random `Htt
 | `Http::fake()` | Tests never hit the network. |
 | DTO | Our type. Map vendor JSON into it — do not leak their shape. |
 
+**Analogy:**
+
+Stripe is a **vendor behind a locked door**. Checkout talks to *our* `Payable`. Credentials live in `.env`. Tests knock on a fake door (`Http::fake()`), not the real one.
+
 **Steps:**
 
 1. **Read their contract** — base URL, auth (Bearer, API key, OAuth), rate limits, error shape.
@@ -63,6 +67,15 @@ public function charge(int $cents): string
 ```
 
 Async work (slow third parties) goes on a **queue**. Webhooks inbound get their own signed endpoint — that is the other direction of the same integration.
+
+**Watch out:**
+
+Never commit keys. Never `Http::get` from a controller in five places. Never return Stripe’s JSON as your API. Always set a timeout.
+
+**If they follow up:**
+
+- Retries? Idempotent GET, or POST with an idempotency key.
+- Slow vendor? Queue. Inbound? Signed webhook.
 
 > [!TIP]
 > **One-liner:** Wrap the vendor in a client class, put credentials in `.env`, use Laravel `Http` with timeout/retry, map JSON to our types, and fake it in tests.

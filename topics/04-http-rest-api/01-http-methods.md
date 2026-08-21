@@ -17,6 +17,10 @@ HTTP methods (verbs) tell the server **what kind of operation** the client wants
 | Safe | Must not change server state (GET, HEAD, OPTIONS). |
 | Idempotent | Repeating the same request leaves the same state. |
 
+**Analogy:**
+
+HTTP methods are **verbs on a noun**. GET is reading the order; POST is creating one; DELETE is throwing it away. Safe means “reading the sign”; idempotent means “pressing the same button twice doesn’t make two orders.”
+
 | Method | Intent | Request body | Safe | Idempotent |
 |--------|--------|--------------|------|------------|
 | `GET` | Read | No (should not) | Yes | Yes |
@@ -48,6 +52,15 @@ PATCH  /api/orders/15
 DELETE /api/orders/15
 POST   /api/orders/15/cancel
 ```
+
+**Watch out:**
+
+GET must not change state. Two POSTs can create two rows. PUT replaces the **whole** document — a partial body is PATCH.
+
+**If they follow up:**
+
+- OPTIONS? CORS preflight / “what methods are allowed.”
+- POST `/cancel`? An action, not a field patch — legitimate.
 
 > [!TIP]
 > **One-liner:** The verbs you use every day are GET (read), POST (create/action), PUT (full replace), PATCH (partial update), DELETE (remove), plus HEAD and OPTIONS.

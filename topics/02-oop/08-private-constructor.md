@@ -15,6 +15,10 @@ Yes. A `private` constructor means **`new ClassName()` is only legal inside that
 | Static factory | A public static method that returns `new self()` / `new static()`. |
 | Named constructor | A factory with a clear name (`fromString`, `fromCart`) instead of a raw `new`. |
 
+**Analogy:**
+
+A private constructor is a **locked factory door**. Customers cannot walk in and `new` junk. They use the public window (`fromString`) so only valid IDs get made.
+
 **Official** ([PHP Manual: Visibility](https://www.php.net/manual/en/language.oop5.visibility.php)):
 
 ```php
@@ -60,6 +64,15 @@ new OrderId('nope'); // not allowed — keeps junk IDs out of the domain
 - Named constructors / factories (`fromString`, `fromArray`) that validate first
 - Singleton (I mention it because they ask; I rarely use it)
 - Forcing all creation through a factory or the container
+
+**Watch out:**
+
+`protected` still allows children to `new`. `private` does not. Do not reach for a Singleton unless they ask — named factories are the usual real answer.
+
+**If they follow up:**
+
+- How do you instantiate then? Public static factory → `new self()` inside the class.
+- Can a child call it? Not if it is `private`. Use `protected` if subclasses should exist.
 
 > [!TIP]
 > **One-liner:** Yes. Private constructors block `new` from outside and force creation through a static factory (or similar) inside the class.

@@ -17,6 +17,10 @@
 | CSRF | Token so a forged form from another site cannot POST as you. |
 | `auth` middleware | Reject the request unless the user is logged in (session). |
 
+**Analogy:**
+
+`web.php` is the **browser storefront**: cookies, session, CSRF on forms. Not the mobile JSON hatch.
+
 That group typically gives you:
 
 | Feature | Why it is on web routes |
@@ -51,6 +55,15 @@ Route::middleware('auth')->group(function () {
 ```
 
 These routes are for Blade / Inertia / Livewire pages, not for a stateless mobile API.
+
+**Watch out:**
+
+Do not disable CSRF “to make AJAX easier.” Use the token (or Sanctum SPA cookies). Putting API token routes here mixes session and stateless by accident.
+
+**If they follow up:**
+
+- What’s in the `web` group? Session, cookie encryption, CSRF, bindings.
+- Same as `api.php`? No — see the next question.
 
 > [!TIP]
 > **One-liner:** `web.php` holds session-based browser routes — cookies, CSRF, and auth via the `web` middleware group.

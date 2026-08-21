@@ -17,6 +17,10 @@ Middleware is a **filter around the HTTP request**. It can inspect, reject, or e
 | Global middleware | Runs on every request. |
 | Route middleware | Runs only on the routes you attach it to (or a group). |
 
+**Analogy:**
+
+Middleware is the **security line at the door**: check ID, stamp the ticket, then the controller. On the way out it can still add a header.
+
 ```
 request → middleware → middleware → controller → middleware → response
 ```
@@ -75,6 +79,15 @@ Registration:
 - **Route** — one route or a `Route::middleware([...])` group
 
 Laravel **13** registers middleware in `bootstrap/app.php` (`withMiddleware()`), not `Http/Kernel.php`.
+
+**Watch out:**
+
+Forgetting `$next($request)` drops the request. Laravel 13: `bootstrap/app.php`, not `Http/Kernel.php`. Do not stuff validation into middleware — Form Request is the layer.
+
+**If they follow up:**
+
+- Global vs route? Every request vs the routes you attach.
+- CSRF? `web` group. `auth:sanctum`? API group.
 
 > [!TIP]
 > **One-liner:** Middleware is request/response middleware — auth, CSRF, throttle, CORS — that runs before (and after) the controller.

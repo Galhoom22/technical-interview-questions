@@ -18,6 +18,10 @@
 | SOAP | XML envelopes + WSDL. Still required by some enterprise partners. |
 | WebSocket | Persistent two-way channel — not request/response only. |
 
+**Analogy:**
+
+REST is **nouns + HTTP verbs**. RPC is **“do createOrder.”** GraphQL is **“give me exactly these fields.”** SOAP is the old XML envelope some banks still require.
+
 | Type | Style | Typical transport |
 |------|--------|-------------------|
 | **REST** | Resources + HTTP verbs + status codes | HTTP + JSON |
@@ -48,6 +52,15 @@ Accept: application/json
 ```
 
 Same shop also talks to a payment **RPC-style** endpoint (`POST /v1/charges`) and might expose GraphQL later for a storefront that needs nested product+reviews in one round trip.
+
+**Watch out:**
+
+“REST” is not “any JSON over HTTP.” A bag of `/getOrder` RPCs is not REST. Pick the style on purpose.
+
+**If they follow up:**
+
+- Default for Laravel CRUD? REST + JSON.
+- When GraphQL? Many clients, different shapes, one round trip.
 
 > [!TIP]
 > **One-liner:** Common API styles are REST, RPC/gRPC, GraphQL, SOAP, and realtime (WebSocket). REST over HTTP + JSON is the default for Laravel backends.

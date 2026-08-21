@@ -16,6 +16,10 @@ I start from **what the business does**, not from tables. Tables come after enti
 | Cardinality | How many: `1──*` (one-to-many), `*──*` (many-to-many). |
 | 3NF | No repeating groups; facts live in the table they belong to. |
 
+**Analogy:**
+
+I draw the **shop story** first (browse, cart, pay), then the nouns, then the arrows. Tables are last. `order_items` takes a **snapshot** of price so yesterday’s invoice does not change when you discount the T-shirt tomorrow.
+
 **Step 1 — Use cases, not columns**
 
 - Guest and user browse catalog
@@ -90,6 +94,15 @@ Cardinality I say out loud: many products per category (or many-to-many if a pro
 - Unique: `users.email`, `variants.sku`, `payments.provider_reference`.
 
 I would sketch this as an ERD (even on paper) and only then write Laravel migrations. I do not start with 40 tables; I start with catalog + cart + order, and add warehouse/refunds when the use case is real.
+
+**Watch out:**
+
+Never store money as float. Never join live `products.price` for an old order. Do not start from 40 tables.
+
+**If they follow up:**
+
+- Guest cart? `session_id` until login, then merge (Security Q2).
+- Stock? Decrement in a checkout transaction, not “on add to cart” unless the business wants reservations.
 
 > [!TIP]
 > **One-liner:** List use cases, name entities, draw cardinality, snapshot prices on `order_items`, then normalize and add FKs/indexes — migrations last, not first.

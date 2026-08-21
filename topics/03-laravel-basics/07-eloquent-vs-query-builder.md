@@ -17,6 +17,10 @@
 | Hydration | Turning SQL rows into model objects. |
 | ORM | Object-Relational Mapper — tables as classes, rows as objects. |
 
+**Analogy:**
+
+Query Builder is **SQL in PHP** (cheap rows). Eloquent is that builder **plus a model** — relations, casts, events. Eloquent sits on top; it is not a second database.
+
 | Aspect | Query Builder | Eloquent |
 |--------|---------------|----------|
 | Entry | `DB::table('users')` | `User::query()` |
@@ -53,6 +57,15 @@ $orders = Order::with('items')
 Eloquent **uses** the Query Builder internally (`User::query()` is a builder). Choosing Eloquent vs `DB::` is about whether you need a model or just SQL.
 
 I use Eloquent for domain work. I drop to Query Builder (or `selectRaw`) for heavy reports, bulk updates, and queries where hydrating thousands of models would be wasteful.
+
+**Watch out:**
+
+Hydrating 50k Eloquent models for a CSV is the trap. `User::query()` is still the Query Builder underneath.
+
+**If they follow up:**
+
+- When `DB::table`? Reports, aggregates, bulk SQL.
+- Relationships? Stay on Eloquent (`with()`).
 
 > [!TIP]
 > **One-liner:** Query Builder is SQL in PHP. Eloquent is that builder plus models — relationships, casts, and events. Eloquent sits on top of the Query Builder.

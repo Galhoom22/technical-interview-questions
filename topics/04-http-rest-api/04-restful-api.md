@@ -20,6 +20,10 @@ It relies on **HTTP** (almost always HTTPS in production). REST is an architectu
 | Representation | The JSON (or HTML) body that stands for the resource. |
 | Uniform interface | URLs name resources, methods name actions, status codes name outcomes. |
 
+**Analogy:**
+
+REST is a **stateless post office**: every letter carries the address and the stamp. The clerk does not remember your last visit. HTTPS is the truck; REST is how you write the envelope.
+
 **How it uses HTTP:**
 
 | HTTP feature | REST use |
@@ -65,6 +69,15 @@ Location: /api/orders/15
 ```
 
 Laravel pieces: `routes/api.php`, Form Requests, API Resources (shape JSON), Sanctum, throttle middleware. I keep URLs as nouns, verbs in the HTTP method — not `POST /api/getOrder`.
+
+**Watch out:**
+
+`POST /api/getOrder` is RPC dressed as HTTP. REST is not a new protocol — it *uses* HTTP.
+
+**If they follow up:**
+
+- Auth header? `Authorization: Bearer`. Create? `201` + `Location`.
+- Session on the API? Not for stateless Bearer; Sanctum SPA still uses cookies + CSRF.
 
 > [!TIP]
 > **One-liner:** REST uses HTTP as the protocol: URLs name resources, methods name actions, headers carry metadata/auth, status codes carry the result, JSON is the usual representation.

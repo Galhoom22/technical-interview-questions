@@ -16,6 +16,10 @@ I treat Postman as a **repeatable contract check**, not a one-off “send” but
 | Newman | CLI that runs the same collection in CI. |
 | Contract | The URLs, methods, JSON shapes, and status codes clients can depend on. |
 
+**Analogy:**
+
+Postman is a **shared checklist**, not a screenshot of one 200. Login once, stamp the token, then the folder proves 201/401/422 the same way every time.
+
 **Setup:**
 
 1. **Collection** per API (`Orders API`).
@@ -67,6 +71,15 @@ pm.test('rejects unauthenticated checkout', function () {
 5. Export the collection. Optional: Newman in CI against staging.
 
 This does **not** replace Pest/PHPUnit. Postman is for the HTTP contract and for sharing with non-PHP teammates. Automated tests in the repo still own regressions (`php artisan test`).
+
+**Watch out:**
+
+Hardcoded URLs and tokens die. Prod collections should be read-only GETs if you use them at all. Postman is not a substitute for `php artisan test`.
+
+**If they follow up:**
+
+- CI? Newman / Postman CLI on the same collection.
+- Negative cases? 401, 403, 422, 404 in the same folder as the happy path.
 
 > [!TIP]
 > **One-liner:** Environments + collection variables, login once, then assert status, JSON shape, and 401/422/404 — save the collection so it is repeatable, not a screenshot of one 200.

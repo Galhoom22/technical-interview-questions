@@ -16,6 +16,10 @@ From user code it looks like one step. Internally it is a pipeline the **Zend En
 | Constructor | `__construct` — runs after the engine creates the object, to initialize it. |
 | Uninitialized property | A typed property with no default. Reading it before assign throws. |
 
+**Analogy:**
+
+`new` is the factory line: load the blueprint, stamp the empty object, fill defaults, *then* run your constructor (the “setup checklist”). The constructor does not *create* the object — it initializes one the engine already built.
+
 **Official** ([PHP Manual: The Basics](https://www.php.net/manual/en/language.oop5.basic.php) + [Constructors](https://www.php.net/manual/en/language.oop5.decon.php)):
 
 ```php
@@ -59,6 +63,15 @@ $billing = app(InvoiceService::class); // container still ends in new InvoiceSer
 If `__construct` throws, the object never becomes a usable variable; it will be destroyed.
 
 In Laravel, `app(UserService::class)` is not `new` in your controller — the **Service Container** resolves constructor dependencies, then it still ends up doing the same `new` pipeline.
+
+**Watch out:**
+
+`__construct` does not allocate the object. If it throws, you never get a usable variable. Typed properties with no default are uninitialized until assigned.
+
+**If they follow up:**
+
+- Where does `app(Foo::class)` fit? The container still ends in the same `new` pipeline after resolving dependencies.
+- Who loads the class file? Composer PSR-4 autoload, before `NEW` runs.
 
 > [!TIP]
 > **One-liner:** `new` is handled by the Zend Engine: autoload the class, allocate the object, init properties, then call `__construct`. The constructor does not create the object — it initializes an object the engine already built.

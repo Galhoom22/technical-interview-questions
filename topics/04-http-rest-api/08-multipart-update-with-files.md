@@ -22,6 +22,10 @@ This is a **multipart update with files**. In PHP/Laravel I treat that as **POST
 | Boundary | Marker in `Content-Type` that splits each part. The client sets it. |
 | `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
 
+**Analogy:**
+
+JSON cannot carry a PDF cleanly. `multipart/form-data` is the **envelope with pockets**: one pocket for bio, one for the photo, one for the CV. PHP only unpacks those pockets on POST.
+
 ### Method
 
 Use **`POST`** to the resource (e.g. `/api/profiles/1`).
@@ -89,6 +93,15 @@ Do not send `application/json` at the same time as the files.
 | `500` | Storage/unexpected failure |
 
 I store files on disk/S3, save paths on the model, and return JSON with public URLs — I do not echo the PDF back in the same response unless asked.
+
+**Watch out:**
+
+Never set `Content-Type: multipart/form-data` by hand without the boundary. Do not send JSON and files as one JSON body (base64 PDFs hurt). PUT will not fill `$_FILES`.
+
+**If they follow up:**
+
+- Status? 200 + JSON (new URLs), 422 validation, 413 too large.
+- Where do files live? Disk/S3 path on the model — not the binary in the JSON.
 
 > [!TIP]
 > **One-liner:** POST + `multipart/form-data` for text + files (PHP’s file upload model), `Accept: application/json`, and 200/422/401/403/404 as the main status codes.

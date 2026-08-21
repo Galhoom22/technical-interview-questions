@@ -15,6 +15,10 @@ An interface is a **contract**: a list of public methods a class **must** implem
 | Polymorphism | Same message, different behavior. |
 | Decoupling | Depend on the interface, not on `SmtpMailer` — swap the implementation (tests vs production). |
 
+**Analogy:**
+
+An interface is a **job description**: “you must be able to `send` mail.” SMTP, a log fake, and SES all apply for the job. Checkout does not hire a specific person; it hires the role.
+
 **Official** ([PHP Manual: Object Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php)):
 
 ```php
@@ -62,6 +66,15 @@ class LogMailer implements Mailer
 - **Clear API** — the interface is the public surface other code is allowed to rely on.
 
 In Laravel this is the Service Container pattern: bind `Mailer::class` to `SmtpMailer::class`.
+
+**Watch out:**
+
+An interface is not a parent class and (historically) has no shared code. Do not put SMTP details on the interface — that is the implementation.
+
+**If they follow up:**
+
+- Multiple interfaces? Yes. Multiple `extends`? No.
+- Abstract class vs interface? Shared code/state → abstract class. Role only → interface. Often both.
 
 > [!TIP]
 > **One-liner:** An interface is a contract of public methods. You use it so code depends on *behavior*, not a specific class — which makes swapping and testing easy.

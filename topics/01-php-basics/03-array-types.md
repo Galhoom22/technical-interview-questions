@@ -16,6 +16,10 @@ PHP has **one** array type: an ordered map. Interviewers still expect the three 
 | Multidimensional array | Arrays inside arrays (a list of records, a tree, …). |
 | `array_is_list()` | PHP 8.1+: `true` if keys are `0..n-1` with no gaps. |
 
+**Analogy:**
+
+PHP has one toolbox (the array). You use it as a numbered list, a labeled drawer, or a drawer of drawers. Same tool, three jobs.
+
 | Type | Keys | Example |
 |------|------|---------|
 | Indexed (numeric) | `0`, `1`, `2`, … | `['php', 'laravel']` |
@@ -69,6 +73,15 @@ You can mix numeric and string keys in the same array. Internally PHP still stor
 - PHP 8.1+ `array_is_list()` tells you whether keys are `0..n-1` with no gaps.
 - PHP 8.5 `array_first()` / `array_last()` return the first or last value (or `null` if empty).
 - PHP 8.5 pipe operator `|>` is useful for transforming values without nested calls.
+
+**Watch out:**
+
+The key `"8"` is stored as int `8`. Mixing list keys and string keys in one array is legal and usually a mess. Deep nested arrays are a smell — switch to objects/DTOs.
+
+**If they follow up:**
+
+- How do you detect a list? `array_is_list()` (PHP 8.1+).
+- `array_first` / `array_last`? PHP 8.5 value helpers (older: `array_key_first` / `array_key_last`).
 
 > [!TIP]
 > **One-liner:** PHP has one array type used in three ways — indexed, associative, and multidimensional (arrays of arrays).

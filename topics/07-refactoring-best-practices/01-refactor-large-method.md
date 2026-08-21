@@ -18,6 +18,10 @@ I do **not** rewrite the 400 lines in one heroic commit. I make it safe, underst
 | Seam | A place you can split the method without changing what it does. |
 | SRP | Single Responsibility — one reason to change. |
 
+**Analogy:**
+
+A 400-line method is a **tangled headphone cable**. I do not buy new headphones. I freeze the sound with tests, find one knot (extract function), pull gently, repeat until the method only *orchestrates*.
+
 **1. Freeze behavior**
 
 - If tests exist, run them. If not, I add **characterization tests** around the current output (same input → same result) before changing structure.
@@ -77,6 +81,15 @@ public function checkout(CheckoutRequest $request): JsonResponse
 **5. What I would say if they ask “how long?”**
 
 First pass: tests + extract 3–5 methods. Next: push a cluster into a class. I never promise a full rewrite by Friday unless the tests already lock the behavior.
+
+**Watch out:**
+
+Do not clean *and* change business rules in the same diff. Do not rewrite 400 lines in one heroic commit.
+
+**If they follow up:**
+
+- First Fowler move? Extract Function.
+- How long? Tests + 3–5 extracts first; no “done by Friday” rewrite unless tests already lock behavior.
 
 > [!TIP]
 > **One-liner:** Characterize with tests, find the separate jobs inside the method, extract them one green step at a time, and keep the original method as a short orchestrator.

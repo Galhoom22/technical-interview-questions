@@ -15,6 +15,10 @@ A trait is a reuse tool for **horizontal** sharing of methods (and properties). 
 | `insteadof` / `as` | Resolve a name clash when two traits define the same method. |
 | Horizontal reuse | Share code across classes that do **not** share a parent. |
 
+**Analogy:**
+
+A trait is a **photocopied recipe** taped into two unrelated cookbooks. `Product` and `Article` both need `slug()`; they are not parent/child, so you copy the recipe in (`use HasSlug`).
+
 **Official** ([PHP Manual: Traits](https://www.php.net/manual/en/language.oop5.traits.php)):
 
 ```php
@@ -63,6 +67,15 @@ class Article
 **When I use traits:** small, focused behavior used in several classes that do **not** share a parent (`HasFactory` in Laravel is the classic example).
 
 **When I avoid them:** as a dumping ground for unrelated methods. If the trait needs a lot of hidden state, it probably wants to be a collaborator object instead (composition).
+
+**Watch out:**
+
+A trait is not a second parent. If two traits define the same method, you must pick with `insteadof` / `as`. A fat trait is a hidden god object — prefer a collaborator.
+
+**If they follow up:**
+
+- Laravel example? `HasFactory` on Eloquent models.
+- Trait vs abstract class? No shared parent → trait. Family with shared state → abstract class.
 
 > [!TIP]
 > **One-liner:** A trait is copy-paste reuse managed by the language — a way to share methods across classes without multiple inheritance.

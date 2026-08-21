@@ -18,6 +18,10 @@ I design the **contract first**, then implement it.
 | API Resource | Laravel class that shapes a model into JSON. |
 | Versioning | `/api/v1/...` when a public API will break clients later. |
 
+**Analogy:**
+
+API design is writing the **menu before the kitchen**. OpenAPI is the printed menu; Form Requests and API Resources are how Laravel cooks it.
+
 **Approach:**
 
 1. **List use cases** — who calls this, what they must do (mobile app, admin, webhook).
@@ -78,6 +82,15 @@ class OrderResource extends JsonResource
     }
 }
 ```
+
+**Watch out:**
+
+Do not start from random controller methods. The JSON the client depends on *is* the product. Version public APIs before you break them.
+
+**If they follow up:**
+
+- Tools? OpenAPI + Postman + Pest. Auth? Sanctum.
+- Pagination/throttle? From day one, not “later.”
 
 > [!TIP]
 > **One-liner:** I design resources and error codes first, document them (OpenAPI/Postman), then implement with Laravel Form Requests, API Resources, and token auth.

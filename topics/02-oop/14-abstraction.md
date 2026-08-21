@@ -16,6 +16,10 @@ Abstraction means exposing **what** something does and hiding **how** it does it
 | Concrete method | A normal method with a body (already finished). |
 | Concrete class | A normal (non-abstract) class you can `new`. |
 
+**Analogy:**
+
+Abstraction is the **checkout button**: you press “pay.” You do not see Stripe JSON, keys, or retries. An `abstract class` is one *language tool* that helps build that idea — not the idea itself.
+
 Two layers people mix up:
 
 - **Abstraction (the idea)** — a `PaymentGateway` with `charge()` so the checkout code never talks to Stripe HTTP APIs.
@@ -71,6 +75,15 @@ $checkout->pay(new StripeGateway(), $order->totalCents()); // no Stripe JSON in 
 ```
 
 Checkout calls `charge()`. It does not know about API keys, retry policy, or JSON. That is abstraction.
+
+**Watch out:**
+
+Do not mix up **abstraction** (the idea) with **`abstract class`** (one keyword). Interfaces also abstract. Hiding everything behind `__get` is not good abstraction.
+
+**If they follow up:**
+
+- Can you `new` an abstract class? No — next questions.
+- Why not only interfaces? When children share real methods/state, an abstract class is the family template.
 
 > [!TIP]
 > **One-liner:** Abstraction hides implementation behind a simple public API so callers depend on *what* happens, not *how*.

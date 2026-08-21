@@ -16,6 +16,10 @@ Because the method lives on the **class entry**, not on an object.
 | Late static binding | `static::` is the class that was *called*, not where the method was written. |
 | Stack frame | Memory for one call (arguments, locals). Popped when the method returns. |
 
+**Analogy:**
+
+The class is a **shared bulletin board** (one copy in memory). A static call pins a note on that board and takes it down when done. Nobody built a new object to do it.
+
 When PHP loads a class, it stores metadata in a `zend_class_entry`: name, parent, interfaces, property definitions, and a **function table** of methods. A static method is just a function in that table with the `ZEND_ACC_STATIC` flag.
 
 When you call `User::make()`:
@@ -64,6 +68,15 @@ Order::query(); // used as Eloquent-style entry — still no Order instance yet
 ```
 
 That is why static works without `new`: there is nothing to construct. The engine is calling a function that happens to live on the class.
+
+**Watch out:**
+
+If the static method does `new self()` inside, you still allocate an object. The *call* was cheap; the factory still pays.
+
+**If they follow up:**
+
+- `self::` vs `static::`? `self` is where the method was written; `static` is who was called (`Order::query()` → `Order`).
+- Is the class loaded every call? No — autoload once, then the class entry is reused.
 
 > [!TIP]
 > **One-liner:** Static methods are functions on the class metadata (the function table). The engine calls them with a stack frame only — no object is allocated, so there is no `$this`.

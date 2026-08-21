@@ -15,6 +15,10 @@ An **instance** method runs on an object (`$this`). A **static** method runs on 
 | `$this` | The current object. Not available in a static method. |
 | Static property | Data that lives once on the class, not per object. |
 
+**Analogy:**
+
+Instance methods are **this cart’s** total. Static methods are the **store policy** on the wall — no cart needed (`Cart::empty()`).
+
 | Aspect | Instance (non-static) | Static |
 |--------|----------------------|--------|
 | Belongs to | An object | The class |
@@ -64,6 +68,15 @@ $cart->totalCents();
 ```
 
 Static methods are not “faster OOP”. They are functions namespaced on a class. Too many of them usually means the design wanted a service object instead.
+
+**Watch out:**
+
+`$this` inside a static method throws. Static is not a performance trick. A class full of static utilities usually wanted a service object.
+
+**If they follow up:**
+
+- Can an instance method read static data? Yes (`self::$count`). The reverse cannot use instance state.
+- Late static binding? `static::` is the *called* class — see the next question.
 
 > [!TIP]
 > **One-liner:** Instance methods run on an object and use `$this`. Static methods run on the class, have no `$this`, and cannot use instance state.

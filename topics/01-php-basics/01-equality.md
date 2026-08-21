@@ -19,6 +19,10 @@
 | Type juggling | PHP changing a value’s type so `==` can compare (e.g. `"1"` → `1`). |
 | `match` | PHP 8+ switch-like expression. Arms use `===`, not `==`. |
 
+**Analogy:**
+
+`==` is squinting at two badges until they *look* the same. `===` is checking the badge **type** as well as the number. `"1"` and `1` pass the squint; they fail the type check.
+
 | Aspect | `==` | `===` |
 |--------|------|--------|
 | Name | Loose equality | Strict equality |
@@ -65,6 +69,15 @@ Loose comparison is dangerous because the conversion rules are easy to get wrong
 - `in_array($value, $list)` uses `==` by default. Pass `true` as the third argument for strict comparison: `in_array($value, $list, true)`.
 - Same idea for `array_search()` and `array_keys()` with the strict flag.
 - If you need “is this empty?”, do not use `== null` or `== false`. Use `=== null`, `=== ''`, or `empty()` / `isset()` depending on the intent.
+
+**Watch out:**
+
+`switch` and `in_array()` are loose (`==`) unless you opt into strict. `0`, `""`, `null`, and `"1"` are where people fail this question.
+
+**If they follow up:**
+
+- Why did `0 == "foo"` change? PHP 8 stopped treating non-numeric strings as `0` in that comparison. Still prefer `===`.
+- `match` vs `switch`? `match` uses `===`. That is one reason it is safer.
 
 > [!TIP]
 > **One-liner:** `==` compares values with type juggling; `===` compares values and types with no juggling. Prefer `===` unless you have a specific reason not to.

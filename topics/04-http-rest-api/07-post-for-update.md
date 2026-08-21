@@ -17,6 +17,10 @@ REST textbooks say PATCH/PUT for updates. In real systems I still use POST when 
 | `$_FILES` | PHP’s file-upload array. Filled on POST multipart, not on PUT. |
 | PATCH | Partial update — only the fields you send. |
 
+**Analogy:**
+
+The textbook wants PATCH. Real browsers only POST forms. Real PHP only fills `$_FILES` on POST. So the wire is often POST, with `_method=PATCH` or an action URL like `/cancel`.
+
 **Legitimate cases:**
 
 - **HTML forms** only submit GET/POST. Laravel’s `_method=PUT` (method spoofing) is still a POST on the wire.
@@ -48,6 +52,15 @@ POST /account/profile HTTP/1.1
 Content-Type: multipart/form-data; boundary=...
 # HTML profile form with avatar — PHP $_FILES only on POST
 ```
+
+**Watch out:**
+
+Do not use POST for JSON updates “because it works.” If the client can PATCH and there are no files, PATCH.
+
+**If they follow up:**
+
+- Method spoofing? `@method('PUT')` — still POST on the wire.
+- `/cancel`? Action resource — POST is the right verb.
 
 > [!TIP]
 > **One-liner:** POST for updates when the client is a form, when uploading files (PHP multipart), or when the operation is an action (`/cancel`) rather than a field replace.

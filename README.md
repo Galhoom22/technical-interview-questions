@@ -4,7 +4,7 @@ Real **technical** questions from interviews I sat. Each question is its own fil
 
 **46 questions** · PHP **8.5** · Laravel **13**
 
-Where an answer has code, you get two snippets: **Official** (PHP Manual, Laravel docs, MDN, …) then **In production** (the same idea in a real backend). Each answer also has **Key terms** — the interview words for that question, in plain English.
+Where an answer has code, you get two snippets: **Official** (PHP Manual, Laravel docs, MDN, …) then **In production** (the same idea in a real backend). Each answer also has **Key terms**, a short **analogy**, a **watch-out**, and likely **follow-ups** — the interview words, a simple picture, the trap, and what they ask next.
 
 ## Topics
 

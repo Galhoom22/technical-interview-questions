@@ -18,6 +18,10 @@ You instantiate a **concrete child** that implements every abstract method.
 | Instantiate | Create an object (`new`, or a factory that calls `new` inside). |
 | Type-hint | Require a type (`Discount $d`). You can hint the abstract type and pass a child. |
 
+**Analogy:**
+
+An abstract class is a **blank government form**. You cannot submit the empty template (`new Discount`). Each department fills a completed copy (`CouponDiscount`). You can still *ask* for “any discount form” (type-hint) and receive a filled one.
+
 **Official** ([PHP Manual: Class Abstraction](https://www.php.net/manual/en/language.oop5.abstract.php)):
 
 ```php
@@ -63,6 +67,15 @@ function quote(Discount $discount, int $cents): int
     return $discount->apply($cents); // type-hint abstract, pass a child
 }
 ```
+
+**Watch out:**
+
+If the child skips an abstract method, PHP still treats it as incomplete (error / still abstract). Forgetting `abstract` on the class when it has abstract methods is also fatal.
+
+**If they follow up:**
+
+- Can you type-hint the abstract class? Yes — pass a concrete child.
+- Same for interfaces? Yes — you never `new` an interface either.
 
 > [!TIP]
 > **One-liner:** No. Abstract classes cannot be instantiated. You `new` a concrete subclass that fills in the abstract methods.

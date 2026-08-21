@@ -18,6 +18,10 @@ Status codes are a **3-digit signal** of how the request turned out. The first d
 | `5xx` | The **server** failed. |
 | `422` | Validation failed. RFC/MDN: Unprocessable **Content**. Laravel docs still say Unprocessable Entity. |
 
+**Analogy:**
+
+A status code is a **traffic light**: 2xx go, 4xx you drove wrong, 5xx the road failed. The body is the explanation on the ticket.
+
 | Range | Category | Meaning |
 |-------|----------|---------|
 | `1xx` | Informational | Request received, continuing (rare in app APIs) |
@@ -65,6 +69,15 @@ return OrderResource::make($order)
 // unknown order → abort(404)
 // someone else's order → abort(403)
 ```
+
+**Watch out:**
+
+401 = not logged in. 403 = logged in but not allowed. Do not dump 500 stack traces to the client. Laravel validation is 422 (MDN: Unprocessable Content).
+
+**If they follow up:**
+
+- Create? `201` + `Location`.
+- Delete with no body? `204`.
 
 > [!TIP]
 > **One-liner:** Status codes are grouped 1xx–5xx. I pick a specific 2xx/4xx/5xx so the client can branch without parsing a message string.

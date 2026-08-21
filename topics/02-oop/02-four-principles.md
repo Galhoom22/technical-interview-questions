@@ -16,6 +16,10 @@ The four names interviewers want, then how they show up in PHP:
 | Polymorphism | Same message, different behavior. |
 | Composition | Hold another object as a property and delegate to it, instead of extending it. |
 
+**Analogy:**
+
+A vending machine **hides** its coins (encapsulation), you only press “coffee” (abstraction), a specialty machine can **reuse** the base box (inheritance), and “brew” means espresso in one machine and filter in another (polymorphism). Prefer plugging in a grinder (composition) over a family tree of machines.
+
 | Principle | In practice |
 |-----------|-------------|
 | **Encapsulation** | `private` properties, public methods |
@@ -79,6 +83,15 @@ function checkout(Payable $gateway, int $cents): string
 ```
 
 I mention inheritance last on purpose. In PHP I prefer **composition + interfaces** over deep class trees. Inheritance is a tool, not the goal.
+
+**Watch out:**
+
+Inheritance is the principle people overuse. Deep `extends` trees hurt more than they help. Lead with encapsulation and polymorphism; mention inheritance last.
+
+**If they follow up:**
+
+- Composition vs inheritance? I inject a collaborator instead of extending, unless it really *is* a kind of the parent.
+- Where is polymorphism in Laravel? Any interface bound in the container (`Mailer` → `SmtpMailer`).
 
 > [!TIP]
 > **One-liner:** Encapsulation hides state, abstraction hides complexity, inheritance shares structure, polymorphism lets different classes answer the same message.

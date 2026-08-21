@@ -18,6 +18,10 @@ Same goal — **authenticate, authorize, validate, throttle** — different tool
 | Sanctum | Laravel 13 default API auth (Bearer tokens, or SPA cookies). |
 | Mass assignment | Filling many model fields from request data. Persist `$request->validated()`, never `$request->all()`. |
 
+**Analogy:**
+
+`web.php` is a **session badge + CSRF stamp**. `api.php` is a **token at the hatch**. Both still need “who are you,” “may you,” “is this input valid,” and “slow down.”
+
 | | `web.php` | `api.php` |
 |---|-----------|-----------|
 | Identity | Session cookie (`auth`) | Token (`auth:sanctum`). Passport is optional OAuth2, not the Laravel 13 default. |
@@ -70,6 +74,15 @@ The `web` group already applies session, cookie encryption, and CSRF. I still ad
 - `authorize()` in the Form Request or `$this->authorize()` in the controller.
 - Rate limit login and sensitive POSTs (`429`).
 - Signed URLs for one-click email actions.
+
+**Watch out:**
+
+Never `$request->all()` into `create()`. Token ≠ permission — use policies. Do not put tokens in query strings. `APP_DEBUG=false` in production.
+
+**If they follow up:**
+
+- Sanctum SPA vs Bearer? SPA still uses CSRF cookies; stateless Bearer does not.
+- Mass assignment in Laravel 13? `#[Fillable]`, `$request->validated()`, `preventSilentlyDiscardingAttributes` locally.
 
 > [!TIP]
 > **One-liner:** `web.php` = session + CSRF + `auth`. `api.php` = Sanctum/token + throttle + CORS. Both still need policies and validation.

@@ -15,6 +15,10 @@ Both load and execute another PHP file in the current scope. The difference is *
 | `require_once` / `include_once` | Same as above, but skip the file if it was already loaded. |
 | Autoload | Load a **class** file on first use (Composer PSR-4). Not a replacement for `vendor/autoload.php`. |
 
+**Analogy:**
+
+`require` is a load-bearing wall: if it is missing, the building cannot stand. `include` is a poster on that wall: ugly if missing, the shop still opens.
+
 | Aspect | `require` / `require_once` | `include` / `include_once` |
 |--------|----------------------------|----------------------------|
 | Missing file | Fatal error — script **stops** | Warning — script **continues** |
@@ -53,6 +57,15 @@ include __DIR__ . '/../resources/views/partials/promo-banner.php';
 - Always build the path from `__DIR__` (or Composer autoload). A bare relative path depends on the current working directory, which is easy to get wrong.
 - In modern PHP I almost never `require` class files by hand — Composer’s PSR-4 autoloader does that. `require` still matters for `vendor/autoload.php`, config, and a few bootstrap files.
 - `include` returning `false` on failure is not a substitute for handling errors. If the file is required for correctness, use `require`.
+
+**Watch out:**
+
+Never `include` a path from user input (local/remote file inclusion). Do not use a bare relative path — it follows the current working directory, not the file you think.
+
+**If they follow up:**
+
+- `require_once`? Same as `require`, but skip if already loaded (avoids “cannot redeclare”).
+- Why not `require` every class? Composer PSR-4 autoload does that. `require` still boots `vendor/autoload.php`.
 
 > [!TIP]
 > **One-liner:** `require` kills the script if the file is missing; `include` only warns and continues. Use `require` for files the app cannot run without.

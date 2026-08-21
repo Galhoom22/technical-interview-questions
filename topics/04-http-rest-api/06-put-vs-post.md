@@ -18,6 +18,10 @@
 | Idempotent | Repeating the same request leaves the same state. |
 | Resource | A noun the API exposes (`/orders/15`). |
 
+**Analogy:**
+
+POST is **dropping a new box on the counter** (the shop assigns the ticket number). PUT is **replacing the box already on shelf 15** — same shelf, whole new contents. Twice PUT, still one box.
+
 | Aspect | `POST` | `PUT` |
 |--------|--------|-------|
 | Typical intent | **Create** (or a non-CRUD action) | **Replace** the resource at a known URI |
@@ -51,6 +55,15 @@ PATCH /api/orders/15          → 200  only { "status": "paid" }
 ```
 
 `PATCH` is the sibling people mix in: **partial** update, not a full replace. If the client sends only `{ "title": "New" }`, that is PATCH, not PUT.
+
+**Watch out:**
+
+Sending one field with PUT is a lie — that is PATCH. Two identical POSTs can mean two rows.
+
+**If they follow up:**
+
+- Who assigns the id? POST: server. PUT: the URI already exists.
+- Idempotent? PUT yes, POST no.
 
 > [!TIP]
 > **One-liner:** POST creates (not idempotent, server assigns the URI). PUT replaces an existing resource at a known URI and is idempotent.
