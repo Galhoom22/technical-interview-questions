@@ -1,6 +1,6 @@
 # Laravel / PHP Backend Interview Questions
 
-Real **technical** questions from interviews I sat. Each question is its own file, with a model answer.
+An **interview answer bank**: real technical questions from interviews I sat, with the answers I would give. Not a course, and not a scraped question dump from the internet. Each question is its own file.
 
 **46 questions** · PHP **8.5** · Laravel **13**
 
@@ -31,3 +31,5 @@ Listed in **study order** — read top to bottom.
 | 🔀 | [Git & Workflow](./topics/08-git-workflow/) | 1 |
 | ♻️ | [Refactoring & Best Practices](./topics/09-refactoring-best-practices/) | 1 |
 | ⚡ | [Performance & Optimization](./topics/10-performance-optimization/) | 1 |
+
+Uneven counts are intentional: only questions I was actually asked — not a missing curriculum.
